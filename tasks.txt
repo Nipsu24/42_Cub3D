@@ -1,0 +1,73 @@
+Task Outline for Parsing and Raycasting
+
+1. Map Parsing
+   Leo's Tasks:
+   - File Reading and Validation:
+     - Write the function to open and read the .cub file.
+     - Ensure the file is properly closed after reading.
+     - Implement basic error handling (e.g., invalid file format).
+   
+   - Player Initialization:
+     - Parse the player's initial position and orientation (N, S, E, W).
+     - Validate the map contains exactly one player start position.
+   
+   - Map Boundary Validation:
+     - Ensure that the map is properly surrounded by walls (1).
+     - Handle edge cases for maps with varying dimensions.
+   
+   Marius' Tasks:
+   - Parsing Map Layout:
+     - Create a function that converts the map layout from a 2D array into a usable format 
+	 for the game.
+     - Ensure the correct interpretation of wall (1), empty space (0), and player positions.
+   
+   - Error Handling for Map Format:
+     - Implement checks for invalid characters and malformed maps.
+     - Ensure that the map is rectangular (all rows must have the same length).
+   
+   - Texture Parsing:
+     - Handle parsing of texture paths for walls and other surfaces.
+     - Validate that each texture file exists and can be loaded.
+
+2. Raycasting
+   Leo's Tasks:
+   - Basic Raycasting Algorithm:
+     - Implement the core raycasting loop to calculate the distance to walls.
+     - Handle ray direction and casting for different player orientations (North, South, 
+	 East, West).
+   
+   - Projection and Rendering:
+     - Convert raycasting data into a 2D projection on the screen (height of walls based on 
+	 distance).
+     - Implement drawing of the vertical slices on the screen.
+   
+   Marius' Tasks:
+   - DDA Algorithm and Wall Detection:
+     - Implement the Digital Differential Analyzer (DDA) algorithm to determine when a ray 
+	 hits a wall.
+     - Handle both horizontal and vertical wall detection.
+   
+   - Field of View and Camera Movement:
+     - Set up the player's field of view (FOV) and adjust the raycasting to reflect this.
+     - Implement smooth rotation (left and right) and forward/backward movement.
+
+3. Additional Responsibilities
+   Leo's Additional Tasks:
+   - Collision Detection:
+     - Integrate collision detection into player movement so that the player cannot walk 
+	 through walls.
+     - Handle edge cases, such as diagonal movement into walls.
+   
+   Marius' Additional Tasks:
+   - Mouse Movement Integration:
+     - Implement mouse input to control the player's view direction.
+     - Ensure smooth rotation and update the raycasting accordingly.
+
+Coordination and Integration
+- Shared Responsibility: Both of you should work closely when integrating the parsing and 
+raycasting systems to ensure smooth communication between them. For example, parsed map data 
+should be easily usable by the raycasting engine.
+- Regular Code Review: Since parsing and raycasting are tightly connected, it’s a good idea
+ to regularly review each other’s work to make sure there are no integration issues.
+- Testing: Both Leo and Marius should work together to thoroughly test each part of the
+ project to catch edge cases early (e.g., broken map files or incorrect wall rendering).
