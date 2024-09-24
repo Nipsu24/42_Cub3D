@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 11:12:26 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/24 12:02:44 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ static void file_splitter(data *data)
 
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
-void	cube_it(char *av , data *data, img *img)
+int	cube_it(char *av , data *data, img *img)
 {
-		store_file_content(av, data);
-		file_splitter(data); //only for map testing purpose
-		print_arr(data->map);
-		texture_extract(data, img);
-		map_checker(data);
-
+	(void)img;
+	store_file_content(av, data);
+	file_splitter(data); //only for map testing purpose
+	print_arr(data->map);
+	// texture_extract(data, img);
+	if (map_checker(data))
+		return (1);
+	return (0);
 }
 
 /*Initialises variables of the main data struct.*/
