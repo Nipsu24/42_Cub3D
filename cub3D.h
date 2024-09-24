@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 10:02:54 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/24 10:17:17 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_data
 	char	**map;
 	char	**clone_map;
 	char	*file_cnt;
-	img 	*img
+	struct s_img 	*img;
 }	data;
 
 typedef struct s_img
@@ -44,7 +44,8 @@ int		store_file_content(char *av, data *data);
 void	init_data(data *data);
 char	*ft_read_map(int fd);
 
-/*					.c						*/
+/*					map_checking.c					*/
+char	**map_checker (data *data);
 
 
 #endif
