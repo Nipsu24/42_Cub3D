@@ -6,11 +6,18 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 11:12:26 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/24 14:56:38 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static void arr_splitter(data *data)
+{
+	data->file_arr = ft_split(data->file_cnt, '\n');
+	if (!data->file_arr)
+		return ;
+}
 
 static void file_splitter(data *data)
 {
@@ -22,13 +29,14 @@ static void file_splitter(data *data)
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
 void	cube_it(char *av , data *data, img *img)
-{
-		store_file_content(av, data);
-		file_splitter(data); //only for map testing purpose
-		print_arr(data->map);
-		texture_extract(data, img);
-		map_checker(data);
-
+{	
+	store_file_content(av, data);
+	file_splitter(data); //only for map testing purpose
+	print_arr(data->map);// gonna go...
+	arr_splitter(data); //only for map testing purpose
+	texture_extract(data, img);
+	map_checker(data);
+	//printf("HERE!!!!\n"); // copy'n'paste in emergency
 }
 
 /*Initialises variables of the main data struct.*/
@@ -37,6 +45,7 @@ void	init_data(data *data, img *img)
 	data->map = NULL;
 	data->clone_map = NULL;
 	data->file_cnt = NULL;
+	data->file_arr = NULL;
 	img->no = NULL;
 	img->so = NULL;
 	img->ea = NULL;
