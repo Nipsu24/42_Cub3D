@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 10:17:51 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/24 10:34:57 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 		
 		init_data (&data);
 		cube_it(argv[1], &data);
-		printf("%s \n\n\n END OF FILE", data.file_cnt);
+		//printf("%s \n\n\n END OF FILE", data.file_cnt);
 	}
 	else
 		printf("incorrect argument\n");
