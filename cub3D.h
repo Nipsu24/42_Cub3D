@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 15:06:44 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/24 17:22:30 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_data
 	char			**clone_map;
 	char			*file_cnt;
 	char			**file_arr; // tmp variable 
+	int				wall_check;
 	struct s_img 	*img;
 }	data;
 
@@ -50,20 +51,25 @@ char	*ft_read_map(int fd);
 
 int		map_checker (data *data);	
 int		err_msg(int err_flag);
+char	**ft_copy_map(char **map, data *data);
 
 /*						free.c								*/
 
 int		free_input(data *data);
 void	free_arr(char ***arr);
 void	free_str(char **str);
+char	**free_arr_rev(char ***av, int i);
 
 /*						texture.c							*/
 
 void	texture_extract(data *data, img *img);
 
+/*						flood_fill.c						*/
+
+int		no_closed_walls(data *data);
 
 /*						utils_to_be_deleted.c				*/
 
-void	print_arr(char **arr);	
+void	print_arr(char **arr);
 
 #endif

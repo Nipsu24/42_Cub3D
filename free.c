@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 10:54:00 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/24 17:32:52 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,21 @@ void	free_str(char **str)
 		free(*str);
 		*str = NULL;
 	}
+}
+
+/*Frees array in reverse (e.g. if allocation for string
+  within array fails) and sets it to NULL.*/
+char	**free_arr_rev(char ***av, int i)
+{
+	if (*av == NULL)
+		return (NULL);
+	while (i > 0)
+	{
+		free((*av)[i - 1]);
+		(*av)[i - 1] = NULL;
+		i--;
+	}
+	free(*av);
+	*av = NULL;
+	return (NULL);
 }
