@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 09:20:46 by lstorey          ###   ########.fr       */
+/*   Created: 2023/10/30 15:40:36 by lstorey           #+#    #+#             */
+/*   Updated: 2023/11/23 14:25:57 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (argc == 2)
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
-		data	data;
-		
-		init_data (&data);
-		cube_it(argv[1], &data);
-		printf("%s \n\n\n END OF FILE", data.file_cnt);
+		write(fd, &s[i], 1);
+		i++;
 	}
-	else
-		printf("incorrect argument\n");
 }

@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 09:20:46 by lstorey          ###   ########.fr       */
+/*   Created: 2023/11/10 14:33:46 by lstorey           #+#    #+#             */
+/*   Updated: 2023/11/21 14:07:51 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
-{
-	if (argc == 2)
+void	*ft_calloc(size_t count, size_t size)
 	{
-		data	data;
-		
-		init_data (&data);
-		cube_it(argv[1], &data);
-		printf("%s \n\n\n END OF FILE", data.file_cnt);
-	}
-	else
-		printf("incorrect argument\n");
+	void	*ptr;
+
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (0);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

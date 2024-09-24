@@ -3,25 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 09:20:46 by lstorey          ###   ########.fr       */
+/*   Created: 2024/01/08 12:31:59 by lstorey           #+#    #+#             */
+/*   Updated: 2024/01/26 10:42:19 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "get_next_line.h"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	if (argc == 2)
+	char	*line;
+	int		fd;
+
+	fd = open("txt.txt", O_RDONLY);
+	line = get_next_line(fd);
+	printf("%s\n", line);
+	while ((line = get_next_line(fd)))
 	{
-		data	data;
-		
-		init_data (&data);
-		cube_it(argv[1], &data);
-		printf("%s \n\n\n END OF FILE", data.file_cnt);
+		printf("%s\n", line);
+		free(line);
+		line++;
 	}
-	else
-		printf("incorrect argument\n");
+	free(line);
+	return (0);
 }

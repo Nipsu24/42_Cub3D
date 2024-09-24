@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 09:20:46 by lstorey          ###   ########.fr       */
+/*   Created: 2023/10/25 09:55:32 by lstorey           #+#    #+#             */
+/*   Updated: 2023/11/23 14:18:39 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+int	ft_toupper(int c)
 
-int	main(int argc, char **argv)
 {
-	if (argc == 2)
-	{
-		data	data;
-		
-		init_data (&data);
-		cube_it(argv[1], &data);
-		printf("%s \n\n\n END OF FILE", data.file_cnt);
-	}
-	else
-		printf("incorrect argument\n");
+	if (c > 64 && c < 91)
+		return (c);
+	if (c > 96 && c < 123)
+		c = c - 32;
+	return (c);
 }
