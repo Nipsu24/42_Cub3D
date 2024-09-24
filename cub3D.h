@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 11:55:57 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/24 15:06:44 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,30 @@ typedef struct s_img
 }	img;
 
 /*						utils.c								*/
-void	cube_it(char *av, data *data, img *img);
+
+int		cube_it(char *av, data *data, img *img);
 int		store_file_content(char *av, data *data);
 void	init_data(data *data, img *img);
 char	*ft_read_map(int fd);
 
 /*						map_checking.c						*/
+
 int		map_checker (data *data);	
+int		err_msg(int err_flag);
 
 /*						free.c								*/
+
 int		free_input(data *data);
 void	free_arr(char ***arr);
 void	free_str(char **str);
 
 /*						texture.c							*/
+
 void	texture_extract(data *data, img *img);
 
 
 /*						utils_to_be_deleted.c				*/
+
 void	print_arr(char **arr);	
 
 #endif
