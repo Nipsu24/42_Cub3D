@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/09/24 10:54:46 by mmeier           ###   ########.fr        #
+#    Updated: 2024/09/24 11:36:42 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ FILES = utils.c \
 		main.c \
 		map_checking.c \
 		utils_to_be_deleted.c \
-		free.c
+		free.c \
+		texture.c
 
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 

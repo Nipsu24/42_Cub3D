@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 11:16:13 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/24 11:37:05 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	texture_extract(data *data, img *img)
-{
+// void	texture_extract(data *data, img *img)
+// {
 	
-}
+// }
