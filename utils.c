@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 12:02:44 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/24 14:57:22 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	cube_it(char *av , data *data, img *img)
 	(void)img;
 	store_file_content(av, data);
 	file_splitter(data); //only for map testing purpose
-	print_arr(data->map);
+	// print_arr(data->map);
 	// texture_extract(data, img);
 	if (map_checker(data))
 		return (1);
@@ -96,4 +96,26 @@ char	*ft_read_map(int fd)
 			return (ft_free(&str));
 	}
 	return (str);
+}
+
+/*Prints dedicated error message depending on err_flag
+  passed to function.*/
+int	err_msg(int err_flag)
+{
+	if (err_flag == 0)
+	{
+		printf("Error. Empty line(s) in map.\n");
+		return (1);
+	}
+	if (err_flag == 1)
+	{
+		printf("Error. Map not rectangular.\n");
+		return (1);
+	}
+	if (err_flag == 2)
+	{
+		printf("Error. Invalid characters in map.\n");
+		return (1);
+	}
+	return (0);
 }
