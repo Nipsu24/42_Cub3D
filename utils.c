@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 15:10:45 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/24 17:09:48 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	init_data(data *data, img *img)
 	img->we = NULL;
 	img->floor = NULL;
 	img->ceiling = NULL;
+	data->wall_check = 0;
 }
 
 /*Reads content of the file (given as an arguement) and
@@ -124,6 +125,11 @@ int	err_msg(int err_flag)
 	if (err_flag == 2)
 	{
 		printf("Error. Invalid characters in map.\n");
+		return (1);
+	}
+	if (err_flag == 3)
+	{
+		printf("Error. Player not surrounded by walls.\n");
 		return (1);
 	}
 	return (0);
