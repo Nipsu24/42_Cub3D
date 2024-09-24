@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 09:20:46 by lstorey          ###   ########.fr       */
+/*   Created: 2023/11/01 12:06:35 by lstorey           #+#    #+#             */
+/*   Updated: 2023/11/23 14:19:21 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (argc == 2)
+	int		len;
+	char	ch;
+
+	ch = (char)c;
+	len = 0;
+	while (s[len] != 0)
+		len++;
+	if (ch == '\0')
+		return ((char *)s + len);
+	while (len >= 0)
 	{
-		data	data;
-		
-		init_data (&data);
-		cube_it(argv[1], &data);
-		printf("%s \n\n\n END OF FILE", data.file_cnt);
+		if (s[len] == ch)
+			return ((char *)(s + len));
+		len--;
 	}
-	else
-		printf("incorrect argument\n");
+	return (0);
 }

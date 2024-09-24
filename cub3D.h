@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/23 17:14:10 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/24 10:02:54 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,28 @@ typedef struct s_data
 	char	**map;
 	char	**clone_map;
 	char	*file_cnt;
+	img 	*img
 }	data;
 
-void	init_data(data *data);
+typedef struct s_img
+{
+	data *data;
+	char *no;
+	char *so;
+	char *ea;
+	char *we;
+	int *floor;
+	int *ceiling;
+
+}	img;
+
+/*					utils.c						*/
+void	cube_it(char *av, data *data);
 int		store_file_content(char *av, data *data);
+void	init_data(data *data);
 char	*ft_read_map(int fd);
+
+/*					.c						*/
+
 
 #endif
