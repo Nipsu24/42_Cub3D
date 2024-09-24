@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 10:26:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/24 10:41:22 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static void file_splitter(data *data)
 {
 	data->map = ft_split(data->file_cnt, '\n');
+	if (!data->map)
+		return ;
 }
 
 /*this is basically the main funtion, this can get more
@@ -22,8 +24,9 @@ cluttered and we can keep the main tight*/
 void	cube_it(char *av , data *data)
 {
 		store_file_content(av, data);
-		file_splitter(data);
-		//data->map = map_checker(data);
+		file_splitter(data); //only for map testing purpose
+		print_arr(data->map);
+		map_checker(data);
 
 }
 
