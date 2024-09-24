@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
+#    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/09/24 10:54:46 by mmeier           ###   ########.fr        #
+#    Updated: 2024/09/24 11:32:23 by lstorey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ LIBS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 FILES = utils.c \
 		main.c \
 		map_checking.c \
-		utils_to_be_deleted.c \
-		free.c
-
+		free.c\
+		texture.c\
+		utils_to_be_deleted.c 
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
 ifeq ($(wildcard $(LIBMLX)/build/libmlx42.a),)
