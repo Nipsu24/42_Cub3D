@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 14:56:38 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/24 15:10:45 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ static void file_splitter(data *data)
 
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
-void	cube_it(char *av , data *data, img *img)
+int	cube_it(char *av , data *data, img *img)
 {	
 	store_file_content(av, data);
 	file_splitter(data); //only for map testing purpose
 	print_arr(data->map);// gonna go...
 	arr_splitter(data); //only for map testing purpose
 	texture_extract(data, img);
-	map_checker(data);
 	//printf("HERE!!!!\n"); // copy'n'paste in emergency
+	if (map_checker(data))
+		return (1);
+	return (0);
 }
 
 /*Initialises variables of the main data struct.*/
@@ -103,4 +105,26 @@ char	*ft_read_map(int fd)
 			return (ft_free(&str));
 	}
 	return (str);
+}
+
+/*Prints dedicated error message depending on err_flag
+  passed to function.*/
+int	err_msg(int err_flag)
+{
+	if (err_flag == 0)
+	{
+		printf("Error. Empty line(s) in map.\n");
+		return (1);
+	}
+	if (err_flag == 1)
+	{
+		printf("Error. Map not rectangular.\n");
+		return (1);
+	}
+	if (err_flag == 2)
+	{
+		printf("Error. Invalid characters in map.\n");
+		return (1);
+	}
+	return (0);
 }
