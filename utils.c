@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 10:07:59 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/24 10:13:52 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void file_splitter(data *data)
 {
 	data->map = ft_split(data->file_cnt, '\n');
 }
-
 
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
