@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 10:54:31 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/24 11:16:04 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,25 @@ typedef struct s_img
 
 }	img;
 
-/*					utils.c						*/
-void	cube_it(char *av, data *data);
+/*						utils.c								*/
+void	cube_it(char *av, data *data, img *img);
 int		store_file_content(char *av, data *data);
-void	init_data(data *data);
+void	init_data(data *data, img *img);
 char	*ft_read_map(int fd);
 
-/*					map_checking.c					*/
-int		map_checker (data *data);
+/*						map_checking.c						*/
+int		map_checker (data *data);	
 
-/*					free.c					*/
+/*						free.c								*/
 int		free_input(data *data);
 void	free_arr(char ***arr);
 void	free_str(char **str);
 
-/*					utils_to_be_deleted.c			*/
-void	print_arr(char **arr);
+/*						texture.c							*/
+void	texture_extract(data *data, img *img);
+
+
+/*						utils_to_be_deleted.c				*/
+void	print_arr(char **arr);	
 
 #endif
