@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 17:22:30 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 12:38:29 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_img
 	char 			*so;
 	char 			*ea;
 	char 			*we;
-	int 			*floor;
-	int 			*ceiling;
+	int 			floor[3];
+	int 			ceiling[3];
 
 }	img;
 
@@ -51,7 +51,7 @@ char	*ft_read_map(int fd);
 
 int		map_checker (data *data);	
 int		err_msg(int err_flag);
-char	**ft_copy_map(char **map, data *data);
+// char	**ft_copy_map(char **map, data *data);
 
 /*						free.c								*/
 
@@ -62,7 +62,7 @@ char	**free_arr_rev(char ***av, int i);
 
 /*						texture.c							*/
 
-void	texture_extract(data *data, img *img);
+void	texture_extract(data *data, img *img, int i, int j);
 
 /*						flood_fill.c						*/
 
