@@ -6,20 +6,20 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 17:09:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 11:37:26 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void arr_splitter(data *data)
+static void	arr_splitter(data *data)
 {
 	data->file_arr = ft_split(data->file_cnt, '\n');
 	if (!data->file_arr)
 		return ;
 }
 
-static void file_splitter(data *data)
+static void	file_splitter(data *data)
 {
 	data->map = ft_split(data->file_cnt, '\n');
 	if (!data->map)
@@ -28,7 +28,7 @@ static void file_splitter(data *data)
 
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
-int	cube_it(char *av , data *data, img *img)
+int	cube_it(char *av, data *data, img *img)
 {	
 	store_file_content(av, data);
 	file_splitter(data); //only for map testing purpose
@@ -78,7 +78,7 @@ int	store_file_content(char *av, data *data)
 		return (1);
 	}
 	close(fd);
-	return (0);	
+	return (0);
 }
 
 /*Reads entire map content until NULL-Terminator*/
@@ -109,28 +109,16 @@ char	*ft_read_map(int fd)
 }
 
 /*Prints dedicated error message depending on err_flag
-  passed to function.*/
+  passed to function and returns 1.*/
 int	err_msg(int err_flag)
 {
 	if (err_flag == 0)
-	{
-		printf("Error. Empty line(s) in map.\n");
-		return (1);
-	}
+		printf("Error.\nEmpty line(s) in map.\n");
 	if (err_flag == 1)
-	{
-		printf("Error. Map not rectangular.\n");
-		return (1);
-	}
+		printf("Error.\nMultiple identical/similar characters in map.\n");
 	if (err_flag == 2)
-	{
-		printf("Error. Invalid characters in map.\n");
-		return (1);
-	}
+		printf("Error.\nInvalid characters in map.\n");
 	if (err_flag == 3)
-	{
-		printf("Error. Player not surrounded by walls.\n");
-		return (1);
-	}
-	return (0);
+		printf("Error.\nPlayer not surrounded by walls.\n");
+	return (1);
 }

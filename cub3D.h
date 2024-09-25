@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 17:22:30 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 11:09:10 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ char	*ft_read_map(int fd);
 
 int		map_checker (data *data);	
 int		err_msg(int err_flag);
-char	**ft_copy_map(char **map, data *data);
 
 /*						free.c								*/
 
