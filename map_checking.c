@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 11:31:52 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 14:14:02 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static int	only_spaces_str(data *data)
 	j = -1;
 	i = -1;
 	flag_no_space = 0;
-	while (j++, data->map[j])
+	while (data->map[++j])
 	{
 		flag_no_space = 0;
-		i = 0;
-		while (i++, data->map[j][i])
+		i = -1;
+		while (data->map[j][++i])
 		{
 			if (data->map[j][i] != ' ')
 				flag_no_space = 1;
@@ -47,10 +47,10 @@ static int	space_to_one(data *data)
 
 	j = -1;
 	i = -1;
-	while (j++, data->map[j])
+	while (data->map[++j])
 	{
-		i = 0;
-		while (i++, data->map[j][i])
+		i = -1;
+		while (data->map[j][++i])
 		{
 			if (data->map[j][i] == ' ')
 				data->map[j][i] = '1';
@@ -70,10 +70,10 @@ static int	invalid_chars(data *data)
 	j = -1;
 	i = -1;
 	count = 0;
-	while (j++, data->map[j])
+	while (data->map[++j])
 	{
-		i = 0;
-		while (i++, data->map[j][i])
+		i = -1;
+		while (data->map[j][++i])
 		{
 			if (data->map[j][i] != '0' && data->map[j][i] != '1'
 				&& data->map[j][i] != 'W' && data->map[j][i] != 'N'
@@ -83,10 +83,10 @@ static int	invalid_chars(data *data)
 			if (data->map[j][i] == 'W' || data->map[j][i] == 'N'
 				|| data->map[j][i] == 'E' || data->map[j][i] == 'S')
 				count++;
-			if (count > 1)
-				return (err_msg(1));
 		}		
 	}
+	if (count > 1 || count == 0)
+		return (err_msg(1));
 	return (0);
 }
 

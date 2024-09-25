@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_to_be_deleted.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 12:21:02 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/25 14:21:04 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	print_arr(char **arr)
 	int	j;
 	
 	j = -1;
-	while (j++, arr[j])
+	while (arr[++j])
 		printf("%s\n", arr[j]);		
 }
