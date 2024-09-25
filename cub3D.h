@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 12:38:29 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/25 15:05:48 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		cube_it(char *av, data *data, img *img);
 int		store_file_content(char *av, data *data);
 void	init_data(data *data, img *img);
 char	*ft_read_map(int fd);
+int		file_format(char *str);
 
 /*						map_checking.c						*/
 
