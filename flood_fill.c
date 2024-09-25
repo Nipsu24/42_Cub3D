@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 17:32:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 15:22:01 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*Creates a copy of 2d arrays (in this project of the map array).
   This is used as map data needs to be manipulated within the
   flood fill function.*/
-static char	**ft_copy_map(char **map, data *data)
+static char	**ft_copy_map(char **map, t_data *data)
 {
 	int	i;
 	int	j;
@@ -77,7 +77,7 @@ static int	count_lines_arr(char **arr)
 /*Checks first height of map and current line's width in order
   to know the boundaries of map. Returns 0 if boundaries are
   hit/exceeded, returns 1 if hits 1 or X.*/
-static int	fill_map(char ***map, int x, int y, data *data)
+static int	fill_map(char ***map, int x, int y, t_data *data)
 {
 	int	width;
 	int	height;
@@ -108,7 +108,7 @@ static int	fill_map(char ***map, int x, int y, data *data)
   variable with map data. Passes then this data to flood fill
   function in order to check if player is surrounded by walls.
   If this is not the case, fill_map returns 0 (=>'if !fill_map)'.*/
-int	no_closed_walls(data *data)
+int	no_closed_walls(t_data *data)
 {
 	int	p_pos_x;
 	int	p_pos_y;

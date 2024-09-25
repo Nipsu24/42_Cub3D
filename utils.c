@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/25 15:07:49 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 15:20:36 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static void info_printer(img *img)
-{
-	printf("img->no         :%s\n", img->no);
-	printf("img->ea         :%s\n", img->ea);
-	printf("img->so         :%s\n", img->so);
-	printf("img->we         :%s\n", img->we);
-	printf("img->ceiling[0] :%d\n", img->ceiling[0]);
-	printf("img->ceiling[1] :%d\n", img->ceiling[1]);
-	printf("img->ceiling[2] :%d\n", img->ceiling[2]);
-	printf("img->floor[0]   :%d\n", img->floor[0]);
-	printf("img->floor[1]   :%d\n", img->floor[1]);
-	printf("img->floor[2]   :%d\n", img->floor[2]);
-}
-
-static void arr_splitter(data *data)
-{
-	data->file_arr = ft_split(data->file_cnt, '\n');
-	if (!data->file_arr)
-		return ;
-}
-
-static void	file_splitter(data *data)
-{
-	data->map = ft_split(data->file_cnt, '\n');
-	if (!data->map)
-		return ;
-}
 
 int	file_format(char *str)
 {
@@ -61,7 +33,7 @@ int	file_format(char *str)
 
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
-int	cube_it(char *av, data *data, img *img)
+int	cube_it(char *av, t_data *data, t_img *img)
 {	
 	
 	if (file_format(av))
@@ -80,7 +52,7 @@ int	cube_it(char *av, data *data, img *img)
 }
 
 /*Initialises variables of the main data struct.*/
-void	init_data(data *data, img *img)
+void	init_data(t_data *data, t_img *img)
 {
 	data->map = NULL;
 	data->clone_map = NULL;
@@ -95,7 +67,7 @@ void	init_data(data *data, img *img)
 
 /*Reads content of the file (given as an arguement) and
   stores it in file_cnt string for further processing.*/
-int	store_file_content(char *av, data *data)
+int	store_file_content(char *av, t_data *data)
 {
 	int	fd;
 	int	i;

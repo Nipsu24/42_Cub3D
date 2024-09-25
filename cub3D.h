@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 15:05:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 15:20:13 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_data
 	char			**file_arr; // tmp variable 
 	int				wall_check;
 	struct s_img 	*img;
-}	data;
+}	t_data;
 
 typedef struct s_img
 {
@@ -38,39 +38,42 @@ typedef struct s_img
 	int 			floor[3];
 	int 			ceiling[3];
 
-}	img;
+}	t_img;
 
 /*						utils.c								*/
 
-int		cube_it(char *av, data *data, img *img);
-int		store_file_content(char *av, data *data);
-void	init_data(data *data, img *img);
+int		cube_it(char *av, t_data *data, t_img *img);
+int		store_file_content(char *av, t_data *data);
+void	init_data(t_data *data, t_img *img);
 char	*ft_read_map(int fd);
 int		file_format(char *str);
 
 /*						map_checking.c						*/
 
-int		map_checker (data *data);	
+int		map_checker (t_data *data);	
 int		err_msg(int err_flag);
 // char	**ft_copy_map(char **map, data *data);
 
 /*						free.c								*/
 
-int		free_input(data *data);
+int		free_input(t_data *data);
 void	free_arr(char ***arr);
 void	free_str(char **str);
 char	**free_arr_rev(char ***av, int i);
 
 /*						texture.c							*/
 
-void	texture_extract(data *data, img *img, int i, int j);
+void	texture_extract(t_data *data, t_img *img, int i, int j);
 
 /*						flood_fill.c						*/
 
-int		no_closed_walls(data *data);
+int		no_closed_walls(t_data *data);
 
 /*						utils_to_be_deleted.c				*/
 
 void	print_arr(char **arr);
+void 	info_printer(t_img *img);
+void	file_splitter(t_data *data);
+void 	arr_splitter(t_data *data);
 
 #endif
