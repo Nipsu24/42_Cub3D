@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
+#    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/09/24 15:05:48 by mmeier           ###   ########.fr        #
+#    Updated: 2024/09/25 11:35:33 by lstorey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,9 @@ FILES = utils.c \
 		main.c \
 		map_checking.c \
 		free.c\
-		texture.c\
-		utils_to_be_deleted.c 
+		texture_info.c\
+		flood_fill.c\
+		utils_to_be_deleted.c # DO NOT DELETE!!
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
 ifeq ($(wildcard $(LIBMLX)/build/libmlx42.a),)

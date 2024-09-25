@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/24 11:51:53 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 13:24:15 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 		init_data (&data, &img);
 		if (cube_it(argv[1], &data, &img))
 			return (1);
-		//printf("%s \n\n\n END OF FILE", data.file_cnt);
 	}
 	else
 		printf("incorrect argument\n");

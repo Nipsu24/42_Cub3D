@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 17:09:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 13:48:17 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static void info_printer(img *img)
+{
+	printf("img->no         :%s\n", img->no);
+	printf("img->ea         :%s\n", img->ea);
+	printf("img->so         :%s\n", img->so);
+	printf("img->we         :%s\n", img->we);
+	printf("img->ceiling[0] :%d\n", img->ceiling[0]);
+	printf("img->ceiling[1] :%d\n", img->ceiling[1]);
+	printf("img->ceiling[2] :%d\n", img->ceiling[2]);
+	printf("img->floor[0]   :%d\n", img->floor[0]);
+	printf("img->floor[1]   :%d\n", img->floor[1]);
+	printf("img->floor[2]   :%d\n", img->floor[2]);
+}
 
 static void arr_splitter(data *data)
 {
@@ -32,10 +46,11 @@ int	cube_it(char *av , data *data, img *img)
 {	
 	store_file_content(av, data);
 	file_splitter(data); //only for map testing purpose
-	print_arr(data->map);// gonna go...
+	// print_arr(data->map);// gonna go...
 	arr_splitter(data); //only for map testing purpose
-	texture_extract(data, img);
-	//printf("HERE!!!!\n"); // copy'n'paste in emergency
+	texture_extract(data, img, 0, 0);
+	info_printer(img); // to be deleted...
+	
 	if (map_checker(data))
 		return (1);
 	return (0);
@@ -52,8 +67,6 @@ void	init_data(data *data, img *img)
 	img->so = NULL;
 	img->ea = NULL;
 	img->we = NULL;
-	img->floor = NULL;
-	img->ceiling = NULL;
 	data->wall_check = 0;
 }
 
