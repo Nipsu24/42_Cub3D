@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/25 11:37:26 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 14:22:36 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static void	file_splitter(data *data)
 cluttered and we can keep the main tight*/
 int	cube_it(char *av, data *data, img *img)
 {	
-	store_file_content(av, data);
+	if (store_file_content(av, data))
+		return (1);
 	file_splitter(data); //only for map testing purpose
 	print_arr(data->map);// gonna go...
 	arr_splitter(data); //only for map testing purpose
@@ -68,7 +69,8 @@ int	store_file_content(char *av, data *data)
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Error. File could not be opened\n.");
+		perror("Error.\nFile could not be opened.\n");
+		close(fd);
 		return (1);
 	}
 	data->file_cnt = ft_read_map(fd);
@@ -115,7 +117,7 @@ int	err_msg(int err_flag)
 	if (err_flag == 0)
 		printf("Error.\nEmpty line(s) in map.\n");
 	if (err_flag == 1)
-		printf("Error.\nMultiple identical/similar characters in map.\n");
+		printf("Error.\nMultiple similar players in map or no player at all.\n");
 	if (err_flag == 2)
 		printf("Error.\nInvalid characters in map.\n");
 	if (err_flag == 3)
