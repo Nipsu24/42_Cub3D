@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 14:14:02 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 14:47:40 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ int	map_checker(data *data)
 		return (free_input(data));
 	if (no_closed_walls(data))
 		return (free_input(data));
-	print_arr(data->map);
+	// print_arr(data->map);
 	return (0);
 }

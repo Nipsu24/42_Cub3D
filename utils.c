@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/25 14:22:36 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 14:48:22 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,32 @@ static void	file_splitter(data *data)
 		return ;
 }
 
+int	file_format(char *str)
+{
+	char	*format;
+	int		len_str;
+	int		len_format;
+
+	format = ".cub";
+	len_str = ft_strlen(str);
+	len_format = 4;
+	if (len_str <= len_format
+		|| (ft_strncmp(str + len_str - len_format, format, len_format) != 0))
+		{
+			printf("Error.\nInvalid filename.\n");
+			return (1);
+		}
+	else
+		return (0);
+}
+
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
 int	cube_it(char *av, data *data, img *img)
 {	
+	
+	if (file_format(av))
+		return (1);
 	if (store_file_content(av, data))
 		return (1);
 	file_splitter(data); //only for map testing purpose

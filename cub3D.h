@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 11:09:10 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 14:49:12 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		cube_it(char *av, data *data, img *img);
 int		store_file_content(char *av, data *data);
 void	init_data(data *data, img *img);
 char	*ft_read_map(int fd);
+int		file_format(char *str);
 
 /*						map_checking.c						*/
 
