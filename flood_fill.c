@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 17:32:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 15:54:27 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,10 @@ int	no_closed_walls(data *data)
 	i = 0;
 	j = 0;
 	player_pos(data->map, &p_pos_x, &p_pos_y);
+	data->x_p = p_pos_x;
+	data->y_p = p_pos_y;
+	printf("P X: %d\n", data->x_p);
+	printf("P Y: %d\n", data->y_p);
 	if (!ft_copy_map(data->map, data))
 		return (1);
 	if (!fill_map(&data->clone_map, p_pos_x, p_pos_y, data))

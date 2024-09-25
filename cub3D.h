@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 15:05:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 15:44:51 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_data
 	char			*file_cnt;
 	char			**file_arr; // tmp variable 
 	int				wall_check;
+	int				x_p; //player position x
+	int				y_p; // player position y
 	struct s_img 	*img;
 }	data;
 

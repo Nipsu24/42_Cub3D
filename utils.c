@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/25 15:07:49 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/25 15:45:12 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	init_data(data *data, img *img)
 	img->ea = NULL;
 	img->we = NULL;
 	data->wall_check = 0;
+	data->x_p = 0;
+	data->y_p = 0;
 }
 
 /*Reads content of the file (given as an arguement) and
