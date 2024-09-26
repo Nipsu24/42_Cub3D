@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 14:47:40 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:41:32 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*Checks if there are strings in the map that only
   consists of spaces. If this is the case, error
   message is returned.*/
-static int	only_spaces_str(data *data)
+static int	only_spaces_str(t_data *data)
 {
 	int	j;
 	int	flag_no_space;
@@ -40,7 +40,7 @@ static int	only_spaces_str(data *data)
 }
 
 /*Turns spaces within the map into 1's*/
-static int	space_to_one(data *data)
+static int	space_to_one(t_data *data)
 {
 	int	j;
 	int	i;
@@ -61,7 +61,7 @@ static int	space_to_one(data *data)
 
 /*Checks if there are any characters apart from the valid ones
   in the map or if multiple identical/similar characters are present.*/
-static int	invalid_chars(data *data)
+static int	invalid_chars(t_data *data)
 {
 	int	j;
 	int	i;
@@ -91,7 +91,7 @@ static int	invalid_chars(data *data)
 }
 
 /*Contains several error checks for the map layout.*/
-int	map_checker(data *data)
+int	map_checker(t_data *data)
 {
 	if (!data->map || !data->map[0])
 	{

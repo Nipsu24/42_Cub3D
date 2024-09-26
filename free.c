@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/24 17:32:52 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:40:40 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*Frees related input variables in case map parameters
   are invalid. Quits with 1.*/
-int	free_input(data *data)
+int	free_input(t_data *data)
 {
 	free_arr(&data->map);
 	free_str(&data->file_cnt);

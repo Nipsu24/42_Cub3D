@@ -6,13 +6,13 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/25 15:45:12 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:48:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void info_printer(img *img)
+static void	info_printer(t_img *img)
 {
 	printf("img->no         :%s\n", img->no);
 	printf("img->ea         :%s\n", img->ea);
@@ -26,14 +26,14 @@ static void info_printer(img *img)
 	printf("img->floor[2]   :%d\n", img->floor[2]);
 }
 
-static void arr_splitter(data *data)
+static void	arr_splitter(t_data *data)
 {
 	data->file_arr = ft_split(data->file_cnt, '\n');
 	if (!data->file_arr)
 		return ;
 }
 
-static void	file_splitter(data *data)
+static void	file_splitter(t_data *data)
 {
 	data->map = ft_split(data->file_cnt, '\n');
 	if (!data->map)
@@ -51,19 +51,18 @@ int	file_format(char *str)
 	len_format = 4;
 	if (len_str <= len_format
 		|| (ft_strncmp(str + len_str - len_format, format, len_format) != 0))
-		{
-			printf("Error.\nInvalid filename.\n");
-			return (1);
-		}
+	{
+		printf("Error.\nInvalid filename.\n");
+		return (1);
+	}
 	else
 		return (0);
 }
 
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
-int	cube_it(char *av, data *data, img *img)
+int	cube_it(char *av, t_data *data, t_img *img)
 {	
-	
 	if (file_format(av))
 		return (1);
 	if (store_file_content(av, data))
@@ -73,14 +72,13 @@ int	cube_it(char *av, data *data, img *img)
 	arr_splitter(data); //only for map testing purpose
 	texture_extract(data, img, 0, 0);
 	info_printer(img); // to be deleted...
-	
 	if (map_checker(data))
 		return (1);
 	return (0);
 }
 
 /*Initialises variables of the main data struct.*/
-void	init_data(data *data, img *img)
+void	init_data(t_data *data, t_img *img)
 {
 	data->map = NULL;
 	data->clone_map = NULL;
@@ -97,7 +95,7 @@ void	init_data(data *data, img *img)
 
 /*Reads content of the file (given as an arguement) and
   stores it in file_cnt string for further processing.*/
-int	store_file_content(char *av, data *data)
+int	store_file_content(char *av, t_data *data)
 {
 	int	fd;
 	int	i;
