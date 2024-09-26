@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 15:06:46 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:47:25 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	main(int argc, char **argv)
 {
+	t_data	data;
+	t_img	img;
+
 	if (argc == 2)
 	{
-		data	data;
-		img 	img;
-
 		init_data (&data, &img);
 		if (cube_it(argv[1], &data, &img))
 			return (1);

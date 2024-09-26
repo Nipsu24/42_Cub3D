@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   texture_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 13:36:18 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/26 17:43:38 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void get_north(char *address, img *img)
+static void get_north(char *address, t_img *img)
 {
 	int i;
 
@@ -22,7 +22,7 @@ static void get_north(char *address, img *img)
 	img->no = ft_substr(address, i, ft_strlen(address) - i);
 }
 
-static void get_east(char *address, img *img)
+static void get_east(char *address, t_img *img)
 {
 	int i;
 
@@ -32,7 +32,7 @@ static void get_east(char *address, img *img)
 	img->ea = ft_substr(address, i, ft_strlen(address) - i);
 }
 
-static void get_south(char *address, img *img)
+static void get_south(char *address, t_img *img)
 {
 	int i;
 	
@@ -42,7 +42,7 @@ static void get_south(char *address, img *img)
 	img->so = ft_substr(address, i, ft_strlen(address) - i);
 }
 
-static void get_west(char *address, img *img)
+static void get_west(char *address, t_img *img)
 {
 	int i;
 
@@ -52,7 +52,7 @@ static void get_west(char *address, img *img)
 	img->we = ft_substr(address, i, ft_strlen(address) - i);
 }
 
-static void get_c(char *address, img *img)
+static void get_c(char *address, t_img *img)
 {
 	char **tmp_arr;
 
@@ -63,7 +63,7 @@ static void get_c(char *address, img *img)
 	img->ceiling[2] = ft_atoi(tmp_arr[2]);
 	free_arr(&tmp_arr);
 }
-static void get_f(char *address, img *img)
+static void get_f(char *address, t_img *img)
 {
 	char **tmp_arr;
 
@@ -75,7 +75,7 @@ static void get_f(char *address, img *img)
 	free_arr(&tmp_arr);
 }
 
-void	texture_extract(data *data, img *img, int i, int j)
+void	texture_extract(t_data *data, t_img *img, int i, int j)
 {
 	while(data->file_arr[j])
 	{
