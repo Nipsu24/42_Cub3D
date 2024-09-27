@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/09/26 17:37:00 by mmeier           ###   ########.fr        #
+#    Updated: 2024/09/27 15:54:55 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,25 +32,21 @@ FILES = utils.c \
 
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
-ifeq ($(wildcard $(LIBMLX)/build/libmlx42.a),)
-BUILD_LIBMLX = libmlx
-else
-BUILD_LIBMLX =
-endif
-
-all: $(BUILD_LIBMLX) $(NAME)
+all: libmlx $(NAME)
 
 $(LIBMLX):
 	@if [ ! -d "$(LIBMLX)" ]; then git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX); fi
 
 libmlx: $(LIBMLX)
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@if [ ! -d $(LIBMLX)/build ]; then \
+	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4; \
+	fi
 
 $(NAME): $(OBJ_FILES) $(LIBFT) $(LIBMLX)/build/libmlx42.a
 	make -C $(LIBFT) > /dev/null
 	$(CC) $(FLAGS) $(LIBS) $(HEADERS) -o $(NAME) $(OBJ_FILES) -L$(LIBFT) -lft
 	@echo "\033[32m$(NAME) has been built successfully!\033[0m"
-
+	
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)cub3D.h | $(OBJ_DIR)
 	$(CC) $(FLAGS) -c $< -o $@
 
@@ -62,9 +58,10 @@ $(OBJ_DIR):
 clean:
 	make clean -C $(LIBFT)
 	rm -rf $(OBJ_DIR)
+	rm -rf $(LIBMLX)/build
 
 fclean: clean
-	make fclean -C $(LIBFT)
+	rm -f $(LIBFT)/libft.a
 	rm -f $(NAME)
 
 re: fclean all
