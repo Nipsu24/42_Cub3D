@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/26 17:41:32 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/27 14:25:29 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,37 @@ static int	invalid_chars(t_data *data)
 	return (0);
 }
 
+/*Counts size of lenght and biggest width of the map and returns error message
+  in case len of 100 and width of 200 are exceeded.*/
+static int	map_size(t_data *data)
+{
+	int	len;
+	int	width_1;
+	int	width_2;
+	int	j;
+
+	width_1 = 0;
+	width_2 = 0;
+	j = -1;
+	len = count_lines_arr(data->map);
+	width_1 = ft_strlen(data->map[j + 1]);
+	if (data->map[j + 2])
+	{
+		j = 0;
+		while (data->map[++j])
+		{
+			width_2 = ft_strlen(data->map[j]);
+			if (width_2 > width_1)
+				width_1 = width_2;
+		}
+	}
+	if (width_1 > 200)
+		return (err_msg(5));
+	if (len > 100)
+		return (err_msg(6));
+	return (0);
+}
+
 /*Contains several error checks for the map layout.*/
 int	map_checker(t_data *data)
 {
@@ -98,6 +129,8 @@ int	map_checker(t_data *data)
 		printf("Error. Empty map.\n");
 		return (free_input(data));
 	}
+	if (map_size(data))
+		return (free_input(data));
 	if (only_spaces_str(data))
 		return (free_input(data));
 	if (space_to_one(data))

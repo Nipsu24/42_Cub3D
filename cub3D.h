@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/26 17:45:27 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/27 13:55:59 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	texture_extract(t_data *data, t_img *img, int i, int j);
 /*						flood_fill.c						*/
 
 int		no_closed_walls(t_data *data);
+int		count_lines_arr(char **arr);
 
 /*						utils_to_be_deleted.c				*/
 
