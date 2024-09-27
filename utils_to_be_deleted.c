@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/25 15:21:00 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/27 16:29:23 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,16 @@ void	file_splitter(t_data *data)
 	data->map = ft_split(data->file_cnt, '\n');
 	if (!data->map)
 		return ;
+}
+
+void map_printer(t_data *data)
+{
+	static int i = 0;
+	printf("\nMAP:\n");
+	while(data->map[i])
+	{
+		printf("%s\n", data->map[i]);
+		i++;
+		// printf("i:%d\n", i);
+	}
 }
