@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 15:20:13 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/27 15:46:35 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <stdio.h>
+# include <unistd.h> //maybe delete
 
 typedef struct s_data
 {
@@ -61,13 +62,29 @@ void	free_arr(char ***arr);
 void	free_str(char **str);
 char	**free_arr_rev(char ***av, int i);
 
-/*						texture.c							*/
+/*						texture_info.c						*/
 
 void	texture_extract(t_data *data, t_img *img, int i, int j);
+void 	get_c(char *address, t_img *img);
+void 	get_f(char *address, t_img *img);
+int		range_check(int *arr);
+void	check_null(t_img *img);
+
+/*						texture_info_utils.c				*/
+
+void 	get_north(char *address, t_img *img);
+void 	get_south(char *address, t_img *img);
+void 	get_east(char *address, t_img *img);
+void 	get_west(char *address, t_img *img);
+
 
 /*						flood_fill.c						*/
 
 int		no_closed_walls(t_data *data);
+
+/*						map_utils.c							*/
+
+void	map_extract(t_data *data);
 
 /*						utils_to_be_deleted.c				*/
 
@@ -75,5 +92,6 @@ void	print_arr(char **arr);
 void 	info_printer(t_img *img);
 void	file_splitter(t_data *data);
 void 	arr_splitter(t_data *data);
+void 	map_printer(t_data *data);
 
 #endif

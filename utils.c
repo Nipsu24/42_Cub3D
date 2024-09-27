@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/25 15:20:36 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/27 16:16:02 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ int	cube_it(char *av, t_data *data, t_img *img)
 		return (1);
 	if (store_file_content(av, data))
 		return (1);
-	file_splitter(data); //only for map testing purpose
+	// file_splitter(data); //only for map testing purpose
 	// print_arr(data->map);// gonna go...
 	arr_splitter(data); //only for map testing purpose
-	texture_extract(data, img, 0, 0);
+	texture_extract(data, img, 0, -1);
+	map_extract(data);
 	info_printer(img); // to be deleted...
+	map_printer(data);
 	
 	if (map_checker(data))
 		return (1);
@@ -129,5 +131,9 @@ int	err_msg(int err_flag)
 		printf("Error.\nInvalid characters in map.\n");
 	if (err_flag == 3)
 		printf("Error.\nPlayer not surrounded by walls.\n");
+	if (err_flag == 4)
+		printf("Error.\nFloor or ceiling colour out of range.\n");
+	if (err_flag == 5)
+		printf("Error.\nMalloc error.\n");
 	return (1);
 }

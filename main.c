@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/25 15:20:18 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/26 14:34:58 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ int	main(int argc, char **argv)
 			return (1);
 	}
 	else
-		printf("incorrect argument\n");
+	{
+		printf("Error\nincorrect argument\n");
+		sleep(1);
+		printf(".....\n");
+		sleep(2);
+		printf("you idiot\n");
+		sleep(2);
+	}
+
 	return (0);
 }
