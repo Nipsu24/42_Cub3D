@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/26 17:48:55 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/27 14:19:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,9 @@ int	err_msg(int err_flag)
 		printf("Error.\nInvalid characters in map.\n");
 	if (err_flag == 3)
 		printf("Error.\nPlayer not surrounded by walls.\n");
+	if (err_flag == 5)
+		printf("Error.\nMap consists of too many colums.\n");
+	if (err_flag == 6)
+		printf("Error.\nMap consists of too many lines.\n");
 	return (1);
 }

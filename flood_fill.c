@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/26 17:40:32 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/27 13:55:41 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	player_pos(char **map, int *x, int *y)
 }
 
 /*Counts amount of lines in a 2d array.*/
-static int	count_lines_arr(char **arr)
+int	count_lines_arr(char **arr)
 {
 	int	j;
 
