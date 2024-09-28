@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/27 14:19:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/28 10:09:38 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,7 @@ void	init_data(t_data *data, t_img *img)
 int	store_file_content(char *av, t_data *data)
 {
 	int	fd;
-	int	i;
-
-	i = 0;
+	
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 	{
