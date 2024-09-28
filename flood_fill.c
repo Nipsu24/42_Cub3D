@@ -6,36 +6,38 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/27 13:55:41 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/28 10:16:58 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/*Creates a copy of 2d arrays (in this project of the map array).
+/*Creates a copy of a 2d array (in this project e.g. of the map array).
   This is used as map data needs to be manipulated within the
   flood fill function.*/
-static char	**ft_copy_map(char **map, t_data *data)
+static char	**ft_copy_arr(char **arr)
 {
 	int	i;
 	int	j;
+	char **clone_arr;
 
 	i = 0;
 	j = 0;
-	while (map[j])
+	clone_arr = NULL;
+	while (arr[j])
 		j++;
-	data->clone_map = (char **) malloc (sizeof(char *) * (j + 1));
-	if (!data->clone_map)
+	clone_arr = (char **) malloc (sizeof(char *) * (j + 1));
+	if (!clone_arr)
 		return (NULL);
-	while (map[i])
+	while (arr[i])
 	{
-		data->clone_map[i] = ft_strdup(map[i]);
-		if (!data->clone_map[i])
-			return (free_arr_rev(&data->clone_map, i));
+		clone_arr[i] = ft_strdup(arr[i]);
+		if (!clone_arr[i])
+			return (free_arr_rev(&clone_arr, i));
 		i++;
 	}
-	data->clone_map[i] = NULL;
-	return (data->clone_map);
+	clone_arr[i] = NULL;
+	return (clone_arr);
 }
 
 /*Determines player's position within a map.*/
@@ -112,19 +114,16 @@ int	no_closed_walls(t_data *data)
 {
 	int	p_pos_x;
 	int	p_pos_y;
-	int	i;
-	int	j;
 
 	p_pos_x = 0;
 	p_pos_y = 0;
-	i = 0;
-	j = 0;
 	player_pos(data->map, &p_pos_x, &p_pos_y);
 	data->x_p = p_pos_x;
 	data->y_p = p_pos_y;
 	printf("P X: %d\n", data->x_p);
 	printf("P Y: %d\n", data->y_p);
-	if (!ft_copy_map(data->map, data))
+	data->clone_map = ft_copy_arr(data->map);
+	if (!data->clone_map)
 		return (1);
 	if (!fill_map(&data->clone_map, p_pos_x, p_pos_y, data))
 	{
