@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 11:14:26 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 12:56:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,23 @@ int		free_input(t_data *data);
 void	free_arr(char ***arr);
 void	free_str(char **str);
 char	**free_arr_rev(char ***av, int i);
+int		free_dir(t_img *img);
 
 /*						texture_info.c						*/
 
-void	texture_extract(t_data *data, t_img *img, int i, int j);
-void 	get_c(char *address, t_img *img);
-void 	get_f(char *address, t_img *img);
+int		texture_extract(t_data *data, t_img *img, int x, int y);
+int 	texture_extract_helper_1(t_data *data, int y, int x, t_img *img);
+int 	get_c(char *address, t_img *img);
+int 	get_f(char *address, t_img *img);
 int		range_check(int *arr);
 void	check_null(t_img *img);
 
 /*						texture_info_utils.c				*/
 
-void 	get_north(char *address, t_img *img);
-void 	get_south(char *address, t_img *img);
-void 	get_east(char *address, t_img *img);
-void 	get_west(char *address, t_img *img);
+int 	get_north(char *address, t_img *img);
+int 	get_south(char *address, t_img *img);
+int 	get_east(char *address, t_img *img);
+int 	get_west(char *address, t_img *img);
 
 
 /*						flood_fill.c						*/
@@ -94,7 +96,7 @@ int		no_closed_walls(t_data *data);
 
 /*						map_utils.c							*/
 
-void	map_extract(t_data *data);
+int		map_extract(t_data *data);
 int		count_lines_arr(char **arr);
 
 /*						utils_to_be_deleted.c				*/
