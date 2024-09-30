@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:18:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/27 16:34:17 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/30 12:02:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int get_length(char **arr)
 	return (i);
 }
 
-void	map_extract(t_data *data)
+int	map_extract(t_data *data)
 {
 	static int	x = 0;
 	static int	y = 0;
@@ -44,17 +44,21 @@ void	map_extract(t_data *data)
 	len = get_length(data->file_arr);
 	data->map = (char **)malloc(sizeof(char *) * len + 1);
 	if (!data->map)
-	{
 		err_msg(5);
-	}
 	while(data->file_arr[y])
 	{
 		if ((data->file_arr[y][x] == ' ') || (data->file_arr[y][x] == '1'))
 		{
 			data->map[z] = ft_strdup(data->file_arr[y]);
+			if (!data->map[z])
+			{
+				free_arr_rev(&data->map, z);
+				return (1);
+			}
 			z++;
 		}
 		y++;
 	}
 	data->map[z] = NULL;
+	return (0);
 }

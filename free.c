@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/30 11:17:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 12:15:22 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,19 @@ int	free_input(t_data *data)
 {
 	free_arr(&data->map);
 	free_str(&data->file_cnt);
+	free_arr(&data->file_arr);
 	return (1);
 }
+
+int	free_dir(t_img *img)
+{
+	free_str(&img->no);
+	free_str(&img->ea);
+	free_str(&img->we);
+	free_str(&img->so);
+	return (1);
+}
+
 
 /*Frees 2d arrays and sets it to NULL. Caller function
   should pass address of array to this function.*/
