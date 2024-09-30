@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
+#    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/09/30 10:47:09 by lstorey          ###   ########.fr        #
+#    Updated: 2024/09/30 11:11:12 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,30 +34,25 @@ FILES = utils.c\
 		utils_to_be_deleted.c
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
-ifeq ($(wildcard $(LIBMLX)/build/libmlx42.a),)
-BUILD_LIBMLX = libmlx
-else
-BUILD_LIBMLX =
-endif
+all: libmlx $(NAME)
 
-all: $(BUILD_LIBMLX) $(NAME)
+$(LIBMLX):
+	@if [ ! -d "$(LIBMLX)" ]; then git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX); fi
 
-libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+libmlx: $(LIBMLX)
+	@if [ ! -d $(LIBMLX)/build ]; then \
+	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4; \
+	fi
 
-%.o: %.c
-	@$(CC) $(FLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
-
-$(NAME): $(OBJ_FILES) $(LIBFT) $(BUILD_LIBMLX)
+$(NAME): $(OBJ_FILES) $(LIBFT) $(LIBMLX)/build/libmlx42.a
 	make -C $(LIBFT) > /dev/null
-	$(CC) $(FLAGS) $(LIBS)  $(HEADERS) -o $(NAME) $(OBJ_FILES) -L$(LIBFT) -lft
+	$(CC) $(FLAGS) $(LIBS) $(HEADERS) -o $(NAME) $(OBJ_FILES) -L$(LIBFT) -lft
 	@echo "\033[32m$(NAME) has been built successfully!\033[0m"
-
-fsanitize: 
-	$(CC) -o $(NAME) $(FILES) -L$(LIBFT)  $(LIBS) -lft -g -fsanitize=address -static-libsan 
 	
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)cub3D.h | $(OBJ_DIR) 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)cub3D.h | $(OBJ_DIR)
 	$(CC) $(FLAGS) -c $< -o $@
+
+$(OBJ_FILES): | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
@@ -65,15 +60,12 @@ $(OBJ_DIR):
 clean:
 	make clean -C $(LIBFT)
 	rm -rf $(OBJ_DIR)
-	
-
-fclean: clean
-	make fclean -C $(LIBFT)
-	rm -f $(NAME)
 	rm -rf $(LIBMLX)/build
 
-re: 
-	make fclean 
-	make all
+fclean: clean
+	rm -f $(LIBFT)/libft.a
+	rm -f $(NAME)
+
+re: fclean all
 
 .PHONY: all clean fclean re libmlx

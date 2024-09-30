@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/30 10:42:33 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/30 11:23:44 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	file_format(char *str)
 	len_format = 4;
 	if (len_str <= len_format
 		|| (ft_strncmp(str + len_str - len_format, format, len_format) != 0))
-		{
-			printf("Error.\nInvalid filename.\n");
-			return (1);
-		}
+	{
+		printf("Error.\nInvalid filename.\n");
+		return (1);
+	}
 	else
 		return (0);
 }
@@ -66,6 +66,8 @@ void	init_data(t_data *data, t_img *img)
 	img->ea = NULL;
 	img->we = NULL;
 	data->wall_check = 0;
+	data->x_p = 0;
+	data->y_p = 0;
 }
 
 /*Reads content of the file (given as an arguement) and
@@ -73,9 +75,7 @@ void	init_data(t_data *data, t_img *img)
 int	store_file_content(char *av, t_data *data)
 {
 	int	fd;
-	int	i;
-
-	i = 0;
+	
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 	{

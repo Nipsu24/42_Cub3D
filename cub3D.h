@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 10:43:32 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/30 11:14:26 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,21 @@ typedef struct s_data
 	char			*file_cnt;
 	char			**file_arr; // tmp variable 
 	int				wall_check;
-	struct s_img 	*img;
 	mlx_t			*mlx;
+	int				x_p; //player position x
+	int				y_p; // player position y
+	struct s_img	*img;
 }	t_data;
 
 typedef struct s_img
 {
 	struct s_data	*data;
-	char 			*no;
-	char 			*so;
-	char 			*ea;
-	char 			*we;
-	int 			floor[3];
-	int 			ceiling[3];
+	char			*no;
+	char			*so;
+	char			*ea;
+	char			*we;
+	int				floor[3];
+	int				ceiling[3];
 
 }	t_img;
 
@@ -93,6 +95,7 @@ int		no_closed_walls(t_data *data);
 /*						map_utils.c							*/
 
 void	map_extract(t_data *data);
+int		count_lines_arr(char **arr);
 
 /*						utils_to_be_deleted.c				*/
 
