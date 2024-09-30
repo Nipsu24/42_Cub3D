@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/27 15:46:35 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/30 10:43:32 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_data
 	char			**file_arr; // tmp variable 
 	int				wall_check;
 	struct s_img 	*img;
+	mlx_t			*mlx;
 }	t_data;
 
 typedef struct s_img
@@ -49,10 +50,17 @@ void	init_data(t_data *data, t_img *img);
 char	*ft_read_map(int fd);
 int		file_format(char *str);
 
+/*						utils_2.c								*/
+
+int		err_msg(int err_flag);
+
+/*						mlx_functions.c						*/
+
+// void 	mlx_funtions(t_data *data, t_img *img);
+
 /*						map_checking.c						*/
 
 int		map_checker (t_data *data);	
-int		err_msg(int err_flag);
 // char	**ft_copy_map(char **map, data *data);
 
 /*						free.c								*/
