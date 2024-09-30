@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 12:43:30 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 15:35:24 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	main(int argc, char **argv)
 	{
 		init_data (&data, &img);
 		if (cube_it(argv[1], &data, &img))
-			return (1);
+			return (free_all(&data, &img, 1));
+		printf("SUCCESS\n");
+		return (free_all(&data, &img, 0));
 	}
 	else
 	{
@@ -33,6 +35,5 @@ int	main(int argc, char **argv)
 		printf("you idiot\n");
 		sleep(2);
 	}
-
 	return (0);
 }

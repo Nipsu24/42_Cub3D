@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 12:57:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 15:37:10 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,6 @@ int	texture_extract(t_data *data, t_img *img, int x, int y)
 			{
 				if (texture_extract_helper_1(data, y, x, img))
 					return (1);
-				// if (ft_strncmp("NO ", &data->file_arr[y][x], 3) == 0)
-				// {
-				// 	if (get_north(&data->file_arr[y][i], img))
-				// 		return (1);
-				// }
-				// else if(ft_strncmp("EA ", &data->file_arr[y][x], 3) == 0)
-				// 	get_east(&data->file_arr[y][i], img);
-				// else if (ft_strncmp("SO ", &data->file_arr[y][x], 3) == 0)
-				// 	get_south(&data->file_arr[y][i], img);
-				// else if (ft_strncmp("WE ", &data->file_arr[y][x], 3) == 0)
-				// 	get_west(&data->file_arr[y][i], img);
-				// else if (ft_strncmp("C ", &data->file_arr[y][x], 2) == 0)
-				// 	get_c(&data->file_arr[y][i], img);
-				// else if (ft_strncmp("F ", &data->file_arr[y][x], 2) == 0)
-				// 	get_f(&data->file_arr[y][x], img);
 			}
 			break;		
 		}

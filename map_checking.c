@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 11:20:00 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:21:28 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ static int	map_size(t_data *data)
 		}
 	}
 	if (width_1 > 200)
-		return (err_msg(5));
-	if (len > 100)
 		return (err_msg(6));
+	if (len > 100)
+		return (err_msg(7));
 	return (0);
 }
 
