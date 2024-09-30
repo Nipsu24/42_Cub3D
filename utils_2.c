@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:40:44 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 10:42:43 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/30 14:22:23 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,9 @@ int	err_msg(int err_flag)
 		printf("Error.\nFloor or ceiling colour out of range.\n");
 	if (err_flag == 5)
 		printf("Error.\nMalloc error.\n");
+	if (err_flag == 6)
+		printf("Error.\nMap consists of too many colums.\n");
+	if (err_flag == 7)
+		printf("Error.\nMap consists of too many lines.\n");
 	return (1);
 }

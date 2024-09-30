@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 12:56:55 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 15:24:26 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		map_checker (t_data *data);
 
 /*						free.c								*/
 
+int		free_all(t_data *data, t_img *img, int return_val);
 int		free_input(t_data *data);
 void	free_arr(char ***arr);
 void	free_str(char **str);

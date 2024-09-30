@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:18:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 12:02:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 13:49:35 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	map_extract(t_data *data)
 	static int	len = 0;
 	
 	len = get_length(data->file_arr);
-	data->map = (char **)malloc(sizeof(char *) * len + 1);
+	data->map = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!data->map)
-		err_msg(5);
+		return (1);
 	while(data->file_arr[y])
 	{
 		if ((data->file_arr[y][x] == ' ') || (data->file_arr[y][x] == '1'))

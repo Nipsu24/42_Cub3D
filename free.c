@@ -6,11 +6,26 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/30 12:15:22 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 15:34:12 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+/*Frees all relevant data allocated for the project. Returns 1
+  if return val is set to 1. If set to 0, returns 0.*/
+int	free_all(t_data *data, t_img *img, int return_val)
+{
+	free_arr(&data->map);
+	free_str(&data->file_cnt);
+	free_arr(&data->file_arr);
+	free_dir(img);
+	if (return_val)
+		return (1);
+	else
+		return (0);
+}
+
 
 /*Frees related input variables in case map parameters
   are invalid. Quits with 1.*/

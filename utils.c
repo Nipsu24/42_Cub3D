@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/30 12:42:31 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:26:05 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	cube_it(char *av, t_data *data, t_img *img)
 		return (1);
 	if (map_extract(data))
 		return(free_input(data));
-	info_printer(img); // to be deleted...
-	map_printer(data); // to be deleted...
+	// info_printer(img); // to be deleted...
+	// map_printer(data); // to be deleted...
 	if (map_checker(data))
 		return (1);
 	// mlx_funtions(data, img); //we can start the MLX processes in here, just to break up this funtion a bit
