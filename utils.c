@@ -6,11 +6,33 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/27 16:16:02 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/30 10:42:33 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+/*this is basically the main funtion, this can get more
+cluttered and we can keep the main tight*/
+int	cube_it(char *av, t_data *data, t_img *img)
+{	
+	
+	if (file_format(av))
+		return (1);
+	if (store_file_content(av, data))
+		return (1);
+	// file_splitter(data); //only for map testing purpose
+	// print_arr(data->map);// gonna go...
+	arr_splitter(data);
+	texture_extract(data, img, 0, -1);
+	map_extract(data);
+	info_printer(img); // to be deleted...
+	map_printer(data); // to be deleted...
+	if (map_checker(data))
+		return (1);
+	//mlx_funtions(data, img); //we can start the MLX processes in here, just to break up this funtion a bit
+	return (0);
+}
 
 int	file_format(char *str)
 {
@@ -31,27 +53,6 @@ int	file_format(char *str)
 		return (0);
 }
 
-/*this is basically the main funtion, this can get more
-cluttered and we can keep the main tight*/
-int	cube_it(char *av, t_data *data, t_img *img)
-{	
-	
-	if (file_format(av))
-		return (1);
-	if (store_file_content(av, data))
-		return (1);
-	// file_splitter(data); //only for map testing purpose
-	// print_arr(data->map);// gonna go...
-	arr_splitter(data); //only for map testing purpose
-	texture_extract(data, img, 0, -1);
-	map_extract(data);
-	info_printer(img); // to be deleted...
-	map_printer(data);
-	
-	if (map_checker(data))
-		return (1);
-	return (0);
-}
 
 /*Initialises variables of the main data struct.*/
 void	init_data(t_data *data, t_img *img)
@@ -119,21 +120,3 @@ char	*ft_read_map(int fd)
 	return (str);
 }
 
-/*Prints dedicated error message depending on err_flag
-  passed to function and returns 1.*/
-int	err_msg(int err_flag)
-{
-	if (err_flag == 0)
-		printf("Error.\nEmpty line(s) in map.\n");
-	if (err_flag == 1)
-		printf("Error.\nMultiple similar players in map or no player at all.\n");
-	if (err_flag == 2)
-		printf("Error.\nInvalid characters in map.\n");
-	if (err_flag == 3)
-		printf("Error.\nPlayer not surrounded by walls.\n");
-	if (err_flag == 4)
-		printf("Error.\nFloor or ceiling colour out of range.\n");
-	if (err_flag == 5)
-		printf("Error.\nMalloc error.\n");
-	return (1);
-}

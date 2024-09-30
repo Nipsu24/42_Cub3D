@@ -6,7 +6,7 @@
 #    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/09/27 16:27:01 by lstorey          ###   ########.fr        #
+#    Updated: 2024/09/30 10:47:09 by lstorey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,15 +22,16 @@ LIBMLX = ./MLX42
 HEADERS = -I $(LIBMLX)/include
 LIBS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-FILES = utils.c \
-		main.c \
-		map_checking.c \
+FILES = utils.c\
+		utils_2.c\
+		main.c\
+		map_checking.c\
 		free.c\
 		texture_info.c\
 		texture_info_utils.c\
 		flood_fill.c\
 		map_utils.c\
-		utils_to_be_deleted.c 
+		utils_to_be_deleted.c
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
 ifeq ($(wildcard $(LIBMLX)/build/libmlx42.a),)
