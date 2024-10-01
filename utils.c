@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/30 12:42:31 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/09/30 16:27:13 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ int	cube_it(char *av, t_data *data, t_img *img)
 		return (1);
 	// file_splitter(data); //only for map testing purpose
 	// print_arr(data->map);// gonna go...
-	arr_splitter(data);
+	if (arr_splitter(data))
+		return (1);
 	if (texture_extract(data, img, 0, -1))
 		return (1);
 	if (map_extract(data))
 		return(free_input(data));
-	info_printer(img); // to be deleted...
-	map_printer(data); // to be deleted...
+	// info_printer(img); // to be deleted...
+	// map_printer(data); // to be deleted...
 	if (map_checker(data))
 		return (1);
 	// mlx_funtions(data, img); //we can start the MLX processes in here, just to break up this funtion a bit
