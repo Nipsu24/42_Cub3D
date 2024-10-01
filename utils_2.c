@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:40:44 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 14:22:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/01 11:13:24 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,27 @@ int	err_msg(int err_flag)
 		printf("Error.\nMap consists of too many colums.\n");
 	if (err_flag == 7)
 		printf("Error.\nMap consists of too many lines.\n");
+	if (err_flag == 8)
+		printf("Error.\nInvalid '.cub' file\n");
 	return (1);
+}
+
+int arr_splitter(t_data *data)
+{
+	static int i = 0;
+
+	while(data->file_cnt[i])
+	{
+		if (data->file_cnt[i] == ' ' && data->file_cnt[i + 1] == '\n')
+		{
+			free_str(&data->file_cnt);
+			err_msg(8);
+			return (1);
+		}	
+		i++;
+	}
+	data->file_arr = ft_split(data->file_cnt, '\n');
+	if (!data->file_arr)
+		return (1);
+	return (0);
 }

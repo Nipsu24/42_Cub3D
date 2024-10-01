@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/27 16:29:23 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/09/30 13:56:25 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ void info_printer(t_img *img)
 	printf("img->floor[0]   :%d\n", img->floor[0]);
 	printf("img->floor[1]   :%d\n", img->floor[1]);
 	printf("img->floor[2]   :%d\n", img->floor[2]);
-}
-
-void arr_splitter(t_data *data)
-{
-	data->file_arr = ft_split(data->file_cnt, '\n');
-	if (!data->file_arr)
-		return ;
 }
 
 void	file_splitter(t_data *data)
