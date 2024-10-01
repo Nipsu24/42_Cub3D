@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_to_be_deleted.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/30 13:56:25 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/01 11:49:36 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void info_printer(t_img *img)
 	printf("img->ea         :%s\n", img->ea);
 	printf("img->so         :%s\n", img->so);
 	printf("img->we         :%s\n", img->we);
-	printf("img->ceiling[0] :%d\n", img->ceiling[0]);
-	printf("img->ceiling[1] :%d\n", img->ceiling[1]);
-	printf("img->ceiling[2] :%d\n", img->ceiling[2]);
-	printf("img->floor[0]   :%d\n", img->floor[0]);
-	printf("img->floor[1]   :%d\n", img->floor[1]);
-	printf("img->floor[2]   :%d\n", img->floor[2]);
+	printf("img->ceiling[0] :%ld\n", img->ceiling[0]);
+	printf("img->ceiling[1] :%ld\n", img->ceiling[1]);
+	printf("img->ceiling[2] :%ld\n", img->ceiling[2]);
+	printf("img->floor[0]   :%ld\n", img->floor[0]);
+	printf("img->floor[1]   :%ld\n", img->floor[1]);
+	printf("img->floor[2]   :%ld\n", img->floor[2]);
 }
 
 void	file_splitter(t_data *data)
