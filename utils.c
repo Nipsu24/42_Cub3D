@@ -3,14 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/01 11:10:46 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/01 16:45:24 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static int	check_for_double_n_in_map(t_data *data, int i, int map_flag)
+{
+	if (map_flag && data->file_cnt[i])
+	{
+		while (data->file_cnt[i])
+		{
+			if (data->file_cnt[i] == '\n' && data->file_cnt[i + 1] == '\n')
+			{
+				printf("Error. Multiple newlines in map.\n");
+				return (1);
+			}
+			i++;
+		}
+	}
+	return (0);
+}
+
+/*Iterates through initial map string and checks if there is after a newline character
+  either a 1, 0 or 'space' occuring (identifiers for map). If this is the case, breaks
+  out of loop and iterates further in map part of the string (in helper function) in order
+  to check for double/multiple newline characters in a row*/
+int	check_double_n(t_data *data)
+{
+	int	map_flag;
+	int	i;
+
+	map_flag = 0;
+	i = 0;
+	while (data->file_cnt[i])
+	{
+		if (data->file_cnt[i] == '\n')
+		{
+			if (!map_flag && (data->file_cnt[i + 1] == '1'
+					|| data->file_cnt[i + 1] == '0'
+					|| data->file_cnt[i + 1] == ' '))
+			{
+				map_flag = 1;
+				break ;
+			}
+		}
+		i++;
+	}
+	if (check_for_double_n_in_map(data, i, map_flag))
+		return (1);
+	return (0);
+}
 
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
@@ -27,9 +74,11 @@ int	cube_it(char *av, t_data *data, t_img *img)
 	if (texture_extract(data, img, 0, -1))
 		return (1);
 	if (map_extract(data))
-		return(free_input(data));
-	// info_printer(img); // to be deleted...
-	// map_printer(data); // to be deleted...
+		return (free_input(data));
+	info_printer(img); // to be deleted...
+	map_printer(data); // to be deleted...
+	if (check_double_n(data))
+		return (1);
 	if (map_checker(data))
 		return (1);
 	// mlx_funtions(data, img); //we can start the MLX processes in here, just to break up this funtion a bit
@@ -55,7 +104,6 @@ int	file_format(char *str)
 		return (0);
 }
 
-
 /*Initialises variables of the main data struct.*/
 void	init_data(t_data *data, t_img *img)
 {
@@ -78,7 +126,7 @@ void	init_data(t_data *data, t_img *img)
 int	store_file_content(char *av, t_data *data)
 {
 	int	fd;
-	
+
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 	{
@@ -122,4 +170,3 @@ char	*ft_read_map(int fd)
 	}
 	return (str);
 }
-

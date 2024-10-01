@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 14:21:28 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/01 12:18:09 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,24 @@ static int	only_spaces_str(t_data *data)
 }
 
 /*Turns spaces within the map into 1's*/
-static int	space_to_one(t_data *data)
-{
-	int	j;
-	int	i;
+// static int	space_to_one(t_data *data)
+// {
+// 	int	j;
+// 	int	i;
 
-	j = -1;
-	i = -1;
-	while (data->map[++j])
-	{
-		i = -1;
-		while (data->map[j][++i])
-		{
-			if (data->map[j][i] == ' ')
-				data->map[j][i] = '1';
-		}
-	}
-	return (0);
-}
+// 	j = -1;
+// 	i = -1;
+// 	while (data->map[++j])
+// 	{
+// 		i = -1;
+// 		while (data->map[j][++i])
+// 		{
+// 			if (data->map[j][i] == ' ')
+// 				data->map[j][i] = '1';
+// 		}
+// 	}
+// 	return (0);
+// }
 
 /*Checks if there are any characters apart from the valid ones
   in the map or if multiple identical/similar characters are present.*/
@@ -133,8 +133,8 @@ int	map_checker(t_data *data)
 		return (free_input(data));
 	if (only_spaces_str(data))
 		return (free_input(data));
-	if (space_to_one(data))
-		return (free_input(data));
+	// if (space_to_one(data))
+	// 	return (free_input(data));
 	if (invalid_chars(data))
 		return (free_input(data));
 	if (no_closed_walls(data))

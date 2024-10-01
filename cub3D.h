@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/01 11:10:28 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/01 16:39:04 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_img
 	char			*so;
 	char			*ea;
 	char			*we;
-	int				floor[3];
-	int				ceiling[3];
+	long int				floor[3];
+	long int				ceiling[3];
 
 }	t_img;
 
@@ -51,11 +51,13 @@ int		store_file_content(char *av, t_data *data);
 void	init_data(t_data *data, t_img *img);
 char	*ft_read_map(int fd);
 int		file_format(char *str);
+int		check_double_n(t_data *data);
 
 /*						utils_2.c								*/
 
-int		err_msg(int err_flag);
-int 	arr_splitter(t_data *data);
+int			err_msg(int err_flag);
+int 		arr_splitter(t_data *data);
+long int	ft_atol(const char *str);
 
 /*						mlx_functions.c						*/
 
@@ -81,7 +83,7 @@ int		texture_extract(t_data *data, t_img *img, int x, int y);
 int 	texture_extract_helper_1(t_data *data, int y, int x, t_img *img);
 int 	get_c(char *address, t_img *img);
 int 	get_f(char *address, t_img *img);
-int		range_check(int *arr);
+int		range_check(long int *arr);
 void	check_null(t_img *img);
 
 /*						texture_info_utils.c				*/

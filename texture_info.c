@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 15:37:10 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/01 12:01:32 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,14 @@ int	get_c(char *address, t_img *img)
 	tmp_arr = ft_split(address, ',');
 	if (!tmp_arr)
 		return(1);
-	img->ceiling[0] = ft_atoi(tmp_arr[0]);
-	img->ceiling[1] = ft_atoi(tmp_arr[1]);
-	img->ceiling[2] = ft_atoi(tmp_arr[2]);
+	img->ceiling[0] = ft_atol(tmp_arr[0]);
+	img->ceiling[1] = ft_atol(tmp_arr[1]);
+	img->ceiling[2] = ft_atol(tmp_arr[2]);
 	free_arr(&tmp_arr);
 	if (range_check(img->ceiling))
 	{
-		img->no = NULL;
+		err_msg(9);
+		free_str(&img->no);
 		return (1);
 	}
 	return (0);
@@ -106,24 +107,24 @@ int	get_f(char *address, t_img *img)
 	tmp_arr = ft_split(address, ',');
 	if (!tmp_arr)
 		return(1);
-	img->floor[0] = ft_atoi(tmp_arr[0]);
-	img->floor[1] = ft_atoi(tmp_arr[1]);
-	img->floor[2] = ft_atoi(tmp_arr[2]);
+	img->floor[0] = ft_atol(tmp_arr[0]);
+	img->floor[1] = ft_atol(tmp_arr[1]);
+	img->floor[2] = ft_atol(tmp_arr[2]);
 	free_arr(&tmp_arr);
-	if (range_check(img->ceiling))
+	if (range_check(img->floor))
 	{
-		img->no = NULL;
+		err_msg(9);
+		free_str(&img->no);
 		return (1);
 	}
 	return (0);
 }
 
-int	range_check(int *arr)
+int	range_check(long int *arr)
 {
 	int	i;
 
 	i = 0;
-
 	while (i < 3)
 	{
 		if (arr[i] < 0 || arr[i] > 255)
