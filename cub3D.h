@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/01 11:01:10 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/01 11:10:28 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		file_format(char *str);
 /*						utils_2.c								*/
 
 int		err_msg(int err_flag);
+int 	arr_splitter(t_data *data);
 
 /*						mlx_functions.c						*/
 
@@ -105,7 +106,6 @@ int		count_lines_arr(char **arr);
 void	print_arr(char **arr);
 void 	info_printer(t_img *img);
 void	file_splitter(t_data *data);
-void 	arr_splitter(t_data *data);
 void 	map_printer(t_data *data);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/30 14:26:05 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/01 11:10:46 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 cluttered and we can keep the main tight*/
 int	cube_it(char *av, t_data *data, t_img *img)
 {	
-	
 	if (file_format(av))
 		return (1);
 	if (store_file_content(av, data))
 		return (1);
 	// file_splitter(data); //only for map testing purpose
 	// print_arr(data->map);// gonna go...
-	arr_splitter(data);
+	if (arr_splitter(data))
+		return (1);
 	if (texture_extract(data, img, 0, -1))
 		return (1);
 	if (map_extract(data))
