@@ -2,29 +2,27 @@ NO textures/test/north.xpm
 
 
 
-
 SO         textures/test/south.xpm
 
 
-EA     textures/test/east.xpm            
+EA     textures/test/east.xpm
 WE      textures/test/west.xpm
 
 C 25,          150,8
 
 
+F     20    ,   20,             20
 
- F     20    ,   20,             20
-
-11111
+   11111
    10001
-   10S01                
+   10S01
 111100001
 100000001
 100000001
-110001111               
+110001111
 10001
 10001
 1000111111111
 1000000000001
 1000111111111
-11111           
+11111
