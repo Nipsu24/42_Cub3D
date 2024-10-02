@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   core_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/02 10:35:26 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 14:51:17 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	map_parsing(char *av, t_data *data, t_img *img)
 		return (1);
 	if (map_extract(data))
 		return (1);
-	info_printer(img); // to be deleted...
+	// info_printer(img); // to be deleted...
 	// map_printer(data); // to be deleted...
 	if (map_checker(data))
 		return (1);
