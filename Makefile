@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
+#    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/02 14:48:22 by lstorey          ###   ########.fr        #
+#    Updated: 2024/10/02 15:13:56 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,23 +18,24 @@ SRC_DIR = ./
 OBJ_DIR = obj
 LIBFT = ./libft
 LIBMLX = ./MLX42
+INCLUDES = -I./
 
 HEADERS = -I $(LIBMLX)/include
 LIBS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-FILES = utils.c \
-		utils_2.c \
-		core_functions.c \
-		main.c\
-		map_checking_a.c \
-		map_checking_b.c \
-		free_a.c \
-		free_b.c \
-		texture_info.c \
-		texture_info_utils.c \
-		flood_fill.c \
-		map_utils.c \
-		utils_to_be_deleted.c
+FILES = src/utils.c \
+		src/utils_2.c \
+		src/core_functions.c \
+		src/main.c\
+		src/map_checking_a.c \
+		src/map_checking_b.c \
+		src/free_a.c \
+		src/free_b.c \
+		src/texture_info.c \
+		src/texture_info_utils.c \
+		src/flood_fill.c \
+		src/map_utils.c \
+		src/utils_to_be_deleted.c
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
 all: libmlx $(NAME)
@@ -53,15 +54,16 @@ $(NAME): $(OBJ_FILES) $(LIBFT) $(LIBMLX)/build/libmlx42.a
 	@echo "\033[32m$(NAME) has been built successfully!\033[0m"
 
 fsanitize: 
-	$(CC) -o $(NAME) $(FILES) -L$(LIBFT) $(LINK_DIR) $(LIBS) -lft -g -fsanitize=address -static-libsan 
+	$(CC) -o $(NAME) $(FILES) -L$(LIBFT) $(LINK_DIR) $(LIBS) $(INCLUDES) -lft -g -fsanitize=address -static-libsan 
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)cub3D.h | $(OBJ_DIR)
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_FILES): | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/src
 
 clean:
 	make clean -C $(LIBFT)
