@@ -6,17 +6,15 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 13:38:11 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/02 14:47:04 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	get_c(char *address, t_img *img)
+static int	get_c(char *address, t_img *img, int i, int c)
 {
 	char **tmp_arr;
-	static int i = 0;
-	static int c = 0;
 
 	address++;
 	while (address[i])
@@ -25,7 +23,7 @@ static int	get_c(char *address, t_img *img)
 			c++;
 		i++;
 	}
-	if (c > 2)
+	if (c > 2 || number_count(address))
 	{
 		err_msg(8);
 		return (1);
@@ -39,20 +37,23 @@ static int	get_c(char *address, t_img *img)
 	free_arr(&tmp_arr);
 	return (0);
 }
-static int	get_f(char *address, t_img *img)
+static int	get_f(char *address, t_img *img, int i, int c)
 {
 	char **tmp_arr;
-	static int i = 0;
-	static int c = 0;
 
 	address++;
 	while (address[i])
 	{
 		if (address[i] ==',')
 			c++;
+		if (address[i] != ',' && address[i] != ' ' && !ft_isdigit(address[i]))
+		{
+			err_msg(8);
+			return (1);
+		}	
 		i++;
 	}
-	if (c > 2)
+	if (c > 2 || number_count(address))
 	{
 		err_msg(8);
 		return (1);
@@ -76,12 +77,12 @@ static int	texture_extract_helper_2(t_data *data, int y, int x, t_img *img)
 	}
 	else if (ft_strncmp("C ", &data->file_arr[y][x], 2) == 0)
 	{
-		if (get_c(&data->file_arr[y][x], img))
+		if (get_c(&data->file_arr[y][x], img, 0, 0))
 			return (free_dir(img));
 	}
 	else if (ft_strncmp("F ", &data->file_arr[y][x], 2) == 0)
 	{
-		if (get_f(&data->file_arr[y][x], img))
+		if (get_f(&data->file_arr[y][x], img, 0, 0))
 			return (free_dir(img));
 	}
 	return (0);
