@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/09/30 14:26:27 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 10:17:52 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
   flood fill function.*/
 static char	**ft_copy_arr(char **arr)
 {
-	int	i;
-	int	j;
-	char **clone_arr;
+	int		i;
+	int		j;
+	char	**clone_arr;
 
 	i = 0;
 	j = 0;

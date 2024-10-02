@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:39:59 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 12:14:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 09:47:11 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,19 @@ int get_west(char *address, t_img *img)
 	img->we = ft_substr(address, i, ft_strlen(address) - i);
 	if (!img->we)
 		return (free_dir(img));
+	return (0);
+}
+
+int	range_check(long int *arr)
+{
+	int	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (arr[i] < 0 || arr[i] > 255)
+			return (1);
+		i++;
+	}
 	return (0);
 }
