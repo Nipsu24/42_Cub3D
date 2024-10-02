@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 10:17:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 14:50:44 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,22 @@ typedef struct s_img
 	char			*we;
 	long int		floor[3];
 	long int		ceiling[3];
-
 }	t_img;
 
-/*						utils.c								*/
+/*						core_functions.c					*/
 
 int			cube_it(char *av, t_data *data, t_img *img);
 
-/*						utils_2.c							*/
+/*						utils.c								*/
 
 int			err_msg(int err_flag);
 int			arr_splitter(t_data *data);
 long int	ft_atol(const char *str);
 char		*ft_read_map(int fd);
+
+/*						utils_2.c							*/
+
+int			number_count(char *str);
 
 /*						mlx_functions.c						*/
 

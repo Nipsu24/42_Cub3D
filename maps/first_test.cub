@@ -8,10 +8,10 @@ SO         textures/test/south.xpm
 EA     textures/test/east.xpm
 WE      textures/test/west.xpm
 
-C 25,          50,8
+C 25,          50,85
 
 
-F     20    ,   20,             20
+F     20    ,   20,             204
 
    11111
    10001
