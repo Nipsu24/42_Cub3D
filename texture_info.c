@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 10:42:09 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 13:38:11 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,21 @@
 static int	get_c(char *address, t_img *img)
 {
 	char **tmp_arr;
+	static int i = 0;
+	static int c = 0;
 
 	address++;
+	while (address[i])
+	{
+		if (address[i] ==',')
+			c++;
+		i++;
+	}
+	if (c > 2)
+	{
+		err_msg(8);
+		return (1);
+	}
 	tmp_arr = ft_split(address, ',');
 	if (!tmp_arr)
 		return(1);
@@ -29,8 +42,21 @@ static int	get_c(char *address, t_img *img)
 static int	get_f(char *address, t_img *img)
 {
 	char **tmp_arr;
+	static int i = 0;
+	static int c = 0;
 
 	address++;
+	while (address[i])
+	{
+		if (address[i] ==',')
+			c++;
+		i++;
+	}
+	if (c > 2)
+	{
+		err_msg(8);
+		return (1);
+	}
 	tmp_arr = ft_split(address, ',');
 	if (!tmp_arr)
 		return(1);
@@ -57,11 +83,6 @@ static int	texture_extract_helper_2(t_data *data, int y, int x, t_img *img)
 	{
 		if (get_f(&data->file_arr[y][x], img))
 			return (free_dir(img));
-	}
-	if ((range_check(img->floor)) || (range_check(img->ceiling)))
-	{
-		err_msg(9);
-		return (1);
 	}
 	return (0);
 }
@@ -109,6 +130,11 @@ int	texture_extract(t_data *data, t_img *img, int x, int y)
 			}
 			break;		
 		}
+	}
+	if ((range_check(img->floor)) || (range_check(img->ceiling)))
+	{
+		err_msg(9);
+		return (1);
 	}
 	return (0);
 }

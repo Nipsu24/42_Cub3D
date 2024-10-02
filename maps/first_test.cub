@@ -8,7 +8,7 @@ SO         textures/test/south.xpm
 EA     textures/test/east.xpm
 WE      textures/test/west.xpm
 
-C 25,          150,8
+C 25,          50,8
 
 
 F     20    ,   20,             20
