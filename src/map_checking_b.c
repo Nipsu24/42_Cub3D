@@ -6,11 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 10:19:22 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 15:30:59 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "./includes/cub3D.h"
 
 static int	check_for_double_n_in_map(t_data *data, int i, int map_flag)
 {

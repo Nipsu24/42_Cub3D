@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/02 15:13:56 by mmeier           ###   ########.fr        #
+#    Updated: 2024/10/02 15:26:42 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ FLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast
 
 SRC_DIR = ./
 OBJ_DIR = obj
-LIBFT = ./libft
-LIBMLX = ./MLX42
+LIBFT = ./includes/libft
+LIBMLX = ./includes/MLX42
 INCLUDES = -I./
 
 HEADERS = -I $(LIBMLX)/include
@@ -56,7 +56,7 @@ $(NAME): $(OBJ_FILES) $(LIBFT) $(LIBMLX)/build/libmlx42.a
 fsanitize: 
 	$(CC) -o $(NAME) $(FILES) -L$(LIBFT) $(LINK_DIR) $(LIBS) $(INCLUDES) -lft -g -fsanitize=address -static-libsan 
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)cub3D.h | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)includes/cub3D.h | $(OBJ_DIR)
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_FILES): | $(OBJ_DIR)

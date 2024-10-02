@@ -6,11 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 11:50:39 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 15:30:50 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "cub3D.h"
+// #include "./includes/cub3D.h"
 
 // void mlx_funtions(t_data *data, t_img *img)
 // {
