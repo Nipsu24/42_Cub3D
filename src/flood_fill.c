@@ -6,11 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/02 10:17:52 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 15:31:18 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "./includes/cub3D.h"
 
 /*Creates a copy of a 2d array (in this project e.g. of the map array).
   This is used as map data needs to be manipulated within the

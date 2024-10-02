@@ -6,11 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:39:59 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 09:47:11 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 15:30:43 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "./includes/cub3D.h"
 
 int get_north(char *address, t_img *img)
 {

@@ -6,11 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:18:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/09/30 13:49:35 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/02 15:30:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "./includes/cub3D.h"
 
 static int get_length(char **arr)
 {

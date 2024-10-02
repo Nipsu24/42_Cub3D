@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   core_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/02 14:51:17 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/02 15:31:22 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "./includes/cub3D.h"
 
 /*Checks whether file name extension (.cub) is correctly written*/
 static int	file_format(char *str)
