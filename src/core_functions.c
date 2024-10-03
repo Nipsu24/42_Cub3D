@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/02 15:31:22 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 11:00:49 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	file_format(char *str)
 
 /*Reads content of the file (given as an arguement) and
   stores it in file_cnt string for further processing.*/
-static  int	store_file_content(char *av, t_data *data)
+static int	store_file_content(char *av, t_data *data)
 {
 	int	fd;
 
