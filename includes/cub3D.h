@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 15:25:09 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 10:50:09 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@
 # include <stdio.h>
 # include <unistd.h> //maybe delete
 
+typedef struct s_data	t_data;
+
+typedef struct s_img
+{
+	t_data			*data;
+	char			*no;
+	char			*so;
+	char			*ea;
+	char			*we;
+	long int		floor[3];
+	long int		ceiling[3];
+}	t_img;
+
 typedef struct s_data
 {
 	char			**map;
@@ -29,19 +42,8 @@ typedef struct s_data
 	mlx_t			*mlx;
 	int				x_p;
 	int				y_p;
-	struct s_img	*img;
+	t_img			*img;
 }	t_data;
-
-typedef struct s_img
-{
-	struct s_data	*data;
-	char			*no;
-	char			*so;
-	char			*ea;
-	char			*we;
-	long int		floor[3];
-	long int		ceiling[3];
-}	t_img;
 
 /*						core_functions.c					*/
 
@@ -72,7 +74,7 @@ int			check_double_n(t_data *data);
 
 /*						free_a.c							*/
 
-int			free_all(t_data *data, t_img *img, int return_val);
+int			free_all(t_data *data, int return_val);
 int			free_input(t_data *data);
 int			free_dir(t_img *img);
 

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:40:44 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 15:29:59 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 11:13:26 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ char	*ft_read_map(int fd)
 	return (str);
 }
 
-int arr_splitter(t_data *data)
+int	arr_splitter(t_data *data)
 {
-	static int i = 0;
-	
-	while(data->file_cnt[i])
+	static int	i = 0;
+
+	while (data->file_cnt[i])
 	{
 		if (data->file_cnt[i] == ' ' && data->file_cnt[i + 1] == '\n')
 		{
@@ -117,7 +117,6 @@ long int	ft_atol(const char *str)
 	plus = 0;
 	number = 0;
 	i = 0;
-
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	while (str[i] == '-' || str[i] == '+')

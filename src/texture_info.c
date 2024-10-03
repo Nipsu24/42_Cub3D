@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 15:30:38 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 11:11:31 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static int	get_c(char *address, t_img *img, int i, int c)
 {
-	char **tmp_arr;
+	char	**tmp_arr;
 
 	address++;
 	while (address[i])
 	{
-		if (address[i] ==',')
+		if (address[i] == ',')
 			c++;
 		i++;
 	}
@@ -30,21 +30,22 @@ static int	get_c(char *address, t_img *img, int i, int c)
 	}
 	tmp_arr = ft_split(address, ',');
 	if (!tmp_arr)
-		return(1);
+		return (1);
 	img->ceiling[0] = ft_atol(tmp_arr[0]);
 	img->ceiling[1] = ft_atol(tmp_arr[1]);
 	img->ceiling[2] = ft_atol(tmp_arr[2]);
 	free_arr(&tmp_arr);
 	return (0);
 }
+
 static int	get_f(char *address, t_img *img, int i, int c)
 {
-	char **tmp_arr;
+	char	**tmp_arr;
 
 	address++;
 	while (address[i])
 	{
-		if (address[i] ==',')
+		if (address[i] == ',')
 			c++;
 		if (address[i] != ',' && address[i] != ' ' && !ft_isdigit(address[i]))
 		{
@@ -60,7 +61,7 @@ static int	get_f(char *address, t_img *img, int i, int c)
 	}
 	tmp_arr = ft_split(address, ',');
 	if (!tmp_arr)
-		return(1);
+		return (1);
 	img->floor[0] = ft_atol(tmp_arr[0]);
 	img->floor[1] = ft_atol(tmp_arr[1]);
 	img->floor[2] = ft_atol(tmp_arr[2]);
@@ -95,7 +96,7 @@ static int	texture_extract_helper_1(t_data *data, int y, int x, t_img *img)
 		if (get_north(&data->file_arr[y][x], img))
 			return (1);
 	}
-	else if(ft_strncmp("EA ", &data->file_arr[y][x], 3) == 0)
+	else if (ft_strncmp("EA ", &data->file_arr[y][x], 3) == 0)
 	{
 		if (get_east(&data->file_arr[y][x], img))
 			return (1);
@@ -115,21 +116,21 @@ static int	texture_extract_helper_1(t_data *data, int y, int x, t_img *img)
 
 int	texture_extract(t_data *data, t_img *img, int x, int y)
 {
-	while(data->file_arr[++y])
+	while (data->file_arr[++y])
 	{
 		while (data->file_arr[y][x])
 		{
-			if ((ft_strncmp("NO ", &data->file_arr[y][x], 3) == 0) || 
-			(ft_strncmp("EA ", &data->file_arr[y][x], 3) == 0) || 
-			(ft_strncmp("SO ", &data->file_arr[y][x], 3) == 0) || 
-			(ft_strncmp("WE ", &data->file_arr[y][x], 3) == 0) || 
+			if ((ft_strncmp("NO ", &data->file_arr[y][x], 3) == 0) ||
+			(ft_strncmp("EA ", &data->file_arr[y][x], 3) == 0) ||
+			(ft_strncmp("SO ", &data->file_arr[y][x], 3) == 0) ||
+			(ft_strncmp("WE ", &data->file_arr[y][x], 3) == 0) ||
 			(ft_strncmp("F ", &data->file_arr[y][x], 2) == 0) ||
 			(ft_strncmp("C ", &data->file_arr[y][x], 2) == 0))
 			{
 				if (texture_extract_helper_1(data, y, x, img))
 					return (1);
 			}
-			break;		
+			break ;
 		}
 	}
 	if ((range_check(img->floor)) || (range_check(img->ceiling)))

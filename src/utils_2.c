@@ -6,13 +6,13 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 14:47:31 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 15:30:31 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 11:12:10 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
-int number_count(char *str)
+int	number_count(char *str)
 {
 	int	i;
 	int	c;
@@ -21,7 +21,7 @@ int number_count(char *str)
 	c = 0;
 	while (str[i])
 	{
-		if(ft_isdigit(str[i]))
+		if (ft_isdigit(str[i]))
 		{
 			c++;
 			while (ft_isdigit(str[i]))
