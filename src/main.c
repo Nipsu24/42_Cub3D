@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/03 10:51:27 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 16:19:29 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,28 @@ static void	init_img(t_data *data)
 		exit (1);
 }
 
+static void	init_txtr(t_data *data)
+{
+	data->txtr = malloc(sizeof(t_txtr));
+	if (!data->txtr)
+	{
+		free(data->img);
+		data->img = NULL;
+		exit (1);
+	}
+}
+
 /*Initialises variables of the main data struct.*/
 static void	init_structs(t_data *data)
 {
 	init_img(data);
+	init_txtr(data);
+	data->txtr->wl = NULL;
+	data->txtr->fl = NULL;
+	data->txtr->pl= NULL;
+	data->img->wl = NULL;
+	data->img->fl = NULL;
+	data->img->pl = NULL;
 	data->img->data = data;
 	data->map = NULL;
 	data->clone_map = NULL;
@@ -42,6 +60,9 @@ static void	init_structs(t_data *data)
 	data->x_p = 0;
 	data->y_p = 0;
 	data->mlx = NULL;
+	data->height = 0;
+	data->width = 0;
+	data->parsing_ok = 0;
 }
 
 int	main(int argc, char **argv)

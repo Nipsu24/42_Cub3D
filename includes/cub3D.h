@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/03 10:50:09 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 16:53:44 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <unistd.h> //maybe delete
 
+# define PX 64
+
 typedef struct s_data	t_data;
 
 typedef struct s_img
@@ -30,7 +32,17 @@ typedef struct s_img
 	char			*we;
 	long int		floor[3];
 	long int		ceiling[3];
+	mlx_image_t		*wl;
+	mlx_image_t		*fl;
+	mlx_image_t		*pl;
 }	t_img;
+
+typedef struct s_txtr
+{
+	mlx_texture_t	*wl;
+	mlx_texture_t	*fl;
+	mlx_texture_t	*pl;
+}	t_txtr;
 
 typedef struct s_data
 {
@@ -40,8 +52,12 @@ typedef struct s_data
 	char			**file_arr;
 	int				wall_check;
 	mlx_t			*mlx;
-	int				x_p;
-	int				y_p;
+	float			x_p;
+	float			y_p;
+	int				height;
+	int				width;
+	int				parsing_ok;
+	t_txtr			*txtr;
 	t_img			*img;
 }	t_data;
 
@@ -62,7 +78,7 @@ int			number_count(char *str);
 
 /*						mlx_functions.c						*/
 
-// void 	mlx_funtions(t_data *data, t_img *img);
+int			mlx_functions(t_data *data, t_img *img);
 
 /*						map_checking_a.c					*/
 
@@ -104,6 +120,14 @@ int			count_lines_arr(char **arr);
 /*						map_utils.c							*/
 
 int			map_extract(t_data *data);
+
+/*						moves.c								*/
+
+void		move_up(t_data *data);
+void		move_left(t_data *data);
+void		move_down(t_data *data);
+void		move_right(t_data *data);
+
 
 /*						utils_to_be_deleted.c				*/
 
