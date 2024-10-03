@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/02 17:05:36 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 16:09:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ int	free_all(t_data *data, int return_val)
 	free_dir(data->img);
 	free(data->img);
 	data->img = NULL;
+	free(data->txtr);
+	data->txtr = NULL;
+	if (data->parsing_ok)
+	{
+		if (data->mlx)
+			mlx_terminate(data->mlx);
+	}
 	if (return_val)
 		return (1);
 	else

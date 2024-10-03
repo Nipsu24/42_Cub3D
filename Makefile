@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/02 15:26:42 by mmeier           ###   ########.fr        #
+#    Updated: 2024/10/03 16:51:08 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,10 @@ FILES = src/utils.c \
 		src/texture_info_utils.c \
 		src/flood_fill.c \
 		src/map_utils.c \
-		src/utils_to_be_deleted.c
+		src/utils_to_be_deleted.c \
+		mlx_functions.c \
+		moves.c
+		
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
 all: libmlx $(NAME)
@@ -50,11 +53,11 @@ libmlx: $(LIBMLX)
 
 $(NAME): $(OBJ_FILES) $(LIBFT) $(LIBMLX)/build/libmlx42.a
 	make -C $(LIBFT) > /dev/null
-	$(CC) $(FLAGS) $(LIBS) $(HEADERS) -o $(NAME) $(OBJ_FILES) -L$(LIBFT) -lft
+	$(CC) $(FLAGS) $(HEADERS) -o $(NAME) $(OBJ_FILES) -L$(LIBFT) $(LIBS) -lft
 	@echo "\033[32m$(NAME) has been built successfully!\033[0m"
 
 fsanitize: 
-	$(CC) -o $(NAME) $(FILES) -L$(LIBFT) $(LINK_DIR) $(LIBS) $(INCLUDES) -lft -g -fsanitize=address -static-libsan 
+	$(CC) -o $(NAME) $(FILES) -L$(LIBFT) $(LIBS) $(INCLUDES) -lft -g -fsanitize=address -static-libsan 
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)includes/cub3D.h | $(OBJ_DIR)
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 15:31:03 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 12:37:41 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ static int	invalid_chars(t_data *data)
   in case len of 100 and width of 200 are exceeded.*/
 static int	map_size(t_data *data)
 {
-	int	len;
 	int	width_1;
 	int	width_2;
 	int	j;
@@ -102,7 +101,7 @@ static int	map_size(t_data *data)
 	width_1 = 0;
 	width_2 = 0;
 	j = -1;
-	len = count_lines_arr(data->map);
+	data->height = count_lines_arr(data->map);
 	width_1 = ft_strlen(data->map[j + 1]);
 	if (data->map[j + 2])
 	{
@@ -114,9 +113,10 @@ static int	map_size(t_data *data)
 				width_1 = width_2;
 		}
 	}
+	data->width = width_1;
 	if (width_1 > 200)
 		return (err_msg(6));
-	if (len > 100)
+	if (data->height > 100)
 		return (err_msg(7));
 	return (0);
 }

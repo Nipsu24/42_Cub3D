@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/03 11:00:49 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/03 13:39:51 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ static int	map_parsing(char *av, t_data *data, t_img *img)
 cluttered and we can keep the main tight*/
 int	cube_it(char *av, t_data *data, t_img *img)
 {	
+	(void)img;
 	if (map_parsing(av, data, img))
 		return (1);
-	// mlx_funtions(data, img); //we can start the MLX processes in here, just to break up this funtion a bit
+	data->parsing_ok = 1;
+	mlx_functions(data, img);
 	return (0);
 }
