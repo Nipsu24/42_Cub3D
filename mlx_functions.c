@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/03 17:35:16 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/04 14:07:00 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	build_map(t_data *data)
 			{
 				if (data->map[y][x] == 'N' || data->map[y][x] == 'E'
 					|| data->map[y][x] == 'S' || data->map[y][x] == 'W')
-					mlx_image_to_window(data->mlx, data->img->pl, x * PX, y * PX);
+					mlx_image_to_window(data->mlx, data->img->pl, (x * PX) + 24, (y * PX) + 24);
 				x++;
 			}
 			y++;
@@ -119,7 +119,7 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 int	mlx_functions(t_data *data, t_img *img)
 {
 	(void)img;
-	data->mlx = mlx_init(data->width * PX, data->height * PX, "cub3D", false);
+	data->mlx = mlx_init(data->width * PX, data->height * PX, "cub3D", true);
 	if (!data->mlx)
 		return (1);
 	if (get_textures(data))
