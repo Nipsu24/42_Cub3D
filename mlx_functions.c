@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/04 14:07:00 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/04 17:24:43 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ static int	get_images(t_data *data)
 	return (0);
 }
 
-
 /*Detects key press and conducts respective actions related to the
   key pressed.*/
 static void	my_key_hook(mlx_key_data_t keydata, void *param)
@@ -110,12 +109,6 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(data->mlx);
 }
 
-// static void center_player(t_data *data) 
-// {
-// 	data->x_p = (data->x_p * PX) + PX / 2;
-// 	data->y_p = (data->y_p * PX) + PX / 2;
-// }
-
 int	mlx_functions(t_data *data, t_img *img)
 {
 	(void)img;
@@ -127,7 +120,6 @@ int	mlx_functions(t_data *data, t_img *img)
 	if (get_images(data))
 		return (1);
 	build_map(data);
-	// center_player(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	mlx_loop(data->mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/03 16:19:29 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/04 17:23:19 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	init_structs(t_data *data)
 	init_txtr(data);
 	data->txtr->wl = NULL;
 	data->txtr->fl = NULL;
-	data->txtr->pl= NULL;
+	data->txtr->pl = NULL;
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
