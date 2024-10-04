@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/03 16:53:44 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/04 17:19:58 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <unistd.h> //maybe delete
 
 # define PX 64
+# define PXP 16
+# define steps 8
+# define pl_img_size 16
+# define col_buf 0.1
 
 typedef struct s_data	t_data;
 
@@ -93,6 +97,8 @@ int			check_double_n(t_data *data);
 int			free_all(t_data *data, int return_val);
 int			free_input(t_data *data);
 int			free_dir(t_img *img);
+void		delete_textures(t_data *data);
+void		delete_images(t_data *data);
 
 /*						free_b.c							*/
 
