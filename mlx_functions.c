@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/04 14:07:00 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/04 17:03:22 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	get_textures(t_data *data)
 	data->txtr->fl = mlx_load_png("./textures/white_floor_mini_map.png");
 	if (!data->txtr->fl)
 		return (1);
-	data->txtr->pl = mlx_load_png("./textures/player_mini_map.png");
+	data->txtr->pl = mlx_load_png("./textures/small_triangle.png");
 	if (!data->txtr->pl)
 		return (1);
 	return (0);
