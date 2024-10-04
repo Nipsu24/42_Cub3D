@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/03 12:34:36 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/04 15:44:07 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,9 @@ int	no_closed_walls(t_data *data)
 	p_pos_x = 0;
 	p_pos_y = 0;
 	player_pos(data->map, &p_pos_x, &p_pos_y);
-	data->x_p = p_pos_x;
 	data->y_p = p_pos_y;
+	data->x_p = p_pos_x;
+	data->p_dir = data->map[p_pos_y][p_pos_x];
 	data->clone_map = ft_copy_arr(data->map);
 	if (!data->clone_map)
 		return (1);
