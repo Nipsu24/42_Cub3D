@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/04 17:19:58 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/05 17:04:15 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 # include <unistd.h> //maybe delete
 
 # define PX 64
-# define PXP 16
-# define steps 8
-# define pl_img_size 16
-# define col_buf 0.1
+# define steps 0.2
+# define buf_lu 0.18
+# define buf_rd 0.3
 
 typedef struct s_data	t_data;
 
@@ -83,6 +82,7 @@ int			number_count(char *str);
 /*						mlx_functions.c						*/
 
 int			mlx_functions(t_data *data, t_img *img);
+void		build_map(t_data *data);
 
 /*						map_checking_a.c					*/
 
@@ -105,6 +105,8 @@ void		delete_images(t_data *data);
 void		free_arr(char ***arr);
 void		free_str(char **str);
 char		**free_arr_rev(char ***av, int i);
+void		del_txtr_only(t_data *data);
+void		del_img_only(t_data *data);
 
 /*						texture_info.c						*/
 
