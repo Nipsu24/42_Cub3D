@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/02 16:50:28 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/05 16:47:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,34 @@ char	**free_arr_rev(char ***av, int i)
 	free(*av);
 	*av = NULL;
 	return (NULL);
+}
+
+/*Deletes only the textures but does not free the txture struct.
+  This function is used in course of the build_map function.*/
+void	del_txtr_only(t_data *data)
+{
+	if (data->txtr)
+	{
+		if (data->txtr->wl)
+			mlx_delete_texture(data->txtr->wl);
+		if (data->txtr->fl)
+			mlx_delete_texture(data->txtr->fl);
+		if (data->txtr->pl)
+			mlx_delete_texture(data->txtr->pl);
+	}
+}
+
+/*Deletes only the images but does not free the image struct.
+  This function is used in course of the build_map function.*/
+void	del_img_only(t_data *data)
+{
+	if (data->img)
+	{
+		if (data->img->wl)
+			mlx_delete_image(data->mlx, data->img->wl);
+		if (data->img->fl)
+			mlx_delete_image(data->mlx, data->img->fl);
+		if (data->img->pl)
+			mlx_delete_image(data->mlx, data->img->pl);
+	}
 }
