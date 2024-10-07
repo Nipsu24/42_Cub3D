@@ -6,11 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/10/07 11:44:04 by lstorey          ###   ########.fr       */
-=======
-/*   Updated: 2024/10/06 12:10:07 by mmeier           ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2024/10/07 12:02:27 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +64,6 @@ typedef struct s_data
 	int				height;
 	int				width;
 	int				parsing_ok;
-	char			p_dir;
 	t_txtr			*txtr;
 	t_img			*img;
 }	t_data;
