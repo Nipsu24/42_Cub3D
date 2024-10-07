@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/05 17:15:30 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/07 11:43:30 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	move_up(t_data *data)
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->y_p -= steps;
 		build_map(data);
+		data->p_dir = 'N';
 	}
 }
 
@@ -44,6 +45,7 @@ void	move_down(t_data *data)
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->y_p += steps;
 		build_map(data);
+		data->p_dir = 'S';
 	}
 }
 
@@ -56,6 +58,7 @@ void	move_left(t_data *data)
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->x_p -= steps;
 		build_map(data);
+		data->p_dir = 'W';
 	}
 }
 
@@ -68,5 +71,6 @@ void	move_right(t_data *data)
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->x_p += steps;
 		build_map(data);
+		data->p_dir = 'E';
 	}
 }
