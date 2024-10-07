@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/04 16:58:57 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/07 11:30:40 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	init_structs(t_data *data)
 	init_player(data);
 	data->txtr->wl = NULL;
 	data->txtr->fl = NULL;
-	data->txtr->pl= NULL;
+	data->txtr->pl = NULL;
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
