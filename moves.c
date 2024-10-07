@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/05 17:15:30 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/06 12:00:50 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	move_up(t_data *data)
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->y_p -= steps;
 		build_map(data);
+		mlx_delete_image(data->mlx, data->img->ray);
+		create_ray_img(data);
+		draw_line(data);
 	}
 }
 
@@ -44,6 +47,9 @@ void	move_down(t_data *data)
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->y_p += steps;
 		build_map(data);
+		mlx_delete_image(data->mlx, data->img->ray);
+		create_ray_img(data);
+		draw_line(data);
 	}
 }
 
@@ -56,6 +62,9 @@ void	move_left(t_data *data)
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->x_p -= steps;
 		build_map(data);
+		mlx_delete_image(data->mlx, data->img->ray);
+		create_ray_img(data);
+		draw_line(data);
 	}
 }
 
@@ -68,5 +77,8 @@ void	move_right(t_data *data)
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->x_p += steps;
 		build_map(data);
+		mlx_delete_image(data->mlx, data->img->ray);
+		create_ray_img(data);
+		draw_line(data);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/04 17:23:19 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/05 17:49:40 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	init_structs(t_data *data)
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
+	data->img->ray = NULL;
 	data->img->data = data;
 	data->map = NULL;
 	data->clone_map = NULL;
@@ -63,6 +64,7 @@ static void	init_structs(t_data *data)
 	data->height = 0;
 	data->width = 0;
 	data->parsing_ok = 0;
+	data->p_dir = 'x';
 }
 
 int	main(int argc, char **argv)
