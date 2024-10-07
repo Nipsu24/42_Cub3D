@@ -6,7 +6,11 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/07 11:43:30 by lstorey          ###   ########.fr       */
+=======
+/*   Updated: 2024/10/06 12:00:50 by mmeier           ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +31,14 @@ void	move_up(t_data *data)
 {
 	if (data->map[(int)(data->y_p - steps - buf_lu)][(int)data->x_p] != '1')
 	{
-		data->map[(int)(data->y_p - steps)][(int)data->x_p]
-		= data->map[(int)data->y_p][(int)data->x_p];
+		data->map[(int)(data->y_p - steps)][(int)data->x_p] = 'N';
+		data->p_dir = 'N';
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->y_p -= steps;
 		build_map(data);
-		data->p_dir = 'N';
+		mlx_delete_image(data->mlx, data->img->ray);
+		create_ray_img(data);
+		draw_line(data);
 	}
 }
 
@@ -40,12 +46,14 @@ void	move_down(t_data *data)
 {
 	if (data->map[(int)(data->y_p + steps + buf_rd)][(int)data->x_p] != '1')
 	{
-		data->map[(int)(data->y_p + steps)][(int)data->x_p]
-		= data->map[(int)data->y_p][(int)data->x_p];
+		data->map[(int)(data->y_p + steps)][(int)data->x_p] = 'S';
+		data->p_dir = 'S';
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->y_p += steps;
 		build_map(data);
-		data->p_dir = 'S';
+		mlx_delete_image(data->mlx, data->img->ray);
+		create_ray_img(data);
+		draw_line(data);
 	}
 }
 
@@ -53,12 +61,14 @@ void	move_left(t_data *data)
 {
 	if (data->map[(int)data->y_p][(int)(data->x_p - steps - buf_lu)] != '1')
 	{
-		data->map[(int)data->y_p][(int)(data->x_p - steps)]
-		= data->map[(int)data->y_p][(int)data->x_p];
+		data->map[(int)data->y_p][(int)(data->x_p - steps)] = 'W';
+		data->p_dir = 'W';
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->x_p -= steps;
 		build_map(data);
-		data->p_dir = 'W';
+		mlx_delete_image(data->mlx, data->img->ray);
+		create_ray_img(data);
+		draw_line(data);
 	}
 }
 
@@ -66,11 +76,13 @@ void	move_right(t_data *data)
 {
 	if (data->map[(int)data->y_p][(int)(data->x_p + steps + buf_rd)] != '1')
 	{
-		data->map[(int)data->y_p][(int)(data->x_p + steps)]
-		= data->map[(int)data->y_p][(int)data->x_p];
+		data->map[(int)data->y_p][(int)(data->x_p + steps)] = 'E';
+		data->p_dir = 'E';
 		data->map[(int)data->y_p][(int)data->x_p] = '0';
 		data->x_p += steps;
 		build_map(data);
-		data->p_dir = 'E';
+		mlx_delete_image(data->mlx, data->img->ray);
+		create_ray_img(data);
+		draw_line(data);
 	}
 }

@@ -6,7 +6,11 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/04 15:44:07 by lstorey          ###   ########.fr       */
+=======
+/*   Updated: 2024/10/05 17:36:36 by mmeier           ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +123,10 @@ int	no_closed_walls(t_data *data)
 	p_pos_y = 0;
 	player_pos(data->map, &p_pos_x, &p_pos_y);
 	data->y_p = p_pos_y;
+<<<<<<< HEAD
 	data->x_p = p_pos_x;
+=======
+>>>>>>> main
 	data->p_dir = data->map[p_pos_y][p_pos_x];
 	data->clone_map = ft_copy_arr(data->map);
 	if (!data->clone_map)

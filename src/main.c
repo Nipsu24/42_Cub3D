@@ -6,7 +6,11 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/07 11:44:38 by lstorey          ###   ########.fr       */
+=======
+/*   Updated: 2024/10/05 17:49:40 by mmeier           ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +58,7 @@ static void	init_structs(t_data *data)
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
+	data->img->ray = NULL;
 	data->img->data = data;
 	data->map = NULL;
 	data->clone_map = NULL;

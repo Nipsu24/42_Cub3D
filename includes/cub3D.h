@@ -6,7 +6,11 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/07 11:44:04 by lstorey          ###   ########.fr       */
+=======
+/*   Updated: 2024/10/06 12:10:07 by mmeier           ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +27,7 @@
 # define steps 0.2
 # define buf_lu 0.18
 # define buf_rd 0.3
+# define ray_speed 1
 
 typedef struct s_data	t_data;
 
@@ -38,6 +43,7 @@ typedef struct s_img
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
 	mlx_image_t		*pl;
+	mlx_image_t		*ray;
 }	t_img;
 
 
@@ -62,6 +68,7 @@ typedef struct s_data
 	int				height;
 	int				width;
 	int				parsing_ok;
+	char			p_dir;
 	t_txtr			*txtr;
 	t_img			*img;
 }	t_data;
@@ -138,6 +145,9 @@ void		move_left(t_data *data);
 void		move_down(t_data *data);
 void		move_right(t_data *data);
 
+/*						draw_ray.c							*/
+void 		draw_line(t_data *data);
+int			create_ray_img(t_data *data);
 
 /*						utils_to_be_deleted.c				*/
 
