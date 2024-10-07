@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/07 11:30:40 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/07 11:44:38 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,24 @@ static void	init_txtr(t_data *data)
 	}
 }
 
-static void init_player(t_data *data)
-{
-	data->txtr = malloc(sizeof(t_player));
-	if (!data->player)
-	{
-		free(data->img);
-		free(data->txtr);
-		data->img = NULL;
-		exit (1);
-	}
-}
+// static void init_player(t_data *data)
+// {
+// 	data->txtr = malloc(sizeof(t_player));
+// 	if (!data->player)
+// 	{
+// 		free(data->img);
+// 		free(data->txtr);
+// 		data->img = NULL;
+// 		exit (1);
+// 	}
+// }
 
 /*Initialises variables of the main data struct.*/
 static void	init_structs(t_data *data)
 {
 	init_img(data);
 	init_txtr(data);
-	init_player(data);
+	// init_player(data);
 	data->txtr->wl = NULL;
 	data->txtr->fl = NULL;
 	data->txtr->pl = NULL;
@@ -77,10 +77,10 @@ static void	init_structs(t_data *data)
 	data->height = 0;
 	data->width = 0;
 	data->parsing_ok = 0;
-	data->player->dir_x = 0;
-	data->player->dir_y = 0;
-	data->player->plane_x = 0;
-	data->player->plane_y = 0;
+	// data->player->dir_x = 0;
+	// data->player->dir_y = 0;
+	// data->player->plane_x = 0;
+	// data->player->plane_y = 0;
 }
 
 int	main(int argc, char **argv)
