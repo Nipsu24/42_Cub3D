@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/04 16:53:06 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/07 11:28:24 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,6 @@ typedef struct s_txtr
 	mlx_texture_t	*pl;
 }	t_txtr;
 
-typedef struct s_player
-{
-	float	dir_x;		// Player's direction vector X component
-	float	dir_y;
-	float	plane_x;	// Camera plane vector Y component
-	float	plane_y;
-}	t_player;
-
 typedef struct s_data
 {
 	char			**map;
@@ -68,7 +60,6 @@ typedef struct s_data
 	int				parsing_ok;
 	t_txtr			*txtr;
 	t_img			*img;
-	t_player		*player;
 }	t_data;
 
 /*						core_functions.c					*/
