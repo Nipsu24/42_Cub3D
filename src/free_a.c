@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/03 16:09:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/05 10:39:49 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@ int	free_all(t_data *data, int return_val)
 {
 	free_input(data);
 	free_dir(data->img);
-	free(data->img);
-	data->img = NULL;
-	free(data->txtr);
-	data->txtr = NULL;
+	if (!data->parsing_ok)
+	{
+		free(data->img);
+		data->img = NULL;
+		free(data->txtr);
+		data->txtr = NULL;
+	}
 	if (data->parsing_ok)
 	{
+		delete_textures(data);
+		delete_images(data);
 		if (data->mlx)
 			mlx_terminate(data->mlx);
 	}
@@ -50,4 +55,34 @@ int	free_dir(t_img *img)
 	free_str(&img->we);
 	free_str(&img->so);
 	return (1);
+}
+
+void	delete_textures(t_data *data)
+{
+	if (data->txtr)
+	{
+		if (data->txtr->wl)
+			mlx_delete_texture(data->txtr->wl);
+		if (data->txtr->fl)
+			mlx_delete_texture(data->txtr->fl);
+		if (data->txtr->pl)
+			mlx_delete_texture(data->txtr->pl);
+		free(data->txtr);
+		data->txtr = NULL;
+	}
+}
+
+void	delete_images(t_data *data)
+{
+	if (data->img)
+	{
+		if (data->img->wl)
+			mlx_delete_image(data->mlx, data->img->wl);
+		if (data->img->fl)
+			mlx_delete_image(data->mlx, data->img->fl);
+		if (data->img->pl)
+			mlx_delete_image(data->mlx, data->img->pl);
+		free(data->img);
+		data->img = NULL;
+	}
 }

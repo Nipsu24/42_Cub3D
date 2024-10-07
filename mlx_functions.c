@@ -6,59 +6,14 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/04 17:03:22 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/07 11:30:08 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
-static void	build_floor(t_data *data)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	x = 0;
-	{
-		while (data->map[y])
-		{
-			x = 0;
-			while (data->map[y][x])
-			{
-				mlx_image_to_window(data->mlx, data->img->fl, x * PX, y * PX);
-				if (data->map[y][x] == '1')
-					mlx_image_to_window(data->mlx, data->img->wl, x * PX, y * PX);
-				x++;
-			}
-			y++;
-		}
-	}
-}
-
-static void	build_map(t_data *data)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	x = 0;
-	{
-		build_floor(data);
-		while (data->map[y])
-		{
-			x = 0;
-			while (data->map[y][x])
-			{
-				if (data->map[y][x] == 'N' || data->map[y][x] == 'E'
-					|| data->map[y][x] == 'S' || data->map[y][x] == 'W')
-					mlx_image_to_window(data->mlx, data->img->pl, (x * PX) + 24, (y * PX) + 24);
-				x++;
-			}
-			y++;
-		}
-	}
-}
-
+/*Populates texture variables, texture struct itself is already initialised
+  within init_data function.*/
 static int	get_textures(t_data *data)
 {
 	data->txtr->wl = mlx_load_png("./textures/black_wall_mini_map.png");
@@ -73,6 +28,8 @@ static int	get_textures(t_data *data)
 	return (0);
 }
 
+/*Populates image variables, image struct itself is already initialised
+  within init_data function.*/
 static int	get_images(t_data *data)
 {
 	data->img->wl = mlx_texture_to_image(data->mlx, data->txtr->wl);
@@ -87,6 +44,32 @@ static int	get_images(t_data *data)
 	return (0);
 }
 
+/*Builds 2d map (floor, wall, player). Deletion and creation of textures and images
+  needed in this function, as it is called everytime when a move is conducted (map
+  gets again build "from scratch" over and over again).*/
+void	build_map(t_data *data)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	x = -1;
+	del_txtr_only(data);
+	del_img_only(data);
+	get_textures(data);
+	get_images(data);
+	while (data->map[++y])
+	{
+		x = -1;
+		while (data->map[y][++x])
+		{
+			mlx_image_to_window(data->mlx, data->img->fl, x * PX, y * PX);
+			if (data->map[y][x] == '1')
+				mlx_image_to_window(data->mlx, data->img->wl, x * PX, y * PX);
+		}
+	}
+	mlx_image_to_window(data->mlx, data->img->pl, (int)(data->x_p * PX), (int)(data->y_p * PX));
+}
 
 /*Detects key press and conducts respective actions related to the
   key pressed.*/
@@ -110,12 +93,6 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(data->mlx);
 }
 
-// static void center_player(t_data *data) 
-// {
-// 	data->x_p = (data->x_p * PX) + PX / 2;
-// 	data->y_p = (data->y_p * PX) + PX / 2;
-// }
-
 int	mlx_functions(t_data *data, t_img *img)
 {
 	(void)img;
@@ -127,7 +104,6 @@ int	mlx_functions(t_data *data, t_img *img)
 	if (get_images(data))
 		return (1);
 	build_map(data);
-	// center_player(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	mlx_loop(data->mlx);
 	return (0);
