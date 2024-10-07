@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/07 12:28:51 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/07 15:11:43 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # include <errno.h>
 # include <stdio.h>
 # include <unistd.h> //maybe delete
+# include <math.h>
 
 # define PX 64
+# define PXP 16
 # define steps 0.2
 # define buf_lu 0.18
 # define buf_rd 0.3
-# define ray_speed 1
+# define ray_speed 0.05
 
 typedef struct s_data	t_data;
 
@@ -61,6 +63,8 @@ typedef struct s_data
 	char			p_dir;
 	float			x_p;
 	float			y_p;
+	float			ray_dir_x;
+	float			ray_dir_y;
 	int				height;
 	int				width;
 	int				parsing_ok;

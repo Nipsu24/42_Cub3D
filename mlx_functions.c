@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/07 11:59:15 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/07 15:57:53 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	get_textures(t_data *data)
 	data->txtr->fl = mlx_load_png("./textures/white_floor_mini_map.png");
 	if (!data->txtr->fl)
 		return (1);
-	data->txtr->pl = mlx_load_png("./textures/small_triangle.png");
+	data->txtr->pl = mlx_load_png("./textures/player_mini_map.png");
 	if (!data->txtr->pl)
 		return (1);
 	return (0);
@@ -44,9 +44,10 @@ static int	get_images(t_data *data)
 	return (0);
 }
 
-/*Builds 2d map (floor, wall, player). Deletion and creation of textures and images
-  needed in this function, as it is called everytime when a move is conducted (map
-  gets again build "from scratch" over and over again).*/
+/*Builds 2d map (floor, wall, player). Deletion and creation of textures
+  and images needed in this function, as it is called everytime when a
+  move is conducted (map gets again build "from scratch" over and over
+  again).*/
 void	build_map(t_data *data)
 {
 	int	y;
@@ -88,6 +89,7 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 			move_down(data);
 		if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
 			move_right(data);
+		print_arr(data->map);
 	}
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 		mlx_close_window(data->mlx);
@@ -106,6 +108,7 @@ int	mlx_functions(t_data *data, t_img *img)
 	if (create_ray_img(data))
 		return (1);
 	build_map(data);
+	draw_line(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	mlx_loop(data->mlx);
 	return (0);

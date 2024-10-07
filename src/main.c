@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/07 12:02:37 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/07 15:12:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static void	init_structs(t_data *data)
 	data->p_dir = 'F';
 	data->x_p = 0;
 	data->y_p = 0;
+	data->ray_dir_x = 0;
+	data->ray_dir_y= 0;
 	data->mlx = NULL;
 	data->height = 0;
 	data->width = 0;
