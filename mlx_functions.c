@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/08 13:04:32 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/08 14:32:27 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static void draw_player(t_data *data, int width, int height)
 
     // Loop through the height and width of the player sprite
     pix_y = 0;
-    while (pix_y < height)
+    while (pix_y <= height)
     {
         pix_x = 0;
-        while (pix_x < width)
+        while (pix_x <= width)
         {
             // Draw the player pixels relative to the player's starting position
             mlx_put_pixel(data->img->pl, x_start + pix_x, y_start + pix_y, 0xFF0000FF);
