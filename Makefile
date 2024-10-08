@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/05 18:03:57 by mmeier           ###   ########.fr        #
+#    Updated: 2024/10/08 10:16:03 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ FILES = src/utils.c \
 		src/utils_to_be_deleted.c \
 		mlx_functions.c \
 		moves.c \
-		draw_ray.c
+		draw_ray.c \
+		rotate.c
 		
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
