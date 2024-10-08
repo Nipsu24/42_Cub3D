@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/05 16:47:34 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/08 11:03:42 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	del_txtr_only(t_data *data)
 			mlx_delete_texture(data->txtr->wl);
 		if (data->txtr->fl)
 			mlx_delete_texture(data->txtr->fl);
-		if (data->txtr->pl)
-			mlx_delete_texture(data->txtr->pl);
+		// if (data->txtr->pl)
+		// 	mlx_delete_texture(data->txtr->pl);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/07 15:50:13 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/08 13:01:11 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ int	create_ray_img(t_data *data)
 	return (0);
 }
 
+int	create_pl_img(t_data *data)
+{
+	data->img->pl = mlx_new_image(data->mlx,
+			data->width * PX, data->height * PX);
+	if (!data->img->pl)
+		return (1);
+	return (0);
+}
+
 /*Draws single ray from player's direction until wall. PXP/2 used
   in order to center ray onto the player.*/
 void	draw_line(t_data *data)
@@ -30,7 +39,7 @@ void	draw_line(t_data *data)
 	float	magnitude;
 
 	x = (int)(data->x_p * PX) + PXP / 2;
-	y = (int)(data->y_p * PX) + PXP / 2;
+	y = (int)(data->y_p * PX) + PXP_h / 2;
 	data->ray_dir_x = 0;
 	data->ray_dir_y = 0;
 	if (data->p_dir == 'N')
