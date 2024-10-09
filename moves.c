@@ -6,31 +6,27 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/08 12:50:21 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/09 15:30:15 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
-/*Below 4 functions which handle the moves in 4 directions
-  (up, down, left, right). Length of move is set by 'steps'
-  (defined in header). The values buf_lu (left/up) and buf_rd (right/down)
-  (defined in header) are needed to avoid that the player is visually
-  'glitching' into the wall. If a move is possible, the position from which
-  the player moves is set to '0' and the position to which the player moves
-  is set to the respective sign of the direction the player is facing
-  (N,E,S,W). This is needed, as at the end of each move function the build_map
-  function is called again to draw the map with the updated values. 
-  All values need to be typecasted to int, as player position is initialised as
-  float, which is in turn not a valid data type for the map indexes.*/
+/*Moves player forward by 'steps' based on it's angle position 
+  (cos / sin / data->p_a). Size of steps defined in header.
+  '- sin' as Y axis decreases upwards. In case there is no wall in the player's
+  new position, current location of player gets updated.*/
 void	move_up(t_data *data)
 {
-	if (data->map[(int)(data->y_p - steps - buf_lu)][(int)data->x_p] != '1')
+	double	new_x;
+	double	new_y;
+
+	new_x = data->x_p + cos(data->p_a) * steps;
+	new_y = data->y_p - sin(data->p_a) * steps;
+	if (data->map[(int)new_y][(int)new_x] != '1')
 	{
-		data->map[(int)(data->y_p - steps)][(int)data->x_p] = 'N';
-		data->p_dir = 'N';
-		data->map[(int)data->y_p][(int)data->x_p] = '0';
-		data->y_p -= steps;
+		data->x_p = new_x;
+		data->y_p = new_y;
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
 		create_ray_img(data);
@@ -38,14 +34,21 @@ void	move_up(t_data *data)
 	}
 }
 
+/*Moves player backwards by 'steps' based on it's angle position 
+  (cos / sin / data->p_a). Size of steps defined in header.
+  '+ sin' as Y axis increases downwards. In case there is no wall in the player's
+  new position, current location of player gets updated.*/
 void	move_down(t_data *data)
 {
-	if (data->map[(int)(data->y_p + steps + buf_d)][(int)data->x_p] != '1')
+	double	new_x;
+	double	new_y;
+
+	new_x = data->x_p - cos(data->p_a) * steps;
+	new_y = data->y_p + sin(data->p_a) * steps;
+	if (data->map[(int)new_y][(int)new_x] != '1')
 	{
-		data->map[(int)(data->y_p + steps)][(int)data->x_p] = 'S';
-		data->p_dir = 'S';
-		data->map[(int)data->y_p][(int)data->x_p] = '0';
-		data->y_p += steps;
+		data->x_p = new_x;
+		data->y_p = new_y;
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
 		create_ray_img(data);
@@ -53,14 +56,22 @@ void	move_down(t_data *data)
 	}
 }
 
+/*Makes player strafe to left by -90 degrees in relation to
+  direction facing. Strafe angle calculated by adding 90 degrees
+  (PI/2) to current player angle.*/
 void	move_left(t_data *data)
 {
-	if (data->map[(int)data->y_p][(int)(data->x_p - steps - buf_lu)] != '1')
+	double	new_x;
+	double	new_y;
+	double	strafe_angle;
+
+	strafe_angle = data->p_a + PI / 2;
+	new_x = data->x_p + cos(strafe_angle) * steps;
+	new_y = data->y_p - sin(strafe_angle) * steps;
+	if (data->map[(int)new_y][(int)new_x] != '1')
 	{
-		data->map[(int)data->y_p][(int)(data->x_p - steps)] = 'W';
-		data->p_dir = 'W';
-		data->map[(int)data->y_p][(int)data->x_p] = '0';
-		data->x_p -= steps;
+		data->x_p = new_x;
+		data->y_p = new_y;
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
 		create_ray_img(data);
@@ -68,14 +79,22 @@ void	move_left(t_data *data)
 	}
 }
 
+/*Makes player strafe to right by +90 degrees in relation to
+  direction facing. Strafe angle calculated by substracting 90 degrees
+  (PI/2) from current player angle.*/
 void	move_right(t_data *data)
 {
-	if (data->map[(int)data->y_p][(int)(data->x_p + steps + buf_r)] != '1')
+	double	new_x;
+	double	new_y;
+	double	strafe_angle;
+
+	strafe_angle = data->p_a - PI / 2;
+	new_x = data->x_p + cos(strafe_angle) * steps;
+	new_y = data->y_p - sin(strafe_angle) * steps;
+	if (data->map[(int)new_y][(int)new_x] != '1')
 	{
-		data->map[(int)data->y_p][(int)(data->x_p + steps)] = 'E';
-		data->p_dir = 'E';
-		data->map[(int)data->y_p][(int)data->x_p] = '0';
-		data->x_p += steps;
+		data->x_p = new_x;
+		data->y_p = new_y;
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
 		create_ray_img(data);

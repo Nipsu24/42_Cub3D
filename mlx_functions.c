@@ -6,102 +6,11 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/08 14:32:27 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/09 15:25:32 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
-
-/*Populates texture variables, texture struct itself is already initialised
-  within init_data function.*/
-static int	get_textures(t_data *data)
-{
-	data->txtr->wl = mlx_load_png("./textures/black_wall_mini_map.png");
-	if (!data->txtr->wl)
-		return (1);
-	data->txtr->fl = mlx_load_png("./textures/white_floor_mini_map.png");
-	if (!data->txtr->fl)
-		return (1);
-	// data->txtr->pl = mlx_load_png("./textures/player_mini_map.png");
-	// if (!data->txtr->pl)
-	// 	return (1);
-	return (0);
-}
-
-/*Populates image variables, image struct itself is already initialised
-  within init_data function.*/
-static int	get_images(t_data *data)
-{
-	data->img->wl = mlx_texture_to_image(data->mlx, data->txtr->wl);
-	if (!data->img->wl)
-		return (1);
-	data->img->fl = mlx_texture_to_image(data->mlx, data->txtr->fl);
-	if (!data->img->fl)
-		return (1);
-	// data->img->pl = mlx_texture_to_image(data->mlx, data->txtr->pl);
-	// if (!data->img->pl)
-	// 	return (1);
-	return (0);
-}
-
-static void draw_player(t_data *data, int width, int height)
-{
-    int x_start;
-    int y_start;
-    int pix_x;
-    int pix_y;
-
-    // Calculate the player's starting position on the screen
-    x_start = (int)(data->x_p * PX);
-    y_start = (int)(data->y_p * PX);
-
-    // Loop through the height and width of the player sprite
-    pix_y = 0;
-    while (pix_y <= height)
-    {
-        pix_x = 0;
-        while (pix_x <= width)
-        {
-            // Draw the player pixels relative to the player's starting position
-            mlx_put_pixel(data->img->pl, x_start + pix_x, y_start + pix_y, 0xFF0000FF);
-            pix_x++;
-        }
-        pix_y++;
-    }
-
-    // Call mlx_image_to_window after drawing the player
-    mlx_image_to_window(data->mlx, data->img->pl, 0, 0);
-}
-
-/*Builds 2d map (floor, wall, player). Deletion and creation of textures
-  and images needed in this function, as it is called everytime when a
-  move is conducted (map gets again build "from scratch" over and over
-  again).*/
-void	build_map(t_data *data)
-{
-	int	y;
-	int	x;
-
-	y = -1;
-	x = -1;
-	del_txtr_only(data);
-	del_img_only(data);
-	get_textures(data);
-	get_images(data);
-	create_pl_img(data);
-	while (data->map[++y])
-	{
-		x = -1;
-		while (data->map[y][++x])
-		{
-			mlx_image_to_window(data->mlx, data->img->fl, x * PX, y * PX);
-			if (data->map[y][x] == '1')
-				mlx_image_to_window(data->mlx, data->img->wl, x * PX, y * PX);
-		}
-	}
-	draw_player(data, PXP, PXP_h);
-	// mlx_image_to_window(data->mlx, data->img->pl, (int)(data->x_p * PX), (int)(data->y_p * PX));
-}
 
 /*Detects key press and conducts respective actions related to the
   key pressed.*/
@@ -144,6 +53,7 @@ int	mlx_functions(t_data *data, t_img *img)
 		return (1);
 	if (create_pl_img(data))
 		return (1);
+	check_init_pl_angle(data);
 	build_map(data);
 	draw_line(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);

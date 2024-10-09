@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/08 12:53:10 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/09 15:26:02 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 # define buf_lu 0.18
 # define buf_r 0.3
 # define buf_d 0.5
-# define ray_speed 0.02
+# define ray_speed 0.03
+# define ro_speed 0.5
 # define PI 3.1415926535
 # define P_COL 0xFF0000FF
 
@@ -48,6 +49,22 @@ typedef struct s_img
 	mlx_image_t		*ray;
 }	t_img;
 
+typedef struct s_pl
+{
+	int				x_strt;
+	int				y_strt;
+	int				pix_x;
+	int				pix_y;
+	double			x_centr;
+	double			y_centr;
+	double			ro_x;
+	double			ro_y;
+	double			transl_x;
+	double			transl_y;
+	int				fnl_x;
+	int				fnl_y;
+	
+} t_pl;
 
 typedef struct s_txtr
 {
@@ -93,11 +110,11 @@ char		*ft_read_map(int fd);
 /*						utils_2.c							*/
 
 int			number_count(char *str);
+void		check_init_pl_angle(t_data *data);
 
 /*						mlx_functions.c						*/
 
 int			mlx_functions(t_data *data, t_img *img);
-void		build_map(t_data *data);
 
 /*						map_checking_a.c					*/
 
@@ -157,8 +174,14 @@ int			create_ray_img(t_data *data);
 int			create_pl_img(t_data *data);
 
 /*						rotate.c							*/
-void	rotate_left(t_data *data);
-void	rotate_right(t_data *data);
+void		rotate_left(t_data *data);
+void		rotate_right(t_data *data);
+
+/*						build_mini_map.c						*/
+void		build_map(t_data *data);
+void		draw_player(t_data *data, int width, int height);
+int			get_textures(t_data *data);
+int			get_images(t_data *data);
 
 /*						utils_to_be_deleted.c				*/
 
