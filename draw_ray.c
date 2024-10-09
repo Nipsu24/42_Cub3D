@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/08 13:01:11 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/09 14:22:02 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	create_pl_img(t_data *data)
 }
 
 /*Draws single ray from player's direction until wall. PXP/2 used
-  in order to center ray onto the player.*/
+  in order to center ray onto the player. 'cos' and '-sin' set ray
+  direction based on player's agnle. '-sin' as Y-axis inverted*/
 void	draw_line(t_data *data)
 {
 	int		x;
@@ -39,17 +40,9 @@ void	draw_line(t_data *data)
 	float	magnitude;
 
 	x = (int)(data->x_p * PX) + PXP / 2;
-	y = (int)(data->y_p * PX) + PXP_h / 2;
-	data->ray_dir_x = 0;
-	data->ray_dir_y = 0;
-	if (data->p_dir == 'N')
-		data->ray_dir_y = -1;
-	else if (data->p_dir == 'E')
-		data->ray_dir_x = 1;
-	else if (data->p_dir == 'S')
-		data->ray_dir_y = 1;
-	else if (data->p_dir == 'W')
-		data->ray_dir_x = -1;
+	y = (int)(data->y_p * PX) + PXP / 2;
+	data->ray_dir_x = cos(data->p_a);
+	data->ray_dir_y = -sin(data->p_a);
 	magnitude = sqrt(data->ray_dir_x * data->ray_dir_x
 			+ data->ray_dir_y * data->ray_dir_y);
 	data->ray_dir_x /= magnitude;

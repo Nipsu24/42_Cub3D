@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/08 10:16:03 by mmeier           ###   ########.fr        #
+#    Updated: 2024/10/09 15:22:48 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ FILES = src/utils.c \
 		mlx_functions.c \
 		moves.c \
 		draw_ray.c \
-		rotate.c
+		rotate.c \
+		build_mini_map.c
 		
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
