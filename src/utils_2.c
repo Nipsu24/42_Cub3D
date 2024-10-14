@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 14:47:31 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/09 15:27:01 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/11 12:52:05 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ int	number_count(char *str)
 void	check_init_pl_angle(t_data *data)
 {
 	if (data->p_dir == 'N')
-		data->p_a = PI / 2;
+		data->p_a = M_PI / 2;
 	else if (data->p_dir == 'E')
-		data->p_a = 2 * PI;
+		data->p_a = 2 * M_PI;
 	else if (data->p_dir == 'S')
-		data->p_a = 3 * PI / 2;
+		data->p_a = 3 * M_PI / 2;
 	else if (data->p_dir == 'W')
-		data->p_a = PI;
+		data->p_a = M_PI;
+	data->p_dx = cos(data->p_a);
+	data->p_dy = sin(data->p_a);
 }

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/09 14:22:02 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/11 16:19:36 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,72 @@ void	draw_line(t_data *data)
 		mlx_image_to_window(data->mlx, data->img->ray, 0, 0);
 	}
 }
+
+// void check_horizontal_inter(t_data *data)
+// {
+	
+// }
+
+// void	draw_line(t_data *data)
+// {
+// 	int		r = 0;
+// 	int		mx;
+// 	int 	my;
+// 	int 	mp;
+// 	int 	dof;
+// 	float	ra;
+// 	float	ry;
+// 	float	rx;
+// 	float	yo;
+// 	float	xo;
+
+// 	ra = data->p_a;
+// 	while (r < 1)
+// 	{
+// 		dof=0;
+// 		float aTAN = -1/tan(ra);
+// 		if (ra > M_PI)
+// 		{
+// 			ry = (((int)data->y_p>6)<<6)-0.0001;
+// 			rx = (data->p_dy - ry) *aTAN + data->x_p;
+// 			yo = -64;
+// 			xo = -yo * aTAN;
+// 		}
+// 		if (ra < M_PI)
+// 		{
+// 			ry = (((int)data->y_p>6)<<6) + 64;
+// 			rx = (data->p_dy - ry) *aTAN + data->x_p;
+// 			yo = 64;
+// 			xo = -yo * aTAN;
+// 		}
+// 		// if (ra == 0 || ra == PI)
+// 		// {
+// 		// 	rx = data->x_p;
+// 		// 	ry = data->y_p;
+// 		// 	dof = 8;
+// 		// }
+// 		if (fabs(ra) < EPSILON || fabs(ra - PI) < EPSILON)
+// 		{
+// 			rx = data->x_p;
+// 			ry = data->y_p;
+// 			dof = 8;
+// 		}
+// 		while (dof < 8)
+// 		{
+// 			mx = (int) (rx) >> 6;
+// 			my = (int) (ry) >> 6;
+// 			mp = my * data->width + mx;
+// 			if (mp < data->width * data->height && data->map[my][mx] == '1')
+// 				dof = 8;
+// 			else
+// 			{
+// 				mlx_put_pixel(data->img->ray, (int)(rx), (int)(ry), 0xFF0000FF);
+// 				rx +=xo;
+// 				ry += yo;
+// 				dof += 1;
+// 			}
+// 		}
+// 		r++;
+// 	}
+// 	mlx_image_to_window(data->mlx, data->img->ray, 0, 0);
+// }

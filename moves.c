@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/09 15:30:15 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/11 13:20:00 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	move_up(t_data *data)
 	double	new_x;
 	double	new_y;
 
-	new_x = data->x_p + cos(data->p_a) * steps;
-	new_y = data->y_p - sin(data->p_a) * steps;
+	// new_x = data->x_p + cos(data->p_a) * steps;
+	// new_y = data->y_p - sin(data->p_a) * steps;
+	new_x = data->x_p + data->p_dx * steps;
+	new_y = data->y_p - data->p_dy * steps;
 	if (data->map[(int)new_y][(int)new_x] != '1')
 	{
 		data->x_p = new_x;
@@ -43,8 +45,8 @@ void	move_down(t_data *data)
 	double	new_x;
 	double	new_y;
 
-	new_x = data->x_p - cos(data->p_a) * steps;
-	new_y = data->y_p + sin(data->p_a) * steps;
+	new_x = data->x_p - data->p_dx * steps;
+	new_y = data->y_p + data->p_dy * steps;
 	if (data->map[(int)new_y][(int)new_x] != '1')
 	{
 		data->x_p = new_x;
