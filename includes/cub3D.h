@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/09 15:26:02 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/11 14:56:30 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 # define buf_r 0.3
 # define buf_d 0.5
 # define ray_speed 0.03
-# define ro_speed 0.5
+# define ro_speed 0.3
 # define PI 3.1415926535
 # define P_COL 0xFF0000FF
+# define EPSILON 0.00001
 
 typedef struct s_data	t_data;
 
