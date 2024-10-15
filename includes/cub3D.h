@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/11 14:56:30 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/15 16:46:07 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define ro_speed 0.3
 # define PI 3.1415926535
 # define P_COL 0xFF0000FF
-# define EPSILON 0.00001
+# define EPSILON 1e-6
 
 typedef struct s_data	t_data;
 
@@ -93,6 +93,12 @@ typedef struct s_data
 	float			p_dx; // player delta x
 	float			p_dy; // player delta y
 	float			p_a; // player angle
+	double			hor_next_y;
+	double			hor_next_x;
+	double			hor_delta_y;
+	double			hor_delta_x;
+	float			len_close_hor;
+	int				up;
 	t_txtr			*txtr;
 	t_img			*img;
 }	t_data;
@@ -173,6 +179,7 @@ void		move_right(t_data *data);
 void 		draw_line(t_data *data);
 int			create_ray_img(t_data *data);
 int			create_pl_img(t_data *data);
+void		draw_ray(t_data *data, float x, float y, float x_tar, float y_tar);
 
 /*						rotate.c							*/
 void		rotate_left(t_data *data);
