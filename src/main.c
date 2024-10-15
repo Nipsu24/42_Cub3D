@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/08 10:30:18 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/15 16:46:20 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ static void	init_structs(t_data *data)
 	data->p_dx = 0;
 	data->p_dy = 0;
 	data->p_a = 0;
+	data->hor_next_y = 0;
+	data->hor_next_x = 0;
+	data->hor_delta_y = 0;
+	data->hor_delta_x = 0;
+	data->len_close_hor = 0;
+	
 	
 	// data->player->dir_x = 0;
 	// data->player->dir_y = 0;
