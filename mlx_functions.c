@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/09 15:25:32 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 10:32:42 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
+
+// static void mouse_catcher(double xpos, double ypos, void* param)
+// {
+//     t_data *data = (t_data *)param;
+
+// 	(void) ypos;
+//     // Adjust the player's angle (horizontal rotation)
+//     data->p_a += xpos * 0.001;//MOUSE_SENSITIVITY
+
+   
+//     if (data->p_a < 0)
+//         data->p_a += 2 * M_PI;
+// 	if (data->p_a > 2 * M_PI)
+//         data->p_a -= 2 * M_PI;
+
+//     // Optionally redraw the view or FOV
+// 	build_map(data);
+// 	mlx_delete_image(data->mlx, data->img->ray);
+// 	create_ray_img(data);
+//     draw_fov(data);  // Call your raycasting function here
+// }
 
 /*Detects key press and conducts respective actions related to the
   key pressed.*/
@@ -33,7 +54,6 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 			rotate_left(data);
 		if (keydata.key == MLX_KEY_RIGHT)
 			rotate_right(data);
-		print_arr(data->map);
 	}
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 		mlx_close_window(data->mlx);
@@ -55,8 +75,9 @@ int	mlx_functions(t_data *data, t_img *img)
 		return (1);
 	check_init_pl_angle(data);
 	build_map(data);
-	draw_line(data);
+	draw_fov(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
+	// mlx_cursor_hook(data->mlx, &mouse_catcher, data);
 	mlx_loop(data->mlx);
 	return (0);
 }

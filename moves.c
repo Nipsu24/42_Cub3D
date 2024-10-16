@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/11 13:20:00 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 13:50:16 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	move_up(t_data *data)
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
 		create_ray_img(data);
-		draw_line(data);
+		draw_fov(data);
 	}
 }
 
@@ -54,7 +54,7 @@ void	move_down(t_data *data)
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
 		create_ray_img(data);
-		draw_line(data);
+		draw_fov(data);
 	}
 }
 
@@ -77,7 +77,7 @@ void	move_left(t_data *data)
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
 		create_ray_img(data);
-		draw_line(data);
+		draw_fov(data);
 	}
 }
 
@@ -100,6 +100,6 @@ void	move_right(t_data *data)
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
 		create_ray_img(data);
-		draw_line(data);
+		draw_fov(data);
 	}
 }
