@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/15 14:56:38 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 12:21:15 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	draw_player(t_data *data, int width, int height)
 			if (pl.fnl_x >= 0 && pl.fnl_x < data->width * PX
 				&& pl.fnl_y >= 0 && pl.fnl_y < data->height * PX)
 			{
-				mlx_put_pixel(data->img->pl, pl.fnl_x, pl.fnl_y, 0xFF0000FF);
+				mlx_put_pixel(data->img->pl, pl.fnl_x, pl.fnl_y, 0x00FF00FF);
 				mlx_image_to_window(data->mlx, data->img->pl, 0, 0);
 			}
 		}

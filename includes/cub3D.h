@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/15 16:46:07 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 13:52:14 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define PX 64
 # define PXP 16
 # define PXP_h 32 // height of the player rectangle
-# define steps 0.2
+# define steps 0.3
 # define buf_lu 0.18
 # define buf_r 0.3
 # define buf_d 0.5
@@ -32,6 +32,7 @@
 # define PI 3.1415926535
 # define P_COL 0xFF0000FF
 # define EPSILON 1e-6
+# define rays 200
 
 typedef struct s_data	t_data;
 
@@ -48,6 +49,7 @@ typedef struct s_img
 	mlx_image_t		*fl;
 	mlx_image_t		*pl;
 	mlx_image_t		*ray;
+	unsigned int colour;
 }	t_img;
 
 typedef struct s_pl
@@ -177,6 +179,7 @@ void		move_right(t_data *data);
 
 /*						draw_ray.c							*/
 void 		draw_line(t_data *data);
+void 		draw_fov(t_data *data);
 int			create_ray_img(t_data *data);
 int			create_pl_img(t_data *data);
 void		draw_ray(t_data *data, float x, float y, float x_tar, float y_tar);
