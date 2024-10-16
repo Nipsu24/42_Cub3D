@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/08 10:49:09 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 17:05:57 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,12 @@ void	delete_images(t_data *data)
 			mlx_delete_image(data->mlx, data->img->wl);
 		if (data->img->fl)
 			mlx_delete_image(data->mlx, data->img->fl);
-		// if (data->img->pl)
-		// 	mlx_delete_image(data->mlx, data->img->pl);
+		if (data->img->pl)
+			mlx_delete_image(data->mlx, data->img->pl);
+		if (data->img->bg)
+			mlx_delete_image(data->mlx, data->img->bg);
+		if (data->img->ray)
+			mlx_delete_image(data->mlx, data->img->ray);
 		free(data->img);
 		data->img = NULL;
 	}
