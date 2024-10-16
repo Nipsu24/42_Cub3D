@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_player.c                                      :+:      :+:    :+:   */
+/*   build_mini_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/09 15:23:56 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/11 16:49:19 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	draw_player(t_data *data, int width, int height)
 			if (pl.fnl_x >= 0 && pl.fnl_x < data->width * PX
 				&& pl.fnl_y >= 0 && pl.fnl_y < data->height * PX)
 			{
-				mlx_put_pixel(data->img->pl, pl.fnl_x, pl.fnl_y, 0xFF0000FF);
+				mlx_put_pixel(data->img->pl, pl.fnl_x, pl.fnl_y, 0x00FF00FF);
 				mlx_image_to_window(data->mlx, data->img->pl, 0, 0);
 			}
 		}

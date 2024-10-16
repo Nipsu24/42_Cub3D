@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/09 12:11:46 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/11 15:46:34 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	rotate_left(t_data *data)
 	build_map(data);
 	mlx_delete_image(data->mlx, data->img->ray);
 	create_ray_img(data);
-	draw_line(data);
+	draw_fov(data);
 }
 
 /*Rotates player clockwise. If statement, in order
@@ -35,5 +35,5 @@ void	rotate_right(t_data *data)
 	build_map(data);
 	mlx_delete_image(data->mlx, data->img->ray);
 	create_ray_img(data);
-	draw_line(data);
+	draw_fov(data);
 }
