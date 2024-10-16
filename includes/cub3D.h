@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 17:10:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 17:32:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h> //maybe delete
 # include <math.h>
 
-# define PX 16
+# define PX 64
 # define PXP 4
 # define PXP_h 32 // height of the player rectangle
 # define steps 0.3
@@ -32,8 +32,8 @@
 # define PI 3.1415926535
 # define P_COL 0xFF0000FF
 # define rays 1366
-# define screen_width 55
-# define screen_height 25
+# define screen_width 48
+# define screen_height 24
 
 typedef struct s_data	t_data;
 
