@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 16:43:24 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/16 17:10:23 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <unistd.h> //maybe delete
 # include <math.h>
 
-# define PX 64
-# define PXP 16
+# define PX 16
+# define PXP 4
 # define PXP_h 32 // height of the player rectangle
 # define steps 0.3
 # define buf_lu 0.18
@@ -97,6 +97,13 @@ typedef struct s_data
 	float			p_dx; // player delta x
 	float			p_dy; // player delta y
 	float			p_a; // player angle
+	double			hor_next_y;
+	double			hor_next_x;
+	double			hor_delta_y;
+	double			hor_delta_x;
+	float			len_close_hor;
+	int				up;
+	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
 }	t_data;
@@ -174,10 +181,10 @@ void		move_down(t_data *data);
 void		move_right(t_data *data);
 
 /*						draw_ray.c							*/
-void 		draw_line(t_data *data);
 void 		draw_fov(t_data *data);
 int			create_ray_img(t_data *data);
 int			create_pl_img(t_data *data);
+int			create_bg_img(t_data *data);
 
 /*						rotate.c							*/
 void		rotate_left(t_data *data);

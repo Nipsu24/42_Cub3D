@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_mini_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/16 13:11:55 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:53:08 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	draw_player(t_data *data, int width, int height)
 		}
 	}
 }
+
 
 /*Builds 2d map (floor, wall, player). Deletion and creation of textures
   and images needed in this function, as it is called everytime when a

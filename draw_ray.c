@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/16 13:13:07 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:58:23 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	create_pl_img(t_data *data)
 /*Draws single ray from player's direction until wall. PXP/2 used
   in order to center ray onto the player. 'cos' and '-sin' set ray
   direction based on player's agnle. '-sin' as Y-axis inverted*/
-void	draw_single_ray(t_data *data, float angle, int color)
+static void	draw_single_ray(t_data *data, float angle, int color)
 {
 	float	x;
 	float	y;
