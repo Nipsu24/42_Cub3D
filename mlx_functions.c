@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 10:32:42 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:22:21 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 int	mlx_functions(t_data *data, t_img *img)
 {
 	(void)img;
-	data->mlx = mlx_init(data->width * PX, data->height * PX, "cub3D", true);
+	data->mlx = mlx_init(screen_width * PX, screen_height * PX, "cub3D", false);
 	if (!data->mlx)
 		return (1);
 	if (get_textures(data))
@@ -71,8 +71,11 @@ int	mlx_functions(t_data *data, t_img *img)
 		return (1);
 	if (create_ray_img(data))
 		return (1);
+	// if (create_bg_img(data))
+	// 	return (1);
 	if (create_pl_img(data))
 		return (1);
+	// draw_background(data);
 	check_init_pl_angle(data);
 	build_map(data);
 	draw_fov(data);
@@ -81,3 +84,21 @@ int	mlx_functions(t_data *data, t_img *img)
 	mlx_loop(data->mlx);
 	return (0);
 }
+
+// void	draw_background(t_data *data)
+// {
+// 	int	y;
+// 	int	x;
+
+// 	y = -1;
+// 	x = -1;
+// 	while  (y < screen_height/2)
+// 	{
+// 		while(x < screen_width)
+// 		{
+			
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }

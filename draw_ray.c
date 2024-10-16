@@ -6,12 +6,20 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/16 12:00:21 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:13:07 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
+int	create_bg_img(t_data *data)
+{
+	data->img->bg = mlx_new_image(data->mlx,
+			data->width * PX, data->height * PX);
+	if (!data->img->bg)
+		return (1);
+	return (0);
+}
 int	create_ray_img(t_data *data)
 {
 	data->img->ray = mlx_new_image(data->mlx,
@@ -54,7 +62,7 @@ void	draw_single_ray(t_data *data, float angle, int color)
 		if (x < 0 || y < 0 || x >= data->width * PX || y >= data->height * PX
 			|| data->map[(int)y / PX][(int)x / PX] == '1')
 			break ;
-		mlx_put_pixel(data->img->ray, x, y, color);
+		mlx_put_pixel(data->img->ray, x/3, y/3, color);
 	}
 }
 
