@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/11 16:49:19 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:11:55 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	draw_player(t_data *data, int width, int height)
 			if (pl.fnl_x >= 0 && pl.fnl_x < data->width * PX
 				&& pl.fnl_y >= 0 && pl.fnl_y < data->height * PX)
 			{
-				mlx_put_pixel(data->img->pl, pl.fnl_x, pl.fnl_y, 0x00FF00FF);
+				mlx_put_pixel(data->img->pl, pl.fnl_x/3, pl.fnl_y/3, 0x00FF00FF);
 				mlx_image_to_window(data->mlx, data->img->pl, 0, 0);
 			}
 		}
@@ -114,9 +114,9 @@ void	build_map(t_data *data)
 		x = -1;
 		while (data->map[y][++x])
 		{
-			mlx_image_to_window(data->mlx, data->img->fl, x * PX, y * PX);
+			mlx_image_to_window(data->mlx, data->img->fl, x * PX/3, y * PX/3);
 			if (data->map[y][x] == '1')
-				mlx_image_to_window(data->mlx, data->img->wl, x * PX, y * PX);
+				mlx_image_to_window(data->mlx, data->img->wl, x * PX/3, y * PX/3);
 		}
 	}
 	draw_player(data, PXP, PXP);

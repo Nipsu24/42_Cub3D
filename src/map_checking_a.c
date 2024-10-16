@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checking_a.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/03 12:37:41 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 16:34:39 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ static int	map_size(t_data *data)
 		}
 	}
 	data->width = width_1;
-	if (width_1 > 200)
+	if (width_1 > screen_width)
 		return (err_msg(6));
-	if (data->height > 100)
+	if (data->height > screen_height)
 		return (err_msg(7));
 	return (0);
 }
