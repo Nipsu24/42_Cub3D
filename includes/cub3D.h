@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 13:52:14 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 14:06:14 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <unistd.h> //maybe delete
 # include <math.h>
 
-# define PX 64
-# define PXP 16
+# define PXW 64
+# define PX 16
+# define PXP 4
 # define PXP_h 32 // height of the player rectangle
 # define steps 0.3
 # define buf_lu 0.18
@@ -101,6 +102,7 @@ typedef struct s_data
 	double			hor_delta_x;
 	float			len_close_hor;
 	int				up;
+	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
 }	t_data;

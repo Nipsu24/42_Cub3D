@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 10:32:42 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:55:19 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,49 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(data->mlx);
 }
 
+static uint32_t convert_rgb_to_hex(long *rgb)
+{
+    uint32_t	hex_value;
+
+    // Combine the RGB components into a single hex value, with alpha set to 255 (0xFF)
+    hex_value = (rgb[0] << 24) |  // Red (shifted to the highest byte)
+                (rgb[1] << 16) |  // Green (shifted to the second byte)
+                (rgb[2] << 8)  |  // Blue (shifted to the third byte)
+                0xFF;             // Alpha channel (fully opaque)
+
+    return (hex_value);
+}
+
+static void	fill_main_screen(t_data *data)
+{
+	float y;
+	float x;
+
+	y = -1;
+	x = -1;
+	data->main_screen = mlx_new_image(data->mlx, data->width * PXW, data->height * PXW);
+	while (++y < data->height * PXW/2)
+	{
+		x = -1;
+		while (++x < data->width * PXW)
+			mlx_put_pixel(data->main_screen, x, y, convert_rgb_to_hex(data->img->ceiling));
+	}
+	while (++y < data->height * PXW)
+	{
+		x = -1;
+		while (++x < data->width * PXW)
+			mlx_put_pixel(data->main_screen, x, y, convert_rgb_to_hex(data->img->floor));
+	}
+	mlx_image_to_window(data->mlx, data->main_screen, 0, 0);
+}
+
 int	mlx_functions(t_data *data, t_img *img)
 {
 	(void)img;
-	data->mlx = mlx_init(data->width * PX, data->height * PX, "cub3D", true);
+	data->mlx = mlx_init(data->width * PXW, data->height * PXW, "cub3D", true);
 	if (!data->mlx)
 		return (1);
+	fill_main_screen(data);
 	if (get_textures(data))
 		return (1);
 	if (get_images(data))

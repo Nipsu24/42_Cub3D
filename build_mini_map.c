@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/16 12:21:15 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/16 15:10:51 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	draw_player(t_data *data, int width, int height)
 		}
 	}
 }
+
 
 /*Builds 2d map (floor, wall, player). Deletion and creation of textures
   and images needed in this function, as it is called everytime when a
