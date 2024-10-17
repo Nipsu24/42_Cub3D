@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/16 16:58:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/17 11:41:17 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	create_bg_img(t_data *data)
 {
 	data->img->bg = mlx_new_image(data->mlx,
-			data->width * PX, data->height * PX);
+			screen_width * PX, screen_height * PX);
 	if (!data->img->bg)
 		return (1);
 	return (0);
@@ -73,9 +73,9 @@ void	draw_fov(t_data *data)
 	float	current_angle;
 	float	step_angle;
 
-	start_angle = data->p_a - PI / 4;
-	end_angle = data->p_a + PI / 4;
-	step_angle = (end_angle - start_angle) / rays;
+	start_angle = data->p_a - PI / 6;
+	end_angle = data->p_a + PI / 6;
+	step_angle = (end_angle - start_angle) / mm_rays;
 	current_angle = start_angle;
 	data->img->colour = 0xFF0000FF;
 	while (current_angle <= end_angle)

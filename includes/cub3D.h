@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 17:32:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/17 11:36:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@
 # define ro_speed 0.3
 # define PI 3.1415926535
 # define P_COL 0xFF0000FF
-# define rays 1366
-# define screen_width 48
-# define screen_height 24
+# define mm_rays 25
+# define rays 
+# define screen_width 40
+# define screen_height screen_width/2
 
 typedef struct s_data	t_data;
 
