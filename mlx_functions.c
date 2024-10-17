@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 17:35:31 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/17 11:09:47 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,16 @@ static void	fill_main_screen(t_data *data)
 
 	y = -1;
 	x = -1;
-	while (++y < data->height * PX/2)
+	while (++y < screen_height * PX/2)
 	{
 		x = -1;
-		while (++x < data->width * PX)
+		while (++x < screen_width * PX)
 			mlx_put_pixel(data->img->bg, x, y, convert_rgb_to_hex(data->img->ceiling));
 	}
-	while (++y < data->height * PX)
+	while (++y < screen_height * PX)
 	{
 		x = -1;
-		while (++x < data->width * PX)
+		while (++x < screen_width * PX)
 			mlx_put_pixel(data->img->bg, x, y, convert_rgb_to_hex(data->img->floor));
 	}
 	mlx_image_to_window(data->mlx, data->img->bg, 0, 0);
