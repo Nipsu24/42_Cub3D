@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 17:08:56 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:09:20 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	init_structs(t_data *data)
 	data->img->fl = NULL;
 	data->img->pl = NULL;
 	data->img->ray = NULL;
+	data->img->bg_ray = NULL;
 	data->img->data = data;
 	data->map = NULL;
 	data->clone_map = NULL;
@@ -83,6 +84,9 @@ static void	init_structs(t_data *data)
 	data->p_dx = 0;
 	data->p_dy = 0;
 	data->p_a = 0;
+	data->ray_dist = 0;
+	data->line_height = 0;
+	data->ray_index = 0;
 	// data->player->dir_x = 0;
 	// data->player->dir_y = 0;
 	// data->player->plane_x = 0;

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/17 11:41:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:22:21 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ static void	draw_single_ray(t_data *data, float angle, int color)
 		y += (data->ray_dir_y * ray_speed * PX);
 		if (x < 0 || y < 0 || x >= data->width * PX || y >= data->height * PX
 			|| data->map[(int)y / PX][(int)x / PX] == '1')
+		{
+			calc_line_height(data, x, y);
 			break ;
+		}
 		mlx_put_pixel(data->img->ray, x/3, y/3, color);
 	}
 }
@@ -73,6 +76,7 @@ void	draw_fov(t_data *data)
 	float	current_angle;
 	float	step_angle;
 
+	data->ray_index = 0;
 	start_angle = data->p_a - PI / 6;
 	end_angle = data->p_a + PI / 6;
 	step_angle = (end_angle - start_angle) / mm_rays;
@@ -82,6 +86,7 @@ void	draw_fov(t_data *data)
 	{
 		draw_single_ray(data, current_angle, data->img->colour);
 		current_angle += step_angle;
+		data->ray_index++;
 		if (data->img->colour == 0xFF0000FF)
 			data->img->colour = 0x00FF00FF;
 		else if (data->img->colour == 0x00FF00FF)

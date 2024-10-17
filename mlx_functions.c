@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/17 11:09:47 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:20:11 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int	mlx_functions(t_data *data, t_img *img)
 	if (!data->mlx)
 		return (1);
 	if (create_bg_img(data))
+		return (1);
+	if (create_bg_ray_img(data))
 		return (1);
 	fill_main_screen(data);
 	if (get_textures(data))

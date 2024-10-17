@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/17 11:36:34 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:17:33 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_img
 	mlx_image_t		*pl;
 	mlx_image_t		*ray;
 	mlx_image_t		*bg;
+	mlx_image_t		*bg_ray;
 	unsigned int colour;
 }	t_img;
 
@@ -104,6 +105,9 @@ typedef struct s_data
 	double			hor_delta_x;
 	float			len_close_hor;
 	int				up;
+	float			ray_dist;
+	float			line_height;
+	int				ray_index;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -191,11 +195,15 @@ int			create_bg_img(t_data *data);
 void		rotate_left(t_data *data);
 void		rotate_right(t_data *data);
 
-/*						build_mini_map.c						*/
+/*						build_mini_map.c					*/
 void		build_map(t_data *data);
 void		draw_player(t_data *data, int width, int height);
 int			get_textures(t_data *data);
 int			get_images(t_data *data);
+
+/*						draw_cube.c							*/
+int			create_bg_ray_img(t_data *data);
+void		calc_line_height(t_data *data, float x, float y);
 
 /*						utils_to_be_deleted.c				*/
 
