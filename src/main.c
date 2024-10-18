@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 17:08:56 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/18 12:56:37 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	init_structs(t_data *data)
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
+	data->img->bg = NULL;
+	data->img->fg = NULL;
 	data->img->ray = NULL;
 	data->img->data = data;
 	data->map = NULL;
@@ -103,12 +105,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		printf("Error\nincorrect argument\n");
-		sleep(1);
-		printf(".....\n");
-		sleep(2);
-		printf("you idiot\n");
-		sleep(2);
+		official_exit();
 	}
 	return (0);
 }

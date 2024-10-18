@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/17 11:36:34 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/18 12:55:39 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define PI 3.1415926535
 # define P_COL 0xFF0000FF
 # define mm_rays 25
-# define rays 
+# define rays 300
 # define screen_width 40
 # define screen_height screen_width/2
 
@@ -52,6 +52,7 @@ typedef struct s_img
 	mlx_image_t		*pl;
 	mlx_image_t		*ray;
 	mlx_image_t		*bg;
+	mlx_image_t		*fg;
 	unsigned int colour;
 }	t_img;
 
@@ -109,35 +110,36 @@ typedef struct s_data
 	t_img			*img;
 }	t_data;
 
-/*						core_functions.c					*/
+/*						core_functions.c						*/
 
 int			cube_it(char *av, t_data *data, t_img *img);
 
-/*						utils.c								*/
+/*						utils.c									*/
 
 int			err_msg(int err_flag);
 int			arr_splitter(t_data *data);
 long int	ft_atol(const char *str);
 char		*ft_read_map(int fd);
 
-/*						utils_2.c							*/
+/*						utils_2.c								*/
 
 int			number_count(char *str);
 void		check_init_pl_angle(t_data *data);
+void		official_exit(void);
 
-/*						mlx_functions.c						*/
+/*						mlx_functions.c							*/
 
 int			mlx_functions(t_data *data, t_img *img);
 
-/*						map_checking_a.c					*/
+/*						map_checking_a.c						*/
 
 int			map_checker(t_data *data);	
 
-/*						map_checking_b.c					*/
+/*						map_checking_b.c						*/
 
 int			check_double_n(t_data *data);
 
-/*						free_a.c							*/
+/*						free_a.c								*/
 
 int			free_all(t_data *data, int return_val);
 int			free_input(t_data *data);
@@ -145,7 +147,7 @@ int			free_dir(t_img *img);
 void		delete_textures(t_data *data);
 void		delete_images(t_data *data);
 
-/*						free_b.c							*/
+/*						free_b.c								*/
 
 void		free_arr(char ***arr);
 void		free_str(char **str);
@@ -153,11 +155,11 @@ char		**free_arr_rev(char ***av, int i);
 void		del_txtr_only(t_data *data);
 void		del_img_only(t_data *data);
 
-/*						texture_info.c						*/
+/*						texture_info.c							*/
 
 int			texture_extract(t_data *data, t_img *img, int x, int y);
 
-/*						texture_info_utils.c				*/
+/*						texture_info_utils.c					*/
 
 int			get_north(char *address, t_img *img);
 int			get_south(char *address, t_img *img);
@@ -165,39 +167,45 @@ int			get_east(char *address, t_img *img);
 int			get_west(char *address, t_img *img);
 int			range_check(long int *arr);
 
-/*						flood_fill.c						*/
+/*						flood_fill.c							*/
 
 int			no_closed_walls(t_data *data);
 int			count_lines_arr(char **arr);
 
-/*						map_utils.c							*/
+/*						map_utils.c								*/
 
 int			map_extract(t_data *data);
 
-/*						moves.c								*/
+/*						moves.c									*/
 
 void		move_up(t_data *data);
 void		move_left(t_data *data);
 void		move_down(t_data *data);
 void		move_right(t_data *data);
 
-/*						draw_ray.c							*/
+/*						draw_ray.c								*/
+
 void 		draw_fov(t_data *data);
+
+/*						init_images.c							*/
+
 int			create_ray_img(t_data *data);
 int			create_pl_img(t_data *data);
 int			create_bg_img(t_data *data);
 
-/*						rotate.c							*/
+/*						rotate.c								*/
+
 void		rotate_left(t_data *data);
 void		rotate_right(t_data *data);
 
 /*						build_mini_map.c						*/
+
 void		build_map(t_data *data);
 void		draw_player(t_data *data, int width, int height);
 int			get_textures(t_data *data);
 int			get_images(t_data *data);
 
-/*						utils_to_be_deleted.c				*/
+/*						utils_to_be_deleted.c					*/
 
 void		print_arr(char **arr);
 void		info_printer(t_img *img);

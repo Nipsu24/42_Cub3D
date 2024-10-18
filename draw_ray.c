@@ -3,40 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/17 11:41:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/18 12:53:19 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
-
-int	create_bg_img(t_data *data)
-{
-	data->img->bg = mlx_new_image(data->mlx,
-			screen_width * PX, screen_height * PX);
-	if (!data->img->bg)
-		return (1);
-	return (0);
-}
-int	create_ray_img(t_data *data)
-{
-	data->img->ray = mlx_new_image(data->mlx,
-			data->width * PX, data->height * PX);
-	if (!data->img->ray)
-		return (1);
-	return (0);
-}
-
-int	create_pl_img(t_data *data)
-{
-	data->img->pl = mlx_new_image(data->mlx,
-			data->width * PX, data->height * PX);
-	if (!data->img->pl)
-		return (1);
-	return (0);
-}
 
 /*Draws single ray from player's direction until wall. PXP/2 used
   in order to center ray onto the player. 'cos' and '-sin' set ray
