@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/18 12:55:39 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/18 13:03:45 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_img
 	mlx_image_t		*ray;
 	mlx_image_t		*bg;
 	mlx_image_t		*fg;
+	// mlx_image_t		*mm;
 	unsigned int colour;
 }	t_img;
 
