@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
+#    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/09 15:22:48 by mmeier           ###   ########.fr        #
+#    Updated: 2024/10/18 12:51:54 by lstorey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ FILES = src/utils.c \
 		moves.c \
 		draw_ray.c \
 		rotate.c \
+		init_images.c \
 		build_mini_map.c
 		
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
