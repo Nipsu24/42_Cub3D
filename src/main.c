@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/17 16:09:20 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/20 12:16:07 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ static void	init_structs(t_data *data)
 	data->ray_dist = 0;
 	data->line_height = 0;
 	data->ray_index = 0;
+	data->PX_mm = 0;
 	// data->player->dir_x = 0;
 	// data->player->dir_y = 0;
 	// data->player->plane_x = 0;

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/17 16:17:33 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/20 13:32:02 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@
 # define P_COL 0xFF0000FF
 # define mm_rays 25
 # define rays 
-# define screen_width 40
-# define screen_height screen_width/2
+# define screen_width 1280
+# define screen_height screen_width/2 // always determined by screen_width
+# define mm_size 4 // downscale factor for mini map and player
 
 typedef struct s_data	t_data;
 
@@ -108,6 +109,7 @@ typedef struct s_data
 	float			ray_dist;
 	float			line_height;
 	int				ray_index;
+	float			PX_mm; // size of mini_map tiles
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -197,7 +199,7 @@ void		rotate_right(t_data *data);
 
 /*						build_mini_map.c					*/
 void		build_map(t_data *data);
-void		draw_player(t_data *data, int width, int height);
+void		draw_player(t_data *data, float width, float height);
 int			get_textures(t_data *data);
 int			get_images(t_data *data);
 

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/17 16:20:11 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/20 13:11:14 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,32 +79,43 @@ static void	fill_main_screen(t_data *data)
 
 	y = -1;
 	x = -1;
-	while (++y < screen_height * PX/2)
+	while (++y < screen_height / 2)
 	{
 		x = -1;
-		while (++x < screen_width * PX)
+		while (++x < screen_width)
 			mlx_put_pixel(data->img->bg, x, y, convert_rgb_to_hex(data->img->ceiling));
 	}
-	while (++y < screen_height * PX)
+	while (++y < screen_height)
 	{
 		x = -1;
-		while (++x < screen_width * PX)
+		while (++x < screen_width)
 			mlx_put_pixel(data->img->bg, x, y, convert_rgb_to_hex(data->img->floor));
 	}
 	mlx_image_to_window(data->mlx, data->img->bg, 0, 0);
 }
 
+void calc_mini_map_scaling(t_data *data)
+{
+    int PX_x = 0;
+    int PX_y = 0;
+
+    PX_x = screen_width / data->width / mm_size;
+    PX_y = screen_height / data->height / mm_size;
+    data->PX_mm = (PX_x < PX_y) ? PX_x : PX_y;
+}
+
 int	mlx_functions(t_data *data, t_img *img)
 {
 	(void)img;
-	data->mlx = mlx_init(screen_width * PX, screen_height * PX, "cub3D", false);
+	data->mlx = mlx_init(screen_width, screen_height, "cub3D", false);
 	if (!data->mlx)
 		return (1);
 	if (create_bg_img(data))
 		return (1);
-	if (create_bg_ray_img(data))
-		return (1);
+	// if (create_bg_ray_img(data))
+	// 	return (1);
 	fill_main_screen(data);
+	calc_mini_map_scaling(data);
 	if (get_textures(data))
 		return (1);
 	if (get_images(data))
