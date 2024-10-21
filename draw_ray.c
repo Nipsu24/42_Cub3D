@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/20 13:29:00 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/21 10:50:46 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static void	draw_single_ray(t_data *data, float angle, int color)
 	float	y;
 	float	mag;
 
-	x = (data->x_p * data->PX_mm); //+ data->PX_mm / 2);
-	y = (data->y_p * data->PX_mm); //+ data->PX_mm / 2);
+	x = (data->x_p * data->PX); //+ data->PX_mm / 2);
+	y = (data->y_p * data->PX); //+ data->PX_mm / 2);
 	data->ray_dir_x = cos(angle);
 	data->ray_dir_y = -sin(angle);
 	mag = sqrt(data->ray_dir_x * data->ray_dir_x
@@ -57,14 +57,11 @@ static void	draw_single_ray(t_data *data, float angle, int color)
 	data->ray_dir_y /= mag;
 	while (1)
 	{
-		x += (data->ray_dir_x * ray_speed * data->PX_mm);
-		y += (data->ray_dir_y * ray_speed * data->PX_mm);
-		if (x < 0 || y < 0 || x >= data->width * data->PX_mm || y >= data->height * data->PX_mm
-			|| data->map[(int)y / (int)data->PX_mm][(int)x / (int)data->PX_mm] == '1')
-		{
-			// calc_line_height(data, x, y);
+		x += (data->ray_dir_x * ray_speed * data->PX);
+		y += (data->ray_dir_y * ray_speed * data->PX);
+		if (x < 0 || y < 0 || x >= data->width * data->PX || y >= data->height * data->PX
+			|| data->map[(int)y / (int)data->PX][(int)x / (int)data->PX] == '1')
 			break ;
-		}
 		mlx_put_pixel(data->img->ray, x, y, color);
 	}
 }

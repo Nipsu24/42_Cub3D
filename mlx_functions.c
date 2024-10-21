@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/20 13:11:14 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/21 10:50:46 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void calc_mini_map_scaling(t_data *data)
 
     PX_x = screen_width / data->width / mm_size;
     PX_y = screen_height / data->height / mm_size;
-    data->PX_mm = (PX_x < PX_y) ? PX_x : PX_y;
+    data->PX = (PX_x < PX_y) ? PX_x : PX_y;
 }
 
 int	mlx_functions(t_data *data, t_img *img)
@@ -112,8 +112,6 @@ int	mlx_functions(t_data *data, t_img *img)
 		return (1);
 	if (create_bg_img(data))
 		return (1);
-	// if (create_bg_ray_img(data))
-	// 	return (1);
 	fill_main_screen(data);
 	calc_mini_map_scaling(data);
 	if (get_textures(data))

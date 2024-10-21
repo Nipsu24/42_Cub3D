@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/20 13:29:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/21 10:50:46 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	get_images(t_data *data)
 	data->img->fl = mlx_texture_to_image(data->mlx, data->txtr->fl);
 	if (!data->img->fl)
 		return (1);
-	mlx_resize_image(data->img->wl, data->PX_mm, data->PX_mm);
-	mlx_resize_image(data->img->fl, data->PX_mm, data->PX_mm);
+	mlx_resize_image(data->img->wl, data->PX, data->PX);
+	mlx_resize_image(data->img->fl, data->PX, data->PX);
 	return (0);
 }
 
@@ -68,8 +68,8 @@ void	draw_player(t_data *data, float width, float height)
 	t_pl	pl;
 
 	init_pl(&pl);
-	pl.x_strt = (data->x_p * data->PX_mm); //+ data->PX_mm / 2); //maybe remove last addition
-	pl.y_strt = (data->y_p * data->PX_mm); //+ data->PX_mm / 2); //maybe remove last addition
+	pl.x_strt = (data->x_p * data->PX); //+ data->PX_mm / 2); //maybe remove last addition
+	pl.y_strt = (data->y_p * data->PX); //+ data->PX_mm / 2); //maybe remove last addition
 	pl.x_centr = width / 2.0;
 	pl.y_centr = height / 2.0;
 	while (++pl.pix_y <= height)
@@ -85,8 +85,8 @@ void	draw_player(t_data *data, float width, float height)
 				+ pl.transl_y * cos(-data->p_a);
 			pl.fnl_x = round(pl.x_strt + pl.ro_x + pl.x_centr);
 			pl.fnl_y = round(pl.y_strt + pl.ro_y + pl.y_centr);
-			if (pl.fnl_x >= 0 && pl.fnl_x < data->width * data->PX_mm
-				&& pl.fnl_y >= 0 && pl.fnl_y < data->height * data->PX_mm)
+			if (pl.fnl_x >= 0 && pl.fnl_x < data->width * data->PX
+				&& pl.fnl_y >= 0 && pl.fnl_y < data->height * data->PX)
 			{
 				mlx_put_pixel(data->img->pl, pl.fnl_x, pl.fnl_y, 0x00FF00FF);
 				mlx_image_to_window(data->mlx, data->img->pl, 0, 0);
@@ -117,10 +117,10 @@ void	build_map(t_data *data)
 		x = -1;
 		while (data->map[y][++x])
 		{
-			mlx_image_to_window(data->mlx, data->img->fl, x * data->PX_mm, y * data->PX_mm);
+			mlx_image_to_window(data->mlx, data->img->fl, x * data->PX, y * data->PX);
 			if (data->map[y][x] == '1')
-				mlx_image_to_window(data->mlx, data->img->wl, x * data->PX_mm, y * data->PX_mm);
+				mlx_image_to_window(data->mlx, data->img->wl, x * data->PX, y * data->PX);
 		}
 	}
-	draw_player(data, data->PX_mm / mm_size / 4, data->PX_mm / mm_size / 4);
+	draw_player(data, data->PX / mm_size / 4, data->PX / mm_size / 4);
 }
