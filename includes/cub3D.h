@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/22 15:09:00 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/22 15:58:29 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # define ro_speed 0.3
 # define PI 3.1415926535
 # define mm_rays 20
-# define rays 1500
+# define rays 1000
 # define screen_width 1280
 # define screen_height screen_width/2 // always determined by screen_width
 # define mm_size 4 // downscale factor for mini map and player
-# define block_height screen_height / 3
+# define block_height screen_height / 2
 typedef struct s_data	t_data;
 
 typedef struct s_img
@@ -41,6 +41,7 @@ typedef struct s_img
 	long int		floor[3];
 	long int		ceiling[3];
 	float			len[rays];
+	int				hit_dir[rays];
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
 	mlx_image_t		*pl;
