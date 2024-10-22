@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/22 10:29:42 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/22 11:22:32 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,18 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <stdio.h>
-# include <unistd.h> //maybe delete
 # include <math.h>
 
-# define PX 64
-# define PXP 4
-# define PXP_h 32 // height of the player rectangle
 # define steps 0.3
-# define buf_lu 0.18
-# define buf_r 0.3
-# define buf_d 0.5
 # define ray_speed 0.03
 # define ro_speed 0.3
 # define PI 3.1415926535
-# define P_COL 0xFF0000FF
-# define mm_rays 20
-# define block_height 64
+# define mm_rays 25
 # define rays 800
-# define screen_width 40
-# define screen_height screen_width/2
-
+# define screen_width 2560
+# define screen_height screen_width/2 // always determined by screen_width
+# define mm_size 4 // downscale factor for mini map and player
+# define block_height screen_height / 3
 typedef struct s_data	t_data;
 
 typedef struct s_img
@@ -55,7 +47,7 @@ typedef struct s_img
 	mlx_image_t		*ray;
 	mlx_image_t		*bg;
 	mlx_image_t		*fg;
-	// mlx_image_t		*mm;
+	mlx_image_t		*bg_ray;
 	unsigned int colour;
 }	t_img;
 
@@ -108,6 +100,10 @@ typedef struct s_data
 	double			hor_delta_x;
 	float			len_close_hor;
 	int				up;
+	float			ray_dist;
+	float			line_height;
+	int				ray_index;
+	float			PX; // size of mini_map tiles
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -206,7 +202,7 @@ void		rotate_right(t_data *data);
 /*						build_mini_map.c						*/
 
 void		build_map(t_data *data);
-void		draw_player(t_data *data, int width, int height);
+void		draw_player(t_data *data, float width, float height);
 int			get_textures(t_data *data);
 int			get_images(t_data *data);
 

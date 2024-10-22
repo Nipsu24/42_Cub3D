@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:06:30 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/18 13:41:57 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/22 11:21:38 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	create_bg_img(t_data *data)
 {
 	data->img->bg = mlx_new_image(data->mlx,
-			screen_width * PX, screen_height * PX);
+			screen_width, screen_height);
 	if (!data->img->bg)
 		return (1);
 	return (0);
@@ -26,7 +26,7 @@ int	create_bg_img(t_data *data)
 int	create_fg_img(t_data *data)
 {
 	data->img->fg = mlx_new_image(data->mlx,
-			screen_width * PX, screen_height * PX);
+			screen_width, screen_height);
 	if (!data->img->fg)
 		return (1);
 	return (0);
@@ -36,27 +36,17 @@ int	create_fg_img(t_data *data)
 int	create_ray_img(t_data *data)
 {
 	data->img->ray = mlx_new_image(data->mlx,
-			data->width * PX, data->height * PX);
+			screen_width, screen_height);
 	if (!data->img->ray)
 		return (1);
 	return (0);
 }
 
-/*Mini-map*/
-// int	create_mm_img(t_data *data)
-// {
-// 	data->img->mm = mlx_new_image(data->mlx,
-// 			screen_width/4 * PX, screen_height/4 * PX);
-// 	if (!data->img->ray)
-// 		return (1);
-// 	return (0);
-// }
-
 /*PLAYER IMAGE*/
 int	create_pl_img(t_data *data)
 {
 	data->img->pl = mlx_new_image(data->mlx,
-			data->width * PX, data->height * PX);
+			screen_width, screen_height);
 	if (!data->img->pl)
 		return (1);
 	return (0);

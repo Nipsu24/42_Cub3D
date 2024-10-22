@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/21 12:35:46 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/22 11:18:15 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	init_structs(t_data *data)
 	data->img->bg = NULL;
 	data->img->fg = NULL;
 	data->img->ray = NULL;
+	data->img->bg_ray = NULL;
 	data->img->data = data;
 	data->map = NULL;
 	data->clone_map = NULL;
@@ -86,6 +87,10 @@ static void	init_structs(t_data *data)
 	data->p_dx = 0;
 	data->p_dy = 0;
 	data->p_a = 0;
+	data->ray_dist = 0;
+	data->line_height = 0;
+	data->ray_index = 0;
+	data->PX = 0;
 	// data->player->dir_x = 0;
 	// data->player->dir_y = 0;
 	// data->player->plane_x = 0;
