@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/22 10:31:43 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/22 11:14:22 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	draw_single_ray(t_data *data, float angle, int color)
 	float	y;
 	float	mag;
 
-	x = (data->x_p * PX) + PXP / 2;
-	y = (data->y_p * PX) + PXP / 2;
+	x = (data->x_p * data->PX); //+ data->PX_mm / 2);
+	y = (data->y_p * data->PX); //+ data->PX_mm / 2);
 	data->ray_dir_x = cos(angle);
 	data->ray_dir_y = -sin(angle);
 	mag = sqrt(data->ray_dir_x * data->ray_dir_x
@@ -31,12 +31,12 @@ static void	draw_single_ray(t_data *data, float angle, int color)
 	data->ray_dir_y /= mag;
 	while (1)
 	{
-		x += (data->ray_dir_x * ray_speed * PX);
-		y += (data->ray_dir_y * ray_speed * PX);
-		if (x < 0 || y < 0 || x >= data->width * PX || y >= data->height * PX
-			|| data->map[(int)y / PX][(int)x / PX] == '1')
+		x += (data->ray_dir_x * ray_speed * data->PX);
+		y += (data->ray_dir_y * ray_speed * data->PX);
+		if (x < 0 || y < 0 || x >= data->width * data->PX || y >= data->height * data->PX
+			|| data->map[(int)y / (int)data->PX][(int)x / (int)data->PX] == '1')
 			break ;
-		mlx_put_pixel(data->img->ray, x/3, y/3, color);
+		mlx_put_pixel(data->img->ray, x, y, color);
 	}
 }
 
@@ -47,6 +47,7 @@ void	draw_fov(t_data *data)
 	float	current_angle;
 	float	step_angle;
 
+	data->ray_index = 0;
 	start_angle = data->p_a - PI / 6;
 	end_angle = data->p_a + PI / 6;
 	step_angle = (end_angle - start_angle) / mm_rays;
@@ -56,6 +57,7 @@ void	draw_fov(t_data *data)
 	{
 		draw_single_ray(data, current_angle, data->img->colour);
 		current_angle += step_angle;
+		data->ray_index++;
 		if (data->img->colour == 0xFF0000FF)
 			data->img->colour = 0x00FF00FF;
 		else if (data->img->colour == 0x00FF00FF)
@@ -75,8 +77,8 @@ static float	draw_single_ray_3d(t_data *data, float angle)
 	float	mag;
 	float	len;
 
-	x = (data->x_p * PX) + PXP / 2;
-	y = (data->y_p * PX) + PXP / 2;
+	x = data->x_p;
+	y = data->y_p;
 	data->ray_dir_x = cos(angle);
 	data->ray_dir_y = -sin(angle);
 	mag = sqrt(data->ray_dir_x * data->ray_dir_x
@@ -85,13 +87,12 @@ static float	draw_single_ray_3d(t_data *data, float angle)
 	data->ray_dir_y /= mag;
 	while (1)
 	{
-		x += (data->ray_dir_x * ray_speed * PX);
-		y += (data->ray_dir_y * ray_speed * PX);
-		len = sqrt((x - ((data->x_p * PX) + PXP / 2)) * (x - ((data->x_p * PX) + PXP / 2)) +
-				   (y - ((data->y_p * PX) + PXP / 2)) * (y - ((data->y_p * PX) + PXP / 2)));
+		x += (data->ray_dir_x * ray_speed);
+		y += (data->ray_dir_y * ray_speed);
+		len = sqrt((x - data->x_p) * (x - data->x_p) + (y - data->y_p) * (y - data->y_p));
 
-		if (x < 0 || y < 0 || x >= data->width * PX || y >= data->height * PX
-			|| data->map[(int)y / PX][(int)x / PX] == '1')
+		if (x < 0 || y < 0 || x >= data->width || y >= data->height
+			|| data->map[(int)y][(int)x] == '1')
 			return (len);
 	}
 }
@@ -148,18 +149,18 @@ static void updating_fg(t_data *data)
     int     pixel_x;
     int     x_step;
 
-    screen_center = screen_height * PX / 2;
+    screen_center = screen_height / 2;
     ray_index = 0;
 
     // Calculate step to ensure we span the full width without gaps
-    x_step = (screen_width * PX) / rays;
+    x_step = screen_width / rays;
 
     while (ray_index < rays)
     {
         len = data->img->len[ray_index];
         if (len == 0)
             len = 0.01f; // Avoid division by zero
-        line_height = (block_height * PX) / len;
+        line_height = block_height / len;
         start_y = screen_center - (line_height / 2);
         end_y = screen_center + (line_height / 2);
         y = start_y;
@@ -169,7 +170,7 @@ static void updating_fg(t_data *data)
 
         while (y <= end_y)
         {
-            if (y >= 0 && y < screen_height * PX)
+            if (y >= 0 && y < screen_height)
             {
                 mlx_put_pixel(data->img->fg, pixel_x, y, 0xFF00FFFF);
             }
