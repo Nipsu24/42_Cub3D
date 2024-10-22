@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_mini_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/22 11:03:16 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/22 12:02:16 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ void	build_map(t_data *data)
 	get_textures(data);
 	get_images(data);
 	create_pl_img(data);
-	create_fg_img(data);
 	while (data->map[++y])
 	{
 		x = -1;

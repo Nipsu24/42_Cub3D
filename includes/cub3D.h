@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/22 11:22:32 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/22 15:09:00 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # define ray_speed 0.03
 # define ro_speed 0.3
 # define PI 3.1415926535
-# define mm_rays 25
-# define rays 800
-# define screen_width 2560
+# define mm_rays 20
+# define rays 1500
+# define screen_width 1280
 # define screen_height screen_width/2 // always determined by screen_width
 # define mm_size 4 // downscale factor for mini map and player
 # define block_height screen_height / 3
