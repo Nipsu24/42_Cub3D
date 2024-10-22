@@ -1,0 +1,24 @@
+NO textures/test/north.png
+
+
+
+SO         textures/test/south.png
+
+
+EA     textures/test/east.png
+WE      textures/test/west.png
+
+C 135,          206,235
+
+
+
+F     34    ,   139,             34
+
+111111111111111
+10E000000000001
+100011111111111
+100000000001001
+100010001000001
+100010000111111
+100000000000001
+111111111111111
