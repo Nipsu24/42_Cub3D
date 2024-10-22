@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/22 11:14:22 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/22 15:06:16 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,99 +91,49 @@ static float	draw_single_ray_3d(t_data *data, float angle)
 		y += (data->ray_dir_y * ray_speed);
 		len = sqrt((x - data->x_p) * (x - data->x_p) + (y - data->y_p) * (y - data->y_p));
 
-		if (x < 0 || y < 0 || x >= data->width || y >= data->height
+		if (x < 0 || y < 0 || x >= screen_width || y >= screen_height
 			|| data->map[(int)y][(int)x] == '1')
 			return (len);
 	}
 }
 
-// static void updating_fg(t_data *data) //ORGINAL
-// {
-// 	int		ray_index;
-// 	float	len;
-// 	float	line_height;
-// 	float	start_y;
-// 	float	end_y;
-// 	float	y;
-// 	float	screen_center;
- 
-// 	screen_center = screen_height * PX / 2;
-// 	ray_index = 0;
-
-// 	while (ray_index < rays)
-// 	{
-	
-// 		len = data->img->len[ray_index];
-// 		line_height = (block_height * PX) / len;
-// 		start_y = screen_center - (line_height / 2);
-// 		end_y = screen_center + (line_height / 2);
-// 		y = start_y;
-// 		while (y <= end_y)
-// 		{
-// 			if (len == 0)
-//     			len = 0.01f;
-// 			if (y >= 0 && y < screen_height * PX)
-// 			{
-// 				// printf("put pixel\n");
-// 				mlx_put_pixel(data->img->fg, ray_index * (screen_width * PX / rays), y, 0xFF00FFFF);
-// 			}
-// 			y += 1;
-// 		}
-// 		ray_index++;
-// 	}
-// 	// printf("image to window\n");
-// 	mlx_image_to_window(data->mlx, data->img->fg, 0, 0);
-
-	
-// }
-
-static void updating_fg(t_data *data)
+static void	updating_fg(t_data *data) //ORGINAL
 {
-    int     ray_index;
-    float   len;
-    float   line_height;
-    float   start_y;
-    float   end_y;
-    float   y;
-    float   screen_center;
-    int     pixel_x;
-    int     x_step;
+	int		ray_index;
+	float	len;
+	float	line_height;
+	float	start_y;
+	float	end_y;
+	float	y;
+	float	screen_center;
+	int		pixel_x;
+ 
+	screen_center = screen_height / 2;
+	ray_index = 0;
 
-    screen_center = screen_height / 2;
-    ray_index = 0;
-
-    // Calculate step to ensure we span the full width without gaps
-    x_step = screen_width / rays;
-
-    while (ray_index < rays)
-    {
-        len = data->img->len[ray_index];
-        if (len == 0)
-            len = 0.01f; // Avoid division by zero
-        line_height = block_height / len;
-        start_y = screen_center - (line_height / 2);
-        end_y = screen_center + (line_height / 2);
-        y = start_y;
-
-        // Calculate the correct x position
-        pixel_x = ray_index * x_step; // Ensure it spans entire width
-
-        while (y <= end_y)
-        {
-            if (y >= 0 && y < screen_height)
-            {
-                mlx_put_pixel(data->img->fg, pixel_x, y, 0xFF00FFFF);
-            }
-            y += 1;
-        }
-        ray_index++;
-    }
-    mlx_image_to_window(data->mlx, data->img->fg, 0, 0);
+	while (ray_index < rays)
+	{
+		len = data->img->len[ray_index];
+		if (len == 0)
+    		len = 0.01f;
+		line_height = (block_height) / len;
+		start_y = screen_center - (line_height / 2);
+		end_y = screen_center + (line_height / 2);
+		y = start_y;
+		pixel_x = screen_width - (ray_index * (screen_width / (float)rays));
+		while (y <= end_y)
+		{
+			if (y >= 0 && y < screen_height)
+			{
+				// printf("y: %f\n", y);
+				mlx_put_pixel(data->img->fg, pixel_x, y, 0xFFFFFFFF);
+			}
+			y += 1;
+		}
+		ray_index++;
+	}
+	mlx_image_to_window(data->mlx, data->img->fg, 0, 0);	
 }
-
-
-
-
 
 /*functions for casting a series of rays used for '3D' rendering*/
 
