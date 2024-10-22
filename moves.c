@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/16 13:50:16 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/21 14:44:41 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void	move_up(t_data *data)
 		data->y_p = new_y;
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
+		mlx_delete_image(data->mlx, data->img->fg);
 		create_ray_img(data);
+		create_fg_img(data);
+		draw_fov_3d(data);
 		draw_fov(data);
 	}
 }
@@ -53,7 +56,10 @@ void	move_down(t_data *data)
 		data->y_p = new_y;
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
+		mlx_delete_image(data->mlx, data->img->fg);
 		create_ray_img(data);
+		create_fg_img(data);
+		draw_fov_3d(data);
 		draw_fov(data);
 	}
 }
@@ -76,7 +82,10 @@ void	move_left(t_data *data)
 		data->y_p = new_y;
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
+		mlx_delete_image(data->mlx, data->img->fg);
 		create_ray_img(data);
+		create_fg_img(data);
+		draw_fov_3d(data);
 		draw_fov(data);
 	}
 }
@@ -99,7 +108,10 @@ void	move_right(t_data *data)
 		data->y_p = new_y;
 		build_map(data);
 		mlx_delete_image(data->mlx, data->img->ray);
+		mlx_delete_image(data->mlx, data->img->fg);
 		create_ray_img(data);
+		create_fg_img(data);
+		draw_fov_3d(data);
 		draw_fov(data);
 	}
 }

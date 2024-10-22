@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_mini_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/17 11:18:40 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/21 12:09:14 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	get_images(t_data *data)
 	data->img->fl = mlx_texture_to_image(data->mlx, data->txtr->fl);
 	if (!data->img->fl)
 		return (1);
+	mlx_resize_image(data->img->fl, PX/2, PX/2);
+	mlx_resize_image(data->img->wl, PX/2, PX/2);
 	return (0);
 }
 
@@ -110,6 +112,7 @@ void	build_map(t_data *data)
 	get_textures(data);
 	get_images(data);
 	create_pl_img(data);
+	create_fg_img(data);
 	while (data->map[++y])
 	{
 		x = -1;

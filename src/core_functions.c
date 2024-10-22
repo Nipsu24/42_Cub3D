@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   core_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/03 13:39:51 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/21 11:39:48 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,11 @@ static int	map_parsing(char *av, t_data *data, t_img *img)
 
 /*this is basically the main funtion, this can get more
 cluttered and we can keep the main tight*/
-int	cube_it(char *av, t_data *data, t_img *img)
+int	cube_it(char *av, t_data *data)
 {	
-	(void)img;
-	if (map_parsing(av, data, img))
+	if (map_parsing(av, data, data->img))
 		return (1);
 	data->parsing_ok = 1;
-	mlx_functions(data, img);
+	mlx_functions(data);
 	return (0);
 }

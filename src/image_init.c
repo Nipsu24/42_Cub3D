@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:06:30 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/18 13:03:28 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/18 13:41:57 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	create_fg_img(t_data *data)
 {
 	data->img->fg = mlx_new_image(data->mlx,
 			screen_width * PX, screen_height * PX);
-	if (!data->img->bg)
+	if (!data->img->fg)
 		return (1);
 	return (0);
 }
