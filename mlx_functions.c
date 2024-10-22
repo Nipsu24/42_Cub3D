@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/17 11:09:47 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/21 15:05:53 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,13 @@ static void	fill_main_screen(t_data *data)
 
 	y = -1;
 	x = -1;
-	while (++y < screen_height * PX/2)
+	while (++y < (screen_height * PX) /2)
 	{
 		x = -1;
 		while (++x < screen_width * PX)
 			mlx_put_pixel(data->img->bg, x, y, convert_rgb_to_hex(data->img->ceiling));
 	}
+	y--;
 	while (++y < screen_height * PX)
 	{
 		x = -1;
@@ -94,9 +95,8 @@ static void	fill_main_screen(t_data *data)
 	mlx_image_to_window(data->mlx, data->img->bg, 0, 0);
 }
 
-int	mlx_functions(t_data *data, t_img *img)
+int	mlx_functions(t_data *data)
 {
-	(void)img;
 	data->mlx = mlx_init(screen_width * PX, screen_height * PX, "cub3D", false);
 	if (!data->mlx)
 		return (1);
@@ -111,9 +111,14 @@ int	mlx_functions(t_data *data, t_img *img)
 		return (1);
 	if (create_pl_img(data))
 		return (1);
+	if (data->img->fg)
+		mlx_delete_image(data->mlx, data->img->pl);
+	if (create_fg_img(data))
+		return (1);
 	check_init_pl_angle(data);
 	build_map(data);
 	draw_fov(data);
+	draw_fov_3d(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	// mlx_cursor_hook(data->mlx, &mouse_catcher, data);
 	mlx_loop(data->mlx);

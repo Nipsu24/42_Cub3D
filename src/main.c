@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/18 12:56:37 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/21 12:35:46 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	init_structs(t_data *data)
 	data->img->so = NULL;
 	data->img->ea = NULL;
 	data->img->we = NULL;
+	// data->img->len[rays] -------needs function to set it to NULL
 	data->img->ceiling[0] = -1;
 	data->img->ceiling[1] = -1;
 	data->img->ceiling[2] = -1;
@@ -98,14 +99,12 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		init_structs(&data);
-		if (cube_it(argv[1], &data, data.img))
+		if (cube_it(argv[1], &data))
 			return (free_all(&data, 1));
 		printf("SUCCESS\n");
 		return (free_all(&data, 0));
 	}
 	else
-	{
 		official_exit();
-	}
 	return (0);
 }

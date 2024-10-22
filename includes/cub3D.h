@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/18 13:03:45 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/21 14:56:45 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@
 # define PI 3.1415926535
 # define P_COL 0xFF0000FF
 # define mm_rays 25
-# define rays 300
+# define block_height 64
+# define rays 600
 # define screen_width 40
 # define screen_height screen_width/2
 
@@ -47,6 +48,7 @@ typedef struct s_img
 	char			*we;
 	long int		floor[3];
 	long int		ceiling[3];
+	float			len[rays];
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
 	mlx_image_t		*pl;
@@ -113,7 +115,7 @@ typedef struct s_data
 
 /*						core_functions.c						*/
 
-int			cube_it(char *av, t_data *data, t_img *img);
+int			cube_it(char *av, t_data *data);
 
 /*						utils.c									*/
 
@@ -130,7 +132,7 @@ void		official_exit(void);
 
 /*						mlx_functions.c							*/
 
-int			mlx_functions(t_data *data, t_img *img);
+int			mlx_functions(t_data *data);
 
 /*						map_checking_a.c						*/
 
@@ -187,12 +189,14 @@ void		move_right(t_data *data);
 /*						draw_ray.c								*/
 
 void 		draw_fov(t_data *data);
+void 		draw_fov_3d(t_data *data);
 
 /*						init_images.c							*/
 
 int			create_ray_img(t_data *data);
 int			create_pl_img(t_data *data);
 int			create_bg_img(t_data *data);
+int			create_fg_img(t_data *data);
 
 /*						rotate.c								*/
 

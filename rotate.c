@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/16 13:50:24 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/18 13:55:58 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	rotate_left(t_data *data)
 	data->p_dy = sin(data->p_a);
 	build_map(data);
 	mlx_delete_image(data->mlx, data->img->ray);
+	mlx_delete_image(data->mlx, data->img->fg);
 	create_ray_img(data);
+	create_fg_img(data);
+	draw_fov_3d(data);
 	draw_fov(data);
 }
 
@@ -38,6 +41,9 @@ void	rotate_right(t_data *data)
 	data->p_dy = sin(data->p_a);
 	build_map(data);
 	mlx_delete_image(data->mlx, data->img->ray);
+	mlx_delete_image(data->mlx, data->img->fg);
 	create_ray_img(data);
+	create_fg_img(data);
+	draw_fov_3d(data);
 	draw_fov(data);
 }
