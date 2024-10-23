@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/16 16:34:39 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:34:44 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ static int	map_size(t_data *data)
 		}
 	}
 	data->width = width_1;
-	if (width_1 > screen_width)
+	if (width_1 > S_WID)
 		return (err_msg(6));
-	if (data->height > screen_height)
+	if (data->height > S_HEI)
 		return (err_msg(7));
 	return (0);
 }

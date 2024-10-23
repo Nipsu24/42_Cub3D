@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/22 12:07:19 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:32:18 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
   to keep the angle within 0 and 360 degrees (2*PI).*/
 void	rotate_left(t_data *data)
 {
-	data->p_a += ro_speed;
+	data->p_a += RO_SPEED;
 	if (data->p_a >= 2 * PI)
 		data->p_a -= 2 * PI;
 	data->p_dx = cos(data->p_a);
@@ -34,7 +34,7 @@ void	rotate_left(t_data *data)
   to keep the angle within 0 and 360 degrees (2*PI).*/
 void	rotate_right(t_data *data)
 {
-	data->p_a -= ro_speed;
+	data->p_a -= RO_SPEED;
 	if (data->p_a < 0)
 		data->p_a += 2 * PI;
 	data->p_dx = cos(data->p_a);

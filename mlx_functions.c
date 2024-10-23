@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 11:14:13 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:35:24 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,17 @@ static void	fill_main_screen(t_data *data)
 
 	y = -1;
 	x = -1;
-	while (++y < screen_height / 2)
+	while (++y < S_HEI / 2)
 	{
 		x = -1;
-		while (++x < screen_width)
+		while (++x < S_WID)
 			mlx_put_pixel(data->img->bg, x, y, convert_rgb_to_hex(data->img->ceiling));
 	}
 	y--;
-	while (++y < screen_height)
+	while (++y < S_HEI)
 	{
 		x = -1;
-		while (++x < screen_width)
+		while (++x < S_WID)
 			mlx_put_pixel(data->img->bg, x, y, convert_rgb_to_hex(data->img->floor));
 	}
 	mlx_image_to_window(data->mlx, data->img->bg, 0, 0);
@@ -100,13 +100,12 @@ void calc_mini_map_scaling(t_data *data)
     int PX_x = 0;
     int PX_y = 0;
 
-    PX_x = screen_width / data->width / mm_size;
-    PX_y = screen_height / data->height / mm_size;
+    PX_x = S_WID / data->width / MM_SIZE;
+    PX_y = S_HEI / data->height / MM_SIZE;
     if (PX_x < PX_y)
 		data->PX = PX_x;
 	else
 		data->PX = PX_y;
-	// data->PX = (PX_x < PX_y) ? PX_x : PX_y;
 }
 
 int	mlx_functions(t_data *data)
@@ -129,8 +128,8 @@ int	mlx_functions(t_data *data)
 		return (1);
 	check_init_pl_angle(data);
 	draw_fov_3d(data);
-	build_map(data);
 	draw_fov(data);
+	build_map(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	// mlx_cursor_hook(data->mlx, &mouse_catcher, data);
 	mlx_loop(data->mlx);
