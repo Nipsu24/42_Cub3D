@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/23 15:01:46 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/23 15:18:06 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,15 +161,19 @@ static void	updating_fg(t_data *data) //ORGINAL
 	float	y;
 	float	screen_center;
 	int		pixel_x;
+	float	angle_offset;
+	float	fov = PI / 3;
  
 	screen_center = screen_height / 2;
 	ray_index = 0;
+	angle_offset = (ray_index - rays / 2) * (fov / rays);
 
 	while (ray_index < rays)
     {
         len = data->img->len[ray_index];
         if (len == 0)
             len = 0.01f;
+		len = len * cos(angle_offset);
         line_height = (block_height) / len;
         start_y = screen_center - (line_height / 2);
         end_y = screen_center + (line_height / 2);
