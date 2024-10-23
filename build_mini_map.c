@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_mini_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/23 10:32:57 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:01:12 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,44 +47,28 @@ static void	init_pl(t_pl *pl)
 	pl->y_strt = 0;
 	pl->pix_x = -1;
 	pl->pix_y = -1;
-	pl->x_centr = 0;
-	pl->y_centr = 0;
-	pl->ro_x = 0;
-	pl->ro_y = 0;
-	pl->transl_x = 0;
-	pl->transl_y = 0;
 	pl->fnl_x = 0;
 	pl->fnl_y = 0;
 }
 
 /*-strt: calculates starting position of player
-  -centr: calculates player's center (pivot point of rotation)
-  -transl: translates pixel to center of player for rotation
-  -ro: rotates pixel using clockwise rotation (negative angle)
   -fnl: translates pixel back to original position, uses round
    function for better accuracy*/
 void	draw_player(t_data *data, float width, float height)
 {
-	t_pl	pl;
+    t_pl	pl;
 
 	init_pl(&pl);
-	pl.x_strt = (data->x_p * data->PX); //+ data->PX_mm / 2); //maybe remove last addition
-	pl.y_strt = (data->y_p * data->PX); //+ data->PX_mm / 2); //maybe remove last addition
-	pl.x_centr = width / 2.0;
-	pl.y_centr = height / 2.0;
+	pl.x_strt = (data->x_p * data->PX);
+	pl.y_strt = (data->y_p * data->PX);
 	while (++pl.pix_y <= height)
 	{
 		pl.pix_x = -1;
 		while (++pl.pix_x <= width)
 		{
-			pl.transl_x = pl.pix_x - pl.x_centr;
-			pl.transl_y = pl.pix_y - pl.y_centr;
-			pl.ro_x = pl.transl_x * cos(-data->p_a)
-				- pl.transl_y * sin(-data->p_a);
-			pl.ro_y = pl.transl_x * sin(-data->p_a)
-				+ pl.transl_y * cos(-data->p_a);
-			pl.fnl_x = round(pl.x_strt + pl.ro_x + pl.x_centr);
-			pl.fnl_y = round(pl.y_strt + pl.ro_y + pl.y_centr);
+			pl.fnl_x = round(pl.x_strt + pl.pix_x);
+			pl.fnl_y = round(pl.y_strt + pl.pix_y);
+
 			if (pl.fnl_x >= 0 && pl.fnl_x < data->width * data->PX
 				&& pl.fnl_y >= 0 && pl.fnl_y < data->height * data->PX)
 			{
@@ -95,15 +79,14 @@ void	draw_player(t_data *data, float width, float height)
 	}
 }
 
-
 /*Builds 2d map (floor, wall, player). Deletion and creation of textures
   and images needed in this function, as it is called everytime when a
   move is conducted (map gets again build "from scratch" over and over
   again).*/
 void	build_map(t_data *data)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
 
 	y = -1;
 	x = -1;
@@ -122,5 +105,6 @@ void	build_map(t_data *data)
 				mlx_image_to_window(data->mlx, data->img->wl, x * data->PX, y * data->PX);
 		}
 	}
-	draw_player(data, data->PX / mm_size / 2, data->PX / mm_size / 2);
+	data->pl_size = data->PX / mm_size / 2;
+	draw_player(data, data->pl_size, data->pl_size);
 }

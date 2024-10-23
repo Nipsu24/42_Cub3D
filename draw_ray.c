@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/23 10:51:15 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:01:46 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	draw_single_ray(t_data *data, float angle, int color)
 	float	y;
 	float	mag;
 
-	x = (data->x_p * data->PX); //+ data->PX_mm / 2);
-	y = (data->y_p * data->PX); //+ data->PX_mm / 2);
+	x = (data->x_p * data->PX) + (data->pl_size / 2);
+	y = (data->y_p * data->PX) + (data->pl_size / 2);
 	data->ray_dir_x = cos(angle);
 	data->ray_dir_y = -sin(angle);
 	mag = sqrt(data->ray_dir_x * data->ray_dir_x

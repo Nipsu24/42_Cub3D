@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 10:51:20 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 12:19:31 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_data
 	float			line_height;
 	int				ray_index;
 	float			PX; // size of mini_map tiles
+	float			pl_size;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
