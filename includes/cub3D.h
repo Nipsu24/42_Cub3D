@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/22 16:29:12 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/23 10:27:33 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define ro_speed 0.3
 # define PI 3.1415926535
 # define mm_rays 20
-# define rays 1500
-# define screen_width 1280
-# define screen_height screen_width / 2 // always determined by screen_width
+# define rays 1260
+# define screen_width 1260
+# define screen_height screen_width  // always determined by screen_width
 # define mm_size 4 // downscale factor for mini map and player
 # define block_height screen_height / 2
 typedef struct s_data	t_data;
