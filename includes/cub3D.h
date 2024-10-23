@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/22 15:09:00 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/22 15:40:29 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_img
 	long int		floor[3];
 	long int		ceiling[3];
 	float			len[rays];
+	int				ray_dir[rays];
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
 	mlx_image_t		*pl;

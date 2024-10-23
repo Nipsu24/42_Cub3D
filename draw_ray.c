@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/22 15:06:16 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/22 15:54:29 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,32 @@ static float	draw_single_ray_3d(t_data *data, float angle)
 	}
 }
 
+static int	find_ray_dir(t_data *data, float angle)
+{
+	float	x;
+	float	y;
+	float	mag;
+	int		dir;
+
+	x = data->x_p;
+	y = data->y_p;
+	data->ray_dir_x = cos(angle);
+	data->ray_dir_y = -sin(angle);
+	mag = sqrt(data->ray_dir_x * data->ray_dir_x
+			+ data->ray_dir_y * data->ray_dir_y);
+	data->ray_dir_x /= mag;
+	data->ray_dir_y /= mag;
+	while (1)
+	{
+		x += (data->ray_dir_x * ray_speed);
+		y += (data->ray_dir_y * ray_speed);
+		
+		if (x < 0 || y < 0 || x >= screen_width || y >= screen_height
+			|| data->map[(int)y][(int)x] == '1')
+			return (dir) ;
+	}
+}
+
 static void	updating_fg(t_data *data) //ORGINAL
 {
 	int		ray_index;
@@ -123,17 +149,21 @@ static void	updating_fg(t_data *data) //ORGINAL
 		pixel_x = screen_width - (ray_index * (screen_width / (float)rays));
 		while (y <= end_y)
 		{
-			if (y >= 0 && y < screen_height)
-			{
-				// printf("y: %f\n", y);
-				mlx_put_pixel(data->img->fg, pixel_x, y, 0xFFFFFFFF);
-			}
+			if (y >= 0 && y < screen_height && data->img->ray_dir[ray_index] == 1)
+				mlx_put_pixel(data->img->fg, pixel_x, y, 0x00FFFFFF);
+			if (y >= 0 && y < screen_height && data->img->ray_dir[ray_index] == 2)
+				mlx_put_pixel(data->img->fg, pixel_x, y, 0xFF00FFFF);
+			if (y >= 0 && y < screen_height && data->img->ray_dir[ray_index] == 3)
+				mlx_put_pixel(data->img->fg, pixel_x, y, 0xFFFF00FF);
+			if (y >= 0 && y < screen_height && data->img->ray_dir[ray_index] == 4)
+				mlx_put_pixel(data->img->fg, pixel_x, y, 0x000000FF);
 			y += 1;
 		}
 		ray_index++;
 	}
 	mlx_image_to_window(data->mlx, data->img->fg, 0, 0);	
 }
+
 
 /*functions for casting a series of rays used for '3D' rendering*/
 
@@ -154,6 +184,7 @@ void	draw_fov_3d(t_data *data)
 	while (current_angle <= end_angle && i < rays)
 	{
 		data->img->len[i] = draw_single_ray_3d(data, current_angle);
+		data->img->ray_dir[i] = find_ray_dir(data, current_angle);
 		current_angle += step_angle;
 		i++;
 	}
