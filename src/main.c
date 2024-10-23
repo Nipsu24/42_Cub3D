@@ -3,20 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/22 11:18:15 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/23 12:13:17 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
+
+static void	arr_to_null(float *arr, int len)
+{
+	static int	i = 0;
+
+	while (i < len)
+	{
+		arr[i] = 0;
+		i++;
+	}
+}
 
 static void	init_img(t_data *data)
 {
 	data->img = malloc(sizeof(t_img));
 	if (!data->img)
 		exit (1);
+	arr_to_null(&data->img->len[rays], rays);
+	data->img->wl = NULL;
+	data->img->fl = NULL;
+	data->img->pl = NULL;
+	data->img->bg = NULL;
+	data->img->fg = NULL;
+	data->img->ray = NULL;
+	data->img->bg_ray = NULL;
+	data->img->data = data;
+	data->img->no = NULL;
+	data->img->so = NULL;
+	data->img->ea = NULL;
+	data->img->we = NULL;
+	data->img->ceiling[0] = -1;
+	data->img->ceiling[1] = -1;
+	data->img->ceiling[2] = -1;
+	data->img->floor[0] = -1;
+	data->img->floor[1] = -1;
+	data->img->floor[2] = -1;
 }
 
 static void	init_txtr(t_data *data)
@@ -28,58 +58,26 @@ static void	init_txtr(t_data *data)
 		data->img = NULL;
 		exit (1);
 	}
+	data->txtr->wl = NULL;
+	data->txtr->fl = NULL;
+	data->txtr->pl = NULL;
 }
-
-// static void init_player(t_data *data)
-// {
-// 	data->txtr = malloc(sizeof(t_player));
-// 	if (!data->player)
-// 	{
-// 		free(data->img);
-// 		free(data->txtr);
-// 		data->img = NULL;
-// 		exit (1);
-// 	}
-// }
 
 /*Initialises variables of the main data struct.*/
 static void	init_structs(t_data *data)
 {
 	init_img(data);
 	init_txtr(data);
-	// init_player(data);
-	data->txtr->wl = NULL;
-	data->txtr->fl = NULL;
-	data->txtr->pl = NULL;
-	data->img->wl = NULL;
-	data->img->fl = NULL;
-	data->img->pl = NULL;
-	data->img->bg = NULL;
-	data->img->fg = NULL;
-	data->img->ray = NULL;
-	data->img->bg_ray = NULL;
-	data->img->data = data;
 	data->map = NULL;
 	data->clone_map = NULL;
 	data->file_cnt = NULL;
 	data->file_arr = NULL;
-	data->img->no = NULL;
-	data->img->so = NULL;
-	data->img->ea = NULL;
-	data->img->we = NULL;
-	// data->img->len[rays] -------needs function to set it to NULL
-	data->img->ceiling[0] = -1;
-	data->img->ceiling[1] = -1;
-	data->img->ceiling[2] = -1;
-	data->img->floor[0] = -1;
-	data->img->floor[1] = -1;
-	data->img->floor[2] = -1;
 	data->wall_check = 0;
 	data->p_dir = 'F';
 	data->x_p = 0;
 	data->y_p = 0;
 	data->ray_dir_x = 0;
-	data->ray_dir_y= 0;
+	data->ray_dir_y = 0;
 	data->mlx = NULL;
 	data->height = 0;
 	data->width = 0;
@@ -91,10 +89,6 @@ static void	init_structs(t_data *data)
 	data->line_height = 0;
 	data->ray_index = 0;
 	data->PX = 0;
-	// data->player->dir_x = 0;
-	// data->player->dir_y = 0;
-	// data->player->plane_x = 0;
-	// data->player->plane_y = 0;
 }
 
 int	main(int argc, char **argv)

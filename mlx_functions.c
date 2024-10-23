@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/22 12:06:58 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 11:14:13 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,6 @@ void calc_mini_map_scaling(t_data *data)
 
 int	mlx_functions(t_data *data)
 {
-	data->mlx = mlx_init(screen_width, screen_height, "cub3D", false);
-	if (!data->mlx)
-		return (1);
 	if (create_bg_img(data))
 		return (1);
 	fill_main_screen(data);
