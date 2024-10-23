@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 15:18:12 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:36:07 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 # include <stdio.h>
 # include <math.h>
 
-# define steps 0.3
-# define ray_speed 0.03
-# define ro_speed 0.3
+# define STEPS 0.3
+# define RAY_SPEED 0.03
+# define RO_SPEED 0.3
 # define PI 3.1415926535
-# define mm_rays 20
-# define rays 1500
-# define screen_width 1260
-# define screen_height 1260  // always determined by screen_width
-# define mm_size 4 // downscale factor for mini map and player
-# define block_height screen_height / 2
+# define MM_RAYS 20
+# define RAYS 1500
+# define S_WID 1260
+# define S_HEI 1260  // always determined by screen_width
+# define MM_SIZE 4 // downscale factor for mini map and player
+# define B_HEI 630
 typedef struct s_data	t_data;
 typedef struct s_img
 {
@@ -39,8 +39,8 @@ typedef struct s_img
 	char			*we;
 	long int		floor[3];
 	long int		ceiling[3];
-	float			len[rays];
-	int				hit_dir[rays];
+	float			len[RAYS];
+	int				hit_dir[RAYS];
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
 	mlx_image_t		*pl;

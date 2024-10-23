@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/23 11:58:41 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:34:44 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	cube_it(char *av, t_data *data)
 	if (map_parsing(av, data, data->img))
 		return (1);
 	data->parsing_ok = 1;
-	data->mlx = mlx_init(screen_width, screen_height, "cub3D", false);
+	data->mlx = mlx_init(S_WID, S_HEI, "cub3D", false);
 	if (!data->mlx)
 		return (1);
 	mlx_functions(data);

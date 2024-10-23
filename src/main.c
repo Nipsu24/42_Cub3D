@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 15:19:47 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:33:34 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	init_img(t_data *data)
 	data->img = malloc(sizeof(t_img));
 	if (!data->img)
 		exit (1);
-	arr_to_null(&data->img->len[rays], rays);
+	arr_to_null(&data->img->len[RAYS], RAYS);
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
