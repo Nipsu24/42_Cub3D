@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/22 15:38:46 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 12:19:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static void	init_structs(t_data *data)
 	data->img->so = NULL;
 	data->img->ea = NULL;
 	data->img->we = NULL;
-	data->img->ray_dir = 'F';
 	// data->img->len[rays] -------needs function to set it to NULL
 	data->img->ceiling[0] = -1;
 	data->img->ceiling[1] = -1;
@@ -92,6 +91,7 @@ static void	init_structs(t_data *data)
 	data->line_height = 0;
 	data->ray_index = 0;
 	data->PX = 0;
+	data->pl_size = 0;
 	// data->player->dir_x = 0;
 	// data->player->dir_y = 0;
 	// data->player->plane_x = 0;
