@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/03 11:11:31 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/23 12:33:07 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ static int	get_f(char *address, t_img *img, int i, int c)
 	{
 		if (address[i] == ',')
 			c++;
-		if (address[i] != ',' && address[i] != ' ' && !ft_isdigit(address[i]))
-		{
-			err_msg(8);
-			return (1);
-		}	
 		i++;
 	}
 	if (c > 2 || number_count(address))
