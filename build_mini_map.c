@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/22 12:02:16 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 10:32:57 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,5 @@ void	build_map(t_data *data)
 				mlx_image_to_window(data->mlx, data->img->wl, x * data->PX, y * data->PX);
 		}
 	}
-	draw_player(data, data->PX / mm_size / 4, data->PX / mm_size / 4);
+	draw_player(data, data->PX / mm_size / 2, data->PX / mm_size / 2);
 }
