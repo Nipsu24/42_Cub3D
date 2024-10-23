@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/21 11:39:48 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/23 11:58:41 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,12 @@ static int	map_parsing(char *av, t_data *data, t_img *img)
 		return (1);
 	if (store_file_content(av, data))
 		return (1);
-	// print_arr(data->map);// gonna go...
 	if (arr_splitter(data))
 		return (1);
 	if (texture_extract(data, img, 0, -1))
 		return (1);
 	if (map_extract(data))
 		return (1);
-	// info_printer(img); // to be deleted...
-	// map_printer(data); // to be deleted...
 	if (map_checker(data))
 		return (1);
 	return (0);
@@ -82,6 +79,9 @@ int	cube_it(char *av, t_data *data)
 	if (map_parsing(av, data, data->img))
 		return (1);
 	data->parsing_ok = 1;
+	data->mlx = mlx_init(screen_width, screen_height, "cub3D", false);
+	if (!data->mlx)
+		return (1);
 	mlx_functions(data);
 	return (0);
 }
