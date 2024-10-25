@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 15:36:07 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/25 17:36:39 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <stdio.h>
 # include <math.h>
 
-# define STEPS 0.3
-# define RAY_SPEED 0.03
-# define RO_SPEED 0.3
+# define STEPS 0.3f
+# define RAY_SPEED 0.03f
+# define RO_SPEED 0.3f
 # define PI 3.1415926535
 # define MM_RAYS 20
 # define RAYS 1500
@@ -29,6 +29,7 @@
 # define S_HEI 1260  // always determined by screen_width
 # define MM_SIZE 4 // downscale factor for mini map and player
 # define B_HEI 630
+# define EPSILON 1e-6
 typedef struct s_data	t_data;
 typedef struct s_img
 {
@@ -94,10 +95,6 @@ typedef struct s_data
 	float			p_dx; // player delta x
 	float			p_dy; // player delta y
 	float			p_a; // player angle
-	double			hor_next_y;
-	double			hor_next_x;
-	double			hor_delta_y;
-	double			hor_delta_x;
 	float			len_close_hor;
 	int				up;
 	float			ray_dist;
@@ -105,6 +102,18 @@ typedef struct s_data
 	int				ray_index;
 	float			PX; // size of mini_map tiles
 	float			pl_size;
+	float			hor_next_y;
+	float			hor_next_x;
+	float			ray_or;
+	float			hor_dis;
+	float			ver_next_y;
+	float			ver_next_x;
+	float			ver_dis;
+	float			cl_dis; //closest distance to initial nearest intersection
+	float			cl_y; // closest y
+	float			cl_x; //closest x
+	int				ver_hit;
+	int				hor_hit;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -206,6 +215,10 @@ void		build_map(t_data *data);
 void		draw_player(t_data *data, float width, float height);
 int			get_textures(t_data *data);
 int			get_images(t_data *data);
+
+void		check_closest_hor_inter(t_data *data);
+void		check_closest_ver_inter(t_data *data);
+void		raycaster(t_data *data);
 
 /*						utils_to_be_deleted.c					*/
 
