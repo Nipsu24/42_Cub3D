@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/23 15:32:18 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:57:41 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ void	rotate_left(t_data *data)
 	mlx_delete_image(data->mlx, data->img->fg);
 	create_ray_img(data);
 	create_fg_img(data);
-	draw_fov_3d(data);
+	// draw_fov_3d(data);
 	build_map(data);
-	draw_fov(data);
+	// draw_fov(data);
+	// check_closest_hor_inter(data);
+	check_closest_ver_inter(data);
 }
 
 /*Rotates player clockwise. If statement, in order
@@ -43,7 +45,9 @@ void	rotate_right(t_data *data)
 	mlx_delete_image(data->mlx, data->img->fg);
 	create_fg_img(data);
 	create_ray_img(data);
-	draw_fov_3d(data);
+	// draw_fov_3d(data);
 	build_map(data);
-	draw_fov(data);
+	// draw_fov(data);
+	// check_closest_hor_inter(data);
+	check_closest_ver_inter(data);
 }

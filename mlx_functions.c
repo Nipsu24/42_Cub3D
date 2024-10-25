@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 15:35:24 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/25 17:36:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,11 @@ int	mlx_functions(t_data *data)
 	if (create_fg_img(data))
 		return (1);
 	check_init_pl_angle(data);
-	draw_fov_3d(data);
-	draw_fov(data);
+	// check_closest_hor_inter(data);
+	// check_closest_ver_inter(data);
+	raycaster(data);
+	// draw_fov_3d(data);
+	// draw_fov(data);
 	build_map(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	// mlx_cursor_hook(data->mlx, &mouse_catcher, data);

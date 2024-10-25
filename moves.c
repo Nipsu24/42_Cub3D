@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/23 15:28:18 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/25 17:37:49 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	move_up(t_data *data)
 	double	new_x;
 	double	new_y;
 
-	// new_x = data->x_p + cos(data->p_a) * STEPS;
-	// new_y = data->y_p - sin(data->p_a) * STEPS;
 	new_x = data->x_p + data->p_dx * STEPS;
 	new_y = data->y_p - data->p_dy * STEPS;
 	if (data->map[(int)new_y][(int)new_x] != '1')
@@ -33,9 +31,12 @@ void	move_up(t_data *data)
 		mlx_delete_image(data->mlx, data->img->fg);
 		create_fg_img(data);
 		create_ray_img(data);
-		draw_fov_3d(data);
+		// draw_fov_3d(data);
 		build_map(data);
-		draw_fov(data);
+		// draw_fov(data);
+		// check_closest_hor_inter(data);
+		// check_closest_ver_inter(data);
+		raycaster(data);
 	}
 }
 
@@ -58,9 +59,12 @@ void	move_down(t_data *data)
 		mlx_delete_image(data->mlx, data->img->fg);
 		create_fg_img(data);
 		create_ray_img(data);
-		draw_fov_3d(data);
+		// draw_fov_3d(data);
 		build_map(data);
-		draw_fov(data);
+		// draw_fov(data);
+		// check_closest_hor_inter(data);
+		// check_closest_ver_inter(data);
+		raycaster(data);
 	}
 }
 
@@ -84,9 +88,12 @@ void	move_left(t_data *data)
 		mlx_delete_image(data->mlx, data->img->fg);
 		create_fg_img(data);
 		create_ray_img(data);
-		draw_fov_3d(data);
+		// draw_fov_3d(data);
 		build_map(data);
-		draw_fov(data);
+		// draw_fov(data);
+		// check_closest_hor_inter(data);
+		// check_closest_ver_inter(data);
+		raycaster(data);
 	}
 }
 
@@ -110,8 +117,11 @@ void	move_right(t_data *data)
 		mlx_delete_image(data->mlx, data->img->fg);
 		create_fg_img(data);
 		create_ray_img(data);
-		draw_fov_3d(data);
+		// draw_fov_3d(data);
 		build_map(data);
-		draw_fov(data);
+		// draw_fov(data);
+		// check_closest_hor_inter(data);
+		// check_closest_ver_inter(data);
+		raycaster(data);
 	}
 }
