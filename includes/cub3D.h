@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/25 17:36:39 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/27 15:30:42 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,12 @@ typedef struct s_data
 	float			cl_x; //closest x
 	int				ver_hit;
 	int				hor_hit;
+	float			hor_y_step;
+	float			hor_x_step;
+	float			ver_y_step;
+	float			ver_x_step;
+	int				ray_horizontal;
+	int				ray_vertical;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
