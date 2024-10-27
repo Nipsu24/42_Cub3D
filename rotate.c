@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/25 13:57:41 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/27 10:18:04 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	rotate_left(t_data *data)
 	build_map(data);
 	// draw_fov(data);
 	// check_closest_hor_inter(data);
-	check_closest_ver_inter(data);
+	// check_closest_ver_inter(data);
+	raycaster(data);
 }
 
 /*Rotates player clockwise. If statement, in order
@@ -49,5 +50,6 @@ void	rotate_right(t_data *data)
 	build_map(data);
 	// draw_fov(data);
 	// check_closest_hor_inter(data);
-	check_closest_ver_inter(data);
+	// check_closest_ver_inter(data);
+	raycaster(data);
 }
