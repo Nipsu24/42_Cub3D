@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/28 10:55:30 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:03:37 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define STEPS 0.3f
 # define RAY_SPEED 0.03f
-# define RO_SPEED 0.3f
+# define RO_SPEED 0.2f
 # define PI 3.1415926535
 # define MM_RAYS 20
 # define RAYS 1500

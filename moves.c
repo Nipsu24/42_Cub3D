@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/25 17:37:49 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/28 13:43:42 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
   new position, current location of player gets updated.*/
 void	move_up(t_data *data)
 {
-	double	new_x;
-	double	new_y;
+	float	new_x;
+	float	new_y;
 
 	new_x = data->x_p + data->p_dx * STEPS;
 	new_y = data->y_p - data->p_dy * STEPS;
@@ -46,8 +46,8 @@ void	move_up(t_data *data)
   new position, current location of player gets updated.*/
 void	move_down(t_data *data)
 {
-	double	new_x;
-	double	new_y;
+	float	new_x;
+	float	new_y;
 
 	new_x = data->x_p - data->p_dx * STEPS;
 	new_y = data->y_p + data->p_dy * STEPS;
@@ -73,9 +73,9 @@ void	move_down(t_data *data)
   (PI/2) to current player angle.*/
 void	move_left(t_data *data)
 {
-	double	new_x;
-	double	new_y;
-	double	strafe_angle;
+	float	new_x;
+	float	new_y;
+	float	strafe_angle;
 
 	strafe_angle = data->p_a + PI / 2;
 	new_x = data->x_p + cos(strafe_angle) * STEPS;
@@ -102,9 +102,9 @@ void	move_left(t_data *data)
   (PI/2) from current player angle.*/
 void	move_right(t_data *data)
 {
-	double	new_x;
-	double	new_y;
-	double	strafe_angle;
+	float	new_x;
+	float	new_y;
+	float	strafe_angle;
 
 	strafe_angle = data->p_a - PI / 2;
 	new_x = data->x_p + cos(strafe_angle) * STEPS;
