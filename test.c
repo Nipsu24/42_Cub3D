@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/27 15:57:04 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/28 11:53:46 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,10 @@ static void	calc_delta_hor(t_data *data)
 			// Moving North (upward)
 			data->hor_y_step = -1; // moving up to the previous horizontal line
 		// Calculate the x step size based on the ray angle
-		float tan_angle = tan(data->ray_or);
-		data->hor_x_step = (data->hor_y_step / tan_angle);
+		if (data->hor_y_step == 1)
+			data->hor_x_step = 1 / -tan(data->ray_or);
+		else
+			data->hor_x_step = 1 / tan(data->ray_or);
 	}
 }
 
@@ -200,35 +202,34 @@ static void	calc_delta_ver(t_data *data)
 			data->ver_x_step = -1; // moving to the next vertical line to the left
 		}
 		// Calculate the y step size based on the ray angle
-		float tan_angle = tan(data->ray_or);
 		if (data->ver_x_step == 1) {
 			// Moving right
-			data->ver_y_step = (1 * tan_angle); // positive y step for rightward ray
+			data->ver_y_step = (1 * tan(data->ray_or)); // positive y step for rightward ray
 		} else {
 			// Moving left
-			data->ver_y_step = (-1 * tan_angle); // negative y step for leftward ray
+			data->ver_y_step = (1 * -tan(data->ray_or)); // negative y step for leftward ray
 		}
 	}
 }
 
-static void	comp_closest_inter_fnl(t_data *data)
-{
-	init_fnl_cord(data);
-	if (data->ver_dis > data->hor_dis)
-	{
-		data->cl_y = data->hor_next_y;
-		data->cl_x = data->hor_next_x;
-		data->cl_dis = data->hor_dis;
-	}
-	else
-	{
-		data->cl_y = data->ver_next_y;
-		data->cl_x = data->ver_next_x;
-		data->cl_dis = data->ver_dis;
-	}
-	// if (data->cl_x >= 0 && data->cl_y >= 0 && data->cl_x < data->width && data->cl_y < data->height)
-	// 	draw_ray_test(data, data->x_p * data->PX, data->y_p * data->PX, data->cl_x * data->PX, data->cl_y * data->PX);		
-}
+// static void	comp_closest_inter_fnl(t_data *data)
+// {
+// 	init_fnl_cord(data);
+// 	if (data->ver_dis > data->hor_dis)
+// 	{
+// 		data->cl_y = data->hor_next_y;
+// 		data->cl_x = data->hor_next_x;
+// 		data->cl_dis = data->hor_dis;
+// 	}
+// 	else
+// 	{
+// 		data->cl_y = data->ver_next_y;
+// 		data->cl_x = data->ver_next_x;
+// 		data->cl_dis = data->ver_dis;
+// 	}
+// 	// if (data->cl_x >= 0 && data->cl_y >= 0 && data->cl_x < data->width && data->cl_y < data->height)
+// 	// 	draw_ray_test(data, data->x_p * data->PX, data->y_p * data->PX, data->cl_x * data->PX, data->cl_y * data->PX);		
+// }
 
 void	raycaster(t_data *data)
 {
@@ -241,23 +242,56 @@ void	raycaster(t_data *data)
 	}
 	calc_delta_ver(data);
 	calc_delta_hor(data);
-	if (!data->ray_horizontal)
+	while (1)
 	{
-		while (1)
+		// if (data->hor_next_y >= 0 && data->hor_next_y < data->height && data->hor_next_x >= 0 && data->hor_next_x < data->width)
+		// {
+		if (data->map[(int)(data->hor_next_y)][(int)(data->hor_next_x)] == '1')
 		{
-			// if (data->hor_next_y >= 0 && data->hor_next_y < data->height && data->hor_next_x >= 0 && data->hor_next_x < data->width)
-			// {
-				if (data->map[(int)(data->hor_next_y)][(int)(data->hor_next_x)] == '1')
-				{
-					data->hor_dis = sqrt((data->hor_next_x - data->x_p) * (data->hor_next_x - data->x_p)
-						+ (data->hor_next_y - data->y_p) * (data->hor_next_y - data->y_p));
-					break;
-				}
-			// }
-			data->hor_next_x += data->hor_x_step;
-			data->hor_next_y += data->hor_y_step;
+			data->hor_dis = sqrt((data->hor_next_x - data->x_p) * (data->hor_next_x - data->x_p)
+				+ (data->hor_next_y - data->y_p) * (data->hor_next_y - data->y_p));
+			data->hor_hit = 1;
+			// break;
 		}
-		draw_ray_test(data, data->x_p * data->PX, data->y_p * data->PX, data->hor_next_x * data->PX, data->PX * data->hor_next_y);
+		// }
+		data->hor_next_x += data->hor_x_step;
+		data->hor_next_y += data->hor_y_step;
+		if (data->map[(int)(data->ver_next_y)][(int)(data->ver_next_x)] == '1')
+		{
+			data->ver_dis = sqrt((data->ver_next_x - data->x_p) * (data->ver_next_x - data->x_p)
+				+ (data->ver_next_y - data->y_p) * (data->ver_next_y - data->y_p));
+			data->ver_hit = 1;
+			// break;
+		}
+		data->ver_next_x += data->ver_x_step;
+		data->ver_next_y += data->ver_y_step;
+		if (data->ver_hit || data->hor_hit)
+			break;
+	}
+	if (data->hor_dis && data->ver_dis)
+	{
+		if (data->ver_dis > data->hor_dis)
+		{
+			data->cl_x = data->hor_next_x;
+			data->cl_y = data->hor_next_y;
+		}
+		else
+		{
+			data->cl_x = data->ver_next_x;
+			data->cl_y = data->ver_next_y;
+		}
+	}
+	else if (data->hor_hit)
+	{
+		data->cl_x = data->hor_next_x;
+		data->cl_y = data->hor_next_y;
+	}
+	else if (data->ver_hit)
+	{
+		data->cl_x = data->ver_next_x;
+		data->cl_y = data->ver_next_y;
+	}
+	draw_ray_test(data, data->x_p * data->PX, data->y_p * data->PX, data->cl_x * data->PX, data->cl_y * data->PX);
 	// // }
 	// // if (!(fabs(data->ray_or - PI/2) < EPSILON) && !(fabs(data->ray_or - 3 * PI/2) < EPSILON))
 	// // {
@@ -276,6 +310,6 @@ void	raycaster(t_data *data)
 	// 		data->ver_next_x += data->ver_x_step;
 	// 		data->ver_next_y += data->ver_y_step;
 	// 	}
-	}
-	comp_closest_inter_fnl(data);
+	// }
+	// comp_closest_inter_fnl(data);
 }
