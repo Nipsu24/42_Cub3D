@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/27 15:30:42 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/28 10:55:30 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define RAYS 1500
 # define S_WID 1260
 # define S_HEI 1260  // always determined by screen_width
-# define MM_SIZE 4 // downscale factor for mini map and player
+# define MM_SIZE 2 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPSILON 1e-6
 typedef struct s_data	t_data;
