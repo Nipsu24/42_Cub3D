@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/28 14:03:37 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/29 16:10:29 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_data
 	float			ver_x_step;
 	int				ray_horizontal;
 	int				ray_vertical;
+	float			ray_len;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -225,6 +226,17 @@ int			get_images(t_data *data);
 void		check_closest_hor_inter(t_data *data);
 void		check_closest_ver_inter(t_data *data);
 void		raycaster(t_data *data);
+float		calc_dist(float x, float y, float x_tar, float y_tar);
+
+/*						hit_check.c								*/
+
+void		ft_hit_wall(t_data *data);
+
+/*						intersects.c							*/
+void		check_closest_hor_inter(t_data *data);
+void		check_closest_ver_inter(t_data *data);
+void		calc_delta_hor(t_data *data);
+void		calc_delta_ver(t_data *data);
 
 /*						utils_to_be_deleted.c					*/
 
