@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/28 11:51:01 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/30 13:51:06 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@
 
 # define STEPS 0.3f
 # define RAY_SPEED 0.03f
-# define RO_SPEED 0.3f
+# define RO_SPEED 0.2f
 # define PI 3.1415926535
 # define MM_RAYS 20
-# define RAYS 1366
-# define S_WID 1366
-# define S_HEI 768  // always determined by screen_width
-# define MM_SIZE 4 // downscale factor for mini map and player
+# define RAYS 1500
+# define S_WID 1260
+# define S_HEI 1260  // always determined by screen_width
+# define MM_SIZE 2 // downscale factor for mini map and player
 # define B_HEI 630
+# define EPSILON 1e-6
+# define FOV (PI / 3) // 60 degrees
 typedef struct s_data	t_data;
 typedef struct s_img
 {
@@ -77,6 +79,7 @@ typedef struct s_txtr
 
 typedef struct s_data
 {
+	mlx_t			*mlx;
 	char			**map;
 	char			**clone_map;
 	char			*file_cnt;
@@ -93,10 +96,6 @@ typedef struct s_data
 	float			p_dx; // player delta x
 	float			p_dy; // player delta y
 	float			p_a; // player angle
-	float			hor_next_y;
-	float			hor_next_x;
-	float			hor_delta_y;
-	float			hor_delta_x;
 	float			len_close_hor;
 	int				up;
 	float			ray_dist;
@@ -104,7 +103,25 @@ typedef struct s_data
 	int				ray_index;
 	float			PX; // size of mini_map tiles
 	float			pl_size;
-	mlx_t			*mlx;
+	float			hor_next_y;
+	float			hor_next_x;
+	float			ray_or;
+	float			hor_dis;
+	float			ver_next_y;
+	float			ver_next_x;
+	float			ver_dis;
+	float			cl_dis; //closest distance to initial nearest intersection
+	float			cl_y; // closest y
+	float			cl_x; //closest x
+	int				ver_hit;
+	int				hor_hit;
+	float			hor_y_step;
+	float			hor_x_step;
+	float			ver_y_step;
+	float			ver_x_step;
+	int				ray_horizontal;
+	int				ray_vertical;
+	float			ray_len;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -213,6 +230,21 @@ void		build_map(t_data *data);
 void		draw_player(t_data *data, float width, float height);
 int			get_textures(t_data *data);
 int			get_images(t_data *data);
+
+void		check_closest_hor_inter(t_data *data);
+void		check_closest_ver_inter(t_data *data);
+void		raycaster(t_data *data);
+float		calc_dist(float x, float y, float x_tar, float y_tar);
+
+/*						hit_check.c								*/
+
+void		ft_hit_wall(t_data *data);
+
+/*						intersects.c							*/
+void		check_closest_hor_inter(t_data *data);
+void		check_closest_ver_inter(t_data *data);
+void		calc_delta_hor(t_data *data);
+void		calc_delta_ver(t_data *data);
 
 /*						utils_to_be_deleted.c					*/
 

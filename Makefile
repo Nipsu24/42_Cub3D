@@ -6,7 +6,7 @@
 #    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/28 11:49:23 by lstorey          ###   ########.fr        #
+#    Updated: 2024/10/30 13:44:44 by lstorey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,10 @@ FILES = src/utils.c \
 		draw_ray_3D.c \
 		rotate.c \
 		src/image_init.c \
-		build_mini_map.c
+		build_mini_map.c \
+		raycaster.c \
+		hit_check.c \
+		intersects.c
 		
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
