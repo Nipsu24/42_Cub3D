@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_mini_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/23 15:35:24 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/30 16:54:24 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,5 @@ void	build_map(t_data *data)
 	}
 	data->pl_size = data->PX / MM_SIZE / 2;
 	draw_player(data, data->pl_size, data->pl_size);
+	mlx_image_to_window(data->mlx, data->img->ray, 0, 0);
 }

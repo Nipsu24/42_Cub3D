@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/30 10:35:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/30 16:52:11 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 	t_data	*data;
 
 	data = param;
+	// mlx_delete_image(data->mlx, data->img->ray);
+	// mlx_delete_image(data->mlx, data->img->fg);
+	// create_fg_img(data);
+	// create_ray_img(data);
+	// raycaster(data);
+	// build_map(data);
 	// if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
 	// {
 		if (keydata.key == MLX_KEY_W)
@@ -110,6 +116,7 @@ void calc_mini_map_scaling(t_data *data)
 
 int	mlx_functions(t_data *data)
 {
+	
 	if (create_bg_img(data))
 		return (1);
 	fill_main_screen(data);
@@ -122,15 +129,11 @@ int	mlx_functions(t_data *data)
 		return (1);
 	if (create_pl_img(data))
 		return (1);
-	// if (data->img->fg)
-	// 	mlx_delete_image(data->mlx, data->img->pl);
 	if (create_fg_img(data))
 		return (1);
 	check_init_pl_angle(data);
-	// draw_fov_3d(data);
-	// draw_fov(data);
-	build_map(data);
 	raycaster(data);
+	build_map(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	// mlx_cursor_hook(data->mlx, &mouse_catcher, data);
 	mlx_loop(data->mlx);
