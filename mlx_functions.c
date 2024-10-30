@@ -6,13 +6,13 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 15:35:24 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:58:14 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
-// static void mouse_catcher(double xpos, double ypos, void* param)
+// static void mouse_catcher(float xpos, float ypos, void* param)
 // {
 //     t_data *data = (t_data *)param;
 
@@ -40,21 +40,34 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 	t_data	*data;
 
 	data = param;
-	if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
-	{
-		if (keydata.key == MLX_KEY_W)
-			move_up(data);
-		if (keydata.key == MLX_KEY_A)
-			move_left(data);
-		if (keydata.key == MLX_KEY_S)
-			move_down(data);
-		if (keydata.key == MLX_KEY_D)
-			move_right(data);
-		if (keydata.key == MLX_KEY_LEFT)
-			rotate_left(data);
-		if (keydata.key == MLX_KEY_RIGHT)
-			rotate_right(data);
-	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+		move_up(data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+		move_down(data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+		move_left(data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+		move_right(data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+		rotate_left(data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+		rotate_right(data);
+
+	// if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
+	// {
+	// 	if (keydata.key == MLX_KEY_W)
+	// 		move_up(data);
+	// 	if (keydata.key == MLX_KEY_A)
+	// 		move_left(data);
+	// 	if (keydata.key == MLX_KEY_S)
+	// 		move_down(data);
+	// 	if (keydata.key == MLX_KEY_D)
+	// 		move_right(data);
+	// 	if (keydata.key == MLX_KEY_LEFT)
+	// 		rotate_left(data);
+	// 	if (keydata.key == MLX_KEY_RIGHT)
+	// 		rotate_right(data);
+	// }
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 		mlx_close_window(data->mlx);
 }

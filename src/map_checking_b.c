@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_checking_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/02 15:30:59 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/28 11:01:08 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
-static int	check_for_double_n_in_map(t_data *data, int i, int map_flag)
+static int	check_for_float_n_in_map(t_data *data, int i, int map_flag)
 {
 	if (map_flag && data->file_cnt[i])
 	{
@@ -33,8 +33,8 @@ static int	check_for_double_n_in_map(t_data *data, int i, int map_flag)
   a newline character either a 1, 0 or 'space' occuring (identifiers
   for map). If this is the case, breaks out of loop and iterates 
   further in map part of the string (in helper function) in order
-  to check for double/multiple newline characters in a row*/
-int	check_double_n(t_data *data)
+  to check for float/multiple newline characters in a row*/
+int	check_float_n(t_data *data)
 {
 	int	map_flag;
 	int	i;
@@ -55,7 +55,7 @@ int	check_double_n(t_data *data)
 		}
 		i++;
 	}
-	if (check_for_double_n_in_map(data, i, map_flag))
+	if (check_for_float_n_in_map(data, i, map_flag))
 		return (1);
 	return (0);
 }

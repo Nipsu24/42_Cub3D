@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 15:36:07 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:51:01 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # include <stdio.h>
 # include <math.h>
 
-# define STEPS 0.3
-# define RAY_SPEED 0.03
-# define RO_SPEED 0.3
+# define STEPS 0.3f
+# define RAY_SPEED 0.03f
+# define RO_SPEED 0.3f
 # define PI 3.1415926535
 # define MM_RAYS 20
-# define RAYS 1500
-# define S_WID 1260
-# define S_HEI 1260  // always determined by screen_width
+# define RAYS 1366
+# define S_WID 1366
+# define S_HEI 768  // always determined by screen_width
 # define MM_SIZE 4 // downscale factor for mini map and player
 # define B_HEI 630
 typedef struct s_data	t_data;
@@ -57,12 +57,12 @@ typedef struct s_pl
 	int				y_strt;
 	int				pix_x;
 	int				pix_y;
-	double			x_centr;
-	double			y_centr;
-	double			ro_x;
-	double			ro_y;
-	double			transl_x;
-	double			transl_y;
+	float			x_centr;
+	float			y_centr;
+	float			ro_x;
+	float			ro_y;
+	float			transl_x;
+	float			transl_y;
 	int				fnl_x;
 	int				fnl_y;
 	
@@ -82,7 +82,6 @@ typedef struct s_data
 	char			*file_cnt;
 	char			**file_arr;
 	int				wall_check;
-	mlx_t			*mlx;
 	char			p_dir;
 	float			x_p;
 	float			y_p;
@@ -94,10 +93,10 @@ typedef struct s_data
 	float			p_dx; // player delta x
 	float			p_dy; // player delta y
 	float			p_a; // player angle
-	double			hor_next_y;
-	double			hor_next_x;
-	double			hor_delta_y;
-	double			hor_delta_x;
+	float			hor_next_y;
+	float			hor_next_x;
+	float			hor_delta_y;
+	float			hor_delta_x;
 	float			len_close_hor;
 	int				up;
 	float			ray_dist;
@@ -105,6 +104,7 @@ typedef struct s_data
 	int				ray_index;
 	float			PX; // size of mini_map tiles
 	float			pl_size;
+	mlx_t			*mlx;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -113,6 +113,10 @@ typedef struct s_data
 /*						core_functions.c						*/
 
 int			cube_it(char *av, t_data *data);
+
+/*						init_info.c								*/
+
+void		init_structs(t_data *data);
 
 /*						utils.c									*/
 
@@ -137,7 +141,7 @@ int			map_checker(t_data *data);
 
 /*						map_checking_b.c						*/
 
-int			check_double_n(t_data *data);
+int			check_float_n(t_data *data);
 
 /*						free_a.c								*/
 
@@ -183,9 +187,12 @@ void		move_left(t_data *data);
 void		move_down(t_data *data);
 void		move_right(t_data *data);
 
-/*						draw_ray.c								*/
+/*						draw_ray_2D.c								*/
 
 void		draw_fov(t_data *data);
+
+/*						draw_ray_3D.c								*/
+
 void		draw_fov_3d(t_data *data);
 
 /*						init_images.c							*/

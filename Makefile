@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
+#    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/22 11:02:18 by mmeier           ###   ########.fr        #
+#    Updated: 2024/10/28 11:49:23 by lstorey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ FILES = src/utils.c \
 		src/utils_2.c \
 		src/core_functions.c \
 		src/main.c\
+		src/init_info.c\
 		src/map_checking_a.c \
 		src/map_checking_b.c \
 		src/free_a.c \
@@ -38,7 +39,8 @@ FILES = src/utils.c \
 		src/utils_to_be_deleted.c \
 		mlx_functions.c \
 		moves.c \
-		draw_ray.c \
+		draw_ray_2D.c \
+		draw_ray_3D.c \
 		rotate.c \
 		src/image_init.c \
 		build_mini_map.c
