@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/28 13:43:42 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/30 10:55:38 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	move_up(t_data *data)
 		// draw_fov_3d(data);
 		build_map(data);
 		// draw_fov(data);
-		// check_closest_hor_inter(data);
-		// check_closest_ver_inter(data);
 		raycaster(data);
 	}
 }
@@ -62,8 +60,6 @@ void	move_down(t_data *data)
 		// draw_fov_3d(data);
 		build_map(data);
 		// draw_fov(data);
-		// check_closest_hor_inter(data);
-		// check_closest_ver_inter(data);
 		raycaster(data);
 	}
 }
@@ -91,8 +87,6 @@ void	move_left(t_data *data)
 		// draw_fov_3d(data);
 		build_map(data);
 		// draw_fov(data);
-		// check_closest_hor_inter(data);
-		// check_closest_ver_inter(data);
 		raycaster(data);
 	}
 }
@@ -120,8 +114,6 @@ void	move_right(t_data *data)
 		// draw_fov_3d(data);
 		build_map(data);
 		// draw_fov(data);
-		// check_closest_hor_inter(data);
-		// check_closest_ver_inter(data);
 		raycaster(data);
 	}
 }

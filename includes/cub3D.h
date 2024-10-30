@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/29 16:10:29 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/30 10:52:48 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define MM_SIZE 2 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPSILON 1e-6
+# define FOV (PI / 3) // 60 degrees
 typedef struct s_data	t_data;
 typedef struct s_img
 {

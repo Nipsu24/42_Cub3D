@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/29 15:54:47 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/30 10:35:17 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 	t_data	*data;
 
 	data = param;
-	if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
-	{
+	// if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
+	// {
 		if (keydata.key == MLX_KEY_W)
 			move_up(data);
 		if (keydata.key == MLX_KEY_A)
@@ -54,7 +54,7 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 			rotate_left(data);
 		if (keydata.key == MLX_KEY_RIGHT)
 			rotate_right(data);
-	}
+	// }
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 		mlx_close_window(data->mlx);
 }
