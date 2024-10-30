@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 15:34:44 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:01:08 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ static int	map_size(t_data *data)
 /*Contains several error checks for the map layout.*/
 int	map_checker(t_data *data)
 {
-	if (check_double_n(data))
+	if (check_float_n(data))
 		return (1);
 	if (!data->map || !data->map[0])
 	{

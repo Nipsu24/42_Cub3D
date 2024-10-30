@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:40:44 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/03 11:13:26 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:08:39 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	arr_splitter(t_data *data)
 		{
 			err_msg(8);
 			return (1);
-		}	
+		}		
 		i++;
 	}
 	data->file_arr = ft_split(data->file_cnt, '\n');
