@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/27 15:30:04 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/30 15:19:01 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	init_img(t_data *data)
 	data->img = malloc(sizeof(t_img));
 	if (!data->img)
 		exit (1);
-	arr_to_null(&data->img->len[RAYS], RAYS);
+	arr_to_null(&data->img->len[S_WID], S_WID);
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
@@ -90,6 +90,7 @@ static void	init_structs(t_data *data)
 	data->ray_index = 0;
 	data->PX = 0;
 	data->pl_size = 0;
+	data->dist_plane = 0;
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/30 10:52:48 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/30 17:18:14 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define STEPS 0.3f
 # define RAY_SPEED 0.03f
-# define RO_SPEED 0.2f
+# define RO_SPEED 0.3f
 # define PI 3.1415926535
 # define MM_RAYS 20
 # define RAYS 1500
@@ -30,7 +30,9 @@
 # define MM_SIZE 2 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPSILON 1e-6
+# define BLOCK_SIZE 1
 # define FOV (PI / 3) // 60 degrees
+# define RAYS_MODULO 40
 typedef struct s_data	t_data;
 typedef struct s_img
 {
@@ -41,7 +43,7 @@ typedef struct s_img
 	char			*we;
 	long int		floor[3];
 	long int		ceiling[3];
-	float			len[RAYS];
+	float			len[S_WID];
 	int				hit_dir[RAYS];
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
@@ -122,6 +124,7 @@ typedef struct s_data
 	int				ray_horizontal;
 	int				ray_vertical;
 	float			ray_len;
+	float			dist_plane;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
