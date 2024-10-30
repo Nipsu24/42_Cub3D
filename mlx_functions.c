@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/28 13:58:14 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/30 13:51:28 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,14 +135,15 @@ int	mlx_functions(t_data *data)
 		return (1);
 	if (create_pl_img(data))
 		return (1);
-	if (data->img->fg)
-		mlx_delete_image(data->mlx, data->img->pl);
+	// if (data->img->fg)
+	// 	mlx_delete_image(data->mlx, data->img->pl);
 	if (create_fg_img(data))
 		return (1);
 	check_init_pl_angle(data);
-	draw_fov_3d(data);
-	draw_fov(data);
+	// draw_fov_3d(data);
+	// draw_fov(data);
 	build_map(data);
+	raycaster(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	// mlx_cursor_hook(data->mlx, &mouse_catcher, data);
 	mlx_loop(data->mlx);
