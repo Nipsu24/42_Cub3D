@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/28 14:55:39 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/31 11:46:19 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,11 @@ static int	fill_map(char ***map, int x, int y, t_data *data)
 
 static int check_map(char **map, t_data *data)
 {
-	static int y = 0;
-	static int x = 0;
+	int y;
+	int x;
 
+	y = 0;
+	x = 0;
 	while (map[y])
 	{
 		while (map[y][x])
@@ -120,11 +122,13 @@ static int check_map(char **map, t_data *data)
 				if (!fill_map(&data->clone_map, x, y, data))
 				{
 					free_arr(&data->clone_map);
-					return (err_msg(3));
+					err_msg(3);
+					return (0);
 				}
 			}
 			x++;
 		}
+		x = 0;
 		y++;
 	}
 	return (1);
@@ -132,9 +136,11 @@ static int check_map(char **map, t_data *data)
 
 static int zero_finder(char **map)
 {
-	static int x = 0;
-	static int y = 0;
+	int x;
+	int y;
 
+	x = 0;
+	y = 0;
 	while (map[y])
 	{
 		while (map[y][x])
@@ -143,6 +149,7 @@ static int zero_finder(char **map)
 				return(1);
 			x++;
 		}
+		x = 0;
 		y++;
 	}
 	return (0);
@@ -154,9 +161,11 @@ static int zero_finder(char **map)
   If this is not the case, fill_map returns 0 (=>'if !fill_map)'.*/
 int	no_closed_walls(t_data *data)
 {
-	static int	p_pos_x = 0;
-	static int	p_pos_y = 0;
+	int	p_pos_x;
+	int	p_pos_y;
 
+	p_pos_x = 0;
+	p_pos_y = 0;
 	player_pos(data->map, &p_pos_x, &p_pos_y);
 	data->y_p = p_pos_y;
 	data->x_p = p_pos_x;
@@ -170,7 +179,10 @@ int	no_closed_walls(t_data *data)
 		return (err_msg(3));
 	}
 	while (zero_finder(data->clone_map))
-		check_map(data->clone_map, data);
+	{
+		if (!check_map(data->clone_map, data))
+			return (1);
+	}
 	free_arr(&data->clone_map);
 	return (0);
 }
