@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:41:17 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/31 13:25:10 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 13:51:32 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar)
 	y_inc = dy / (float)steps_n;
 	while (i <= steps_n)
 	{
-		mlx_put_pixel(data->img->fg, (int)roundf(x), (int)roundf(y), 0xFF0000FF);
+		mlx_put_pixel(data->img->fg, (int)(x), (int)(y), 0xFF0000FF);
 		x += x_inc;
 		y += y_inc;
 		i++;
