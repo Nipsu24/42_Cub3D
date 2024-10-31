@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 14:05:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 14:18:52 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ void	init_structs(t_data *data)
 	data->p_dx = 0;
 	data->p_dy = 0;
 	data->p_a = 0;
-	data->ray_dist = 0;
 	data->line_height = 0;
 	data->ray_index = 0;
 	data->PX = 0;
 	data->pl_size = 0;
 	data->dist_plane = 0;
+	data->hit_dir = 0;
 }
