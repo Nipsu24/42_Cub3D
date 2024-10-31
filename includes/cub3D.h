@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 14:38:07 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 15:47:58 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,7 +241,7 @@ void		calc_delta_hor(t_data *data);
 void		calc_delta_ver(t_data *data);
 
 /*						raycast_utils.c							*/
-void		draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar, uint32_t colour);
+void		draw_wall_slice(t_data *data, int x, int start_y, int end_y, uint32_t colour);
 void		draw_line_mm(t_data *data, float x, float y, float x_tar, float y_tar);
 float		calc_dist(float x, float y, float x_tar, float y_tar);
 float		calc_ray_len(t_data *data);
