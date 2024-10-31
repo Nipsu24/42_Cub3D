@@ -6,13 +6,13 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:41:17 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/31 13:51:32 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 15:04:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
-void	draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar)
+void	draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar, uint32_t colour)
 {
 	float	dx;
 	float	dy;
@@ -24,12 +24,15 @@ void	draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar)
 	i = 0;
 	dx = x_tar - x;
 	dy = y_tar - y;
-	steps_n = fabsf(dx) > fabsf(dy) ? fabsf(dx) : fabsf(dy);
+	if (fabsf(dx) > fabsf(dy))
+		steps_n = fabsf(dx);
+	else
+		steps_n = fabsf(dy);
 	x_inc = dx / (float)steps_n;
 	y_inc = dy / (float)steps_n;
 	while (i <= steps_n)
 	{
-		mlx_put_pixel(data->img->fg, (int)(x), (int)(y), 0xFF0000FF);
+		mlx_put_pixel(data->img->fg, (int)(x), (int)(y), colour);
 		x += x_inc;
 		y += y_inc;
 		i++;
@@ -48,7 +51,10 @@ void	draw_line_mm(t_data *data, float x, float y, float x_tar, float y_tar)
 	i = 0;
 	dx = x_tar - x;
 	dy = y_tar - y;
-	steps_n = fabsf(dx) > fabsf(dy) ? fabsf(dx) : fabsf(dy);
+	if (fabsf(dx) > fabsf(dy))
+		steps_n = fabsf(dx);
+	else
+		steps_n = fabsf(dy);
 	x_inc = dx / (float)steps_n;
 	y_inc = dy / (float)steps_n;
 	while (i <= steps_n)
@@ -63,11 +69,10 @@ void	draw_line_mm(t_data *data, float x, float y, float x_tar, float y_tar)
 float	calc_dist(float x, float y, float x_tar, float y_tar)
 {
 	float	dist;
-	
+
 	dist = 0;
 	dist = sqrt((x_tar - x) * (x_tar - x) + (y_tar - y) * (y_tar - y));
 	return (dist);
-	
 }
 
 float	calc_ray_len(t_data *data)
@@ -76,13 +81,21 @@ float	calc_ray_len(t_data *data)
 	{
 		data->cl_x = data->hor_next_x;
 		data->cl_y = data->hor_next_y;
+		if (data->ray_or > PI)
+			data->hit_dir = 3;
+		else
+			data->hit_dir = 1;
 	}
 	else
 	{
 		data->cl_x = data->ver_next_x;
 		data->cl_y = data->ver_next_y;
+		if (data->ray_or < PI / 2 || data->ray_or > 3 * PI / 2)
+			data->hit_dir = 2;
+		else
+			data->hit_dir = 4;
 	}
-	return(calc_dist(data->x_p, data->y_p, data->cl_x, data->cl_y));
+	return (calc_dist(data->x_p, data->y_p, data->cl_x, data->cl_y));
 }
 
 void	normalize_angle(float *angle_1, float *angle_2)

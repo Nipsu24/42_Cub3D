@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 14:00:41 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 14:38:07 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define PI 3.1415926535
 # define S_WID 1260
 # define S_HEI 1260  // always determined by screen_width
-# define MM_SIZE 1 // downscale factor for mini map and player
+# define MM_SIZE 2 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPSILON 1e-6
 # define BLOCK_SIZE 1
@@ -98,7 +98,7 @@ typedef struct s_data
 	float			p_a; // player angle
 	float			len_close_hor;
 	int				up;
-	float			ray_dist;
+	// float			ray_dist;
 	float			line_height;
 	int				ray_index;
 	float			PX; // size of mini_map tiles
@@ -123,6 +123,7 @@ typedef struct s_data
 	int				ray_vertical;
 	float			ray_len;
 	float			dist_plane;
+	float			hit_dir;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -240,7 +241,7 @@ void		calc_delta_hor(t_data *data);
 void		calc_delta_ver(t_data *data);
 
 /*						raycast_utils.c							*/
-void		draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar);
+void		draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar, uint32_t colour);
 void		draw_line_mm(t_data *data, float x, float y, float x_tar, float y_tar);
 float		calc_dist(float x, float y, float x_tar, float y_tar);
 float		calc_ray_len(t_data *data);
