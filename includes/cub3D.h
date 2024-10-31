@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/30 13:51:06 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/30 14:59:11 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 # define PI 3.1415926535
 # define MM_RAYS 20
 # define RAYS 1500
-# define S_WID 1260
+# define S_WID 1600
 # define S_HEI 1260  // always determined by screen_width
-# define MM_SIZE 2 // downscale factor for mini map and player
+# define MM_SIZE 1 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPSILON 1e-6
 # define FOV (PI / 3) // 60 degrees
