@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/30 13:51:36 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/31 14:02:30 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ void	move_up(t_data *data)
 		mlx_delete_image(data->mlx, data->img->fg);
 		create_fg_img(data);
 		create_ray_img(data);
-		// draw_fov_3d(data);
-		build_map(data);
-		// draw_fov(data);
 		raycaster(data);
+		build_map(data);
 	}
 }
 
@@ -57,10 +55,8 @@ void	move_down(t_data *data)
 		mlx_delete_image(data->mlx, data->img->fg);
 		create_fg_img(data);
 		create_ray_img(data);
-		// draw_fov_3d(data);
-		build_map(data);
-		// draw_fov(data);
 		raycaster(data);
+		build_map(data);
 	}
 }
 
@@ -84,10 +80,8 @@ void	move_left(t_data *data)
 		mlx_delete_image(data->mlx, data->img->fg);
 		create_fg_img(data);
 		create_ray_img(data);
-		// draw_fov_3d(data);
-		build_map(data);
-		// draw_fov(data);
 		raycaster(data);
+		build_map(data);
 	}
 }
 
@@ -111,9 +105,7 @@ void	move_right(t_data *data)
 		mlx_delete_image(data->mlx, data->img->fg);
 		create_fg_img(data);
 		create_ray_img(data);
-		// draw_fov_3d(data);
-		build_map(data);
-		// draw_fov(data);
 		raycaster(data);
+		build_map(data);
 	}
 }
