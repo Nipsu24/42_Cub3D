@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/30 15:19:01 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 11:31:56 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	init_img(t_data *data)
 	if (!data->img)
 		exit (1);
 	arr_to_null(&data->img->len[S_WID], S_WID);
+	arr_to_null(&data->img->hit_dir[S_WID], S_WID);
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
