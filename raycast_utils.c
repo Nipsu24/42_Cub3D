@@ -6,36 +6,21 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:41:17 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/31 15:04:55 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 15:40:29 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
-void	draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar, uint32_t colour)
+void	draw_wall_slice(t_data *data, int x, int start_y, int end_y, uint32_t colour)
 {
-	float	dx;
-	float	dy;
-	int		steps_n;
-	float	x_inc;
-	float	y_inc;
-	int		i;
-
-	i = 0;
-	dx = x_tar - x;
-	dy = y_tar - y;
-	if (fabsf(dx) > fabsf(dy))
-		steps_n = fabsf(dx);
-	else
-		steps_n = fabsf(dy);
-	x_inc = dx / (float)steps_n;
-	y_inc = dy / (float)steps_n;
-	while (i <= steps_n)
+    int	y;
+	
+	y = start_y;
+	while (y < end_y)
 	{
-		mlx_put_pixel(data->img->fg, (int)(x), (int)(y), colour);
-		x += x_inc;
-		y += y_inc;
-		i++;
+		mlx_put_pixel(data->img->fg, x, y, colour);
+		y++;
 	}
 }
 

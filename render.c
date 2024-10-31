@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/31 15:18:42 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 16:00:03 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	render_map(t_data *data)
 			colour = 0xA9A9A9FF;
 		if (data->img->hit_dir[i] == 4)
 			colour = 0xF5F5F5FF;
-		draw_wall_slice(data, i, start_y, i, end_y, colour);
+		draw_wall_slice(data, i, start_y,end_y, colour);
 		i++;
 	}
 }
