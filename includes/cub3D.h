@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 11:12:05 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/31 14:00:41 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 # include <math.h>
 
 # define STEPS 0.3f
-# define RAY_SPEED 0.03f
 # define RO_SPEED 0.2f
 # define PI 3.1415926535
-# define MM_RAYS 20
-# define RAYS 1500
-# define S_WID 1600
+# define S_WID 1260
 # define S_HEI 1260  // always determined by screen_width
 # define MM_SIZE 1 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPSILON 1e-6
+# define BLOCK_SIZE 1
 # define FOV (PI / 3) // 60 degrees
+# define RAYS_MODULO 40
+
 typedef struct s_data	t_data;
 typedef struct s_img
 {
@@ -41,8 +41,8 @@ typedef struct s_img
 	char			*we;
 	long int		floor[3];
 	long int		ceiling[3];
-	float			len[RAYS];
-	int				hit_dir[RAYS];
+	float			len[S_WID];
+	float			hit_dir[S_WID];
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
 	mlx_image_t		*pl;
@@ -122,6 +122,7 @@ typedef struct s_data
 	int				ray_horizontal;
 	int				ray_vertical;
 	float			ray_len;
+	float			dist_plane;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -204,14 +205,6 @@ void		move_left(t_data *data);
 void		move_down(t_data *data);
 void		move_right(t_data *data);
 
-/*						draw_ray_2D.c								*/
-
-void		draw_fov(t_data *data);
-
-/*						draw_ray_3D.c								*/
-
-void		draw_fov_3d(t_data *data);
-
 /*						init_images.c							*/
 
 int			create_ray_img(t_data *data);
@@ -245,6 +238,16 @@ void		check_closest_hor_inter(t_data *data);
 void		check_closest_ver_inter(t_data *data);
 void		calc_delta_hor(t_data *data);
 void		calc_delta_ver(t_data *data);
+
+/*						raycast_utils.c							*/
+void		draw_wall_slice(t_data *data, float x, float y, float x_tar, float y_tar);
+void		draw_line_mm(t_data *data, float x, float y, float x_tar, float y_tar);
+float		calc_dist(float x, float y, float x_tar, float y_tar);
+float		calc_ray_len(t_data *data);
+void		normalize_angle(float *angle_1, float *angle_2);
+
+/*						render.c								*/
+void		render_map(t_data *data);
 
 /*						utils_to_be_deleted.c					*/
 

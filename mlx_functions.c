@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/30 13:51:28 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/31 14:02:18 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,26 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 	t_data	*data;
 
 	data = param;
+	// mlx_delete_image(data->mlx, data->img->ray);
+	// mlx_delete_image(data->mlx, data->img->fg);
+	// create_fg_img(data);
+	// create_ray_img(data);
+	// raycaster(data);
+	// build_map(data);
+	// if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
+	// {
+		// if (keydata.key == MLX_KEY_W)
+		// 	move_up(data);
+		// if (keydata.key == MLX_KEY_A)
+		// 	move_left(data);
+		// if (keydata.key == MLX_KEY_S)
+		// 	move_down(data);
+		// if (keydata.key == MLX_KEY_D)
+		// 	move_right(data);
+		// if (keydata.key == MLX_KEY_LEFT)
+		// 	rotate_left(data);
+		// if (keydata.key == MLX_KEY_RIGHT)
+		// 	rotate_right(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 		move_up(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
@@ -52,36 +72,21 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 		rotate_left(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		rotate_right(data);
-
-	// if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
-	// {
-	// 	if (keydata.key == MLX_KEY_W)
-	// 		move_up(data);
-	// 	if (keydata.key == MLX_KEY_A)
-	// 		move_left(data);
-	// 	if (keydata.key == MLX_KEY_S)
-	// 		move_down(data);
-	// 	if (keydata.key == MLX_KEY_D)
-	// 		move_right(data);
-	// 	if (keydata.key == MLX_KEY_LEFT)
-	// 		rotate_left(data);
-	// 	if (keydata.key == MLX_KEY_RIGHT)
-	// 		rotate_right(data);
 	// }
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 		mlx_close_window(data->mlx);
 }
 
+/*Red (shifted to the highest byte), Green (shifted to the second byte)
+  Blue (shifted to the third byte), Alpha channel (fully opaque)
+  Combine the RGB components into a single hex value, with alpha
+  set to 255 (0xFF)*/
+	
 static uint32_t convert_rgb_to_hex(long *rgb)
 {
     uint32_t	hex_value;
-
-    // Combine the RGB components into a single hex value, with alpha set to 255 (0xFF)
-    hex_value = (rgb[0] << 24) |  // Red (shifted to the highest byte)
-                (rgb[1] << 16) |  // Green (shifted to the second byte)
-                (rgb[2] << 8)  |  // Blue (shifted to the third byte)
-                0xFF;             // Alpha channel (fully opaque)
-
+	
+    hex_value = (rgb[0] << 24) | (rgb[1] << 16) | (rgb[2] << 8) | 0xFF;             
     return (hex_value);
 }
 
@@ -135,15 +140,11 @@ int	mlx_functions(t_data *data)
 		return (1);
 	if (create_pl_img(data))
 		return (1);
-	// if (data->img->fg)
-	// 	mlx_delete_image(data->mlx, data->img->pl);
 	if (create_fg_img(data))
 		return (1);
 	check_init_pl_angle(data);
-	// draw_fov_3d(data);
-	// draw_fov(data);
-	build_map(data);
 	raycaster(data);
+	build_map(data);
 	mlx_key_hook(data->mlx, my_key_hook, data);
 	// mlx_cursor_hook(data->mlx, &mouse_catcher, data);
 	mlx_loop(data->mlx);

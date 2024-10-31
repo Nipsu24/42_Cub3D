@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/28 11:50:02 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/31 14:05:54 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void	init_img(t_data *data)
 	data->img = malloc(sizeof(t_img));
 	if (!data->img)
 		exit (1);
-	arr_to_null(&data->img->len[RAYS], RAYS);
+	arr_to_null(&data->img->len[S_WID], S_WID);
+	arr_to_null(&data->img->hit_dir[S_WID], S_WID);
 	data->img->wl = NULL;
 	data->img->fl = NULL;
 	data->img->pl = NULL;
@@ -90,4 +91,5 @@ void	init_structs(t_data *data)
 	data->ray_index = 0;
 	data->PX = 0;
 	data->pl_size = 0;
+	data->dist_plane = 0;
 }
