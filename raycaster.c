@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/31 13:20:38 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/10/31 13:34:30 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	raycaster(t_data *data)
 	int		i;
 
 	i = 0;
-	start_angle = data->p_a - FOV / 2; // correct for potential overspin
+	start_angle = data->p_a - FOV / 2;
 	end_angle = data->p_a + FOV / 2;
 	step_angle = FOV / S_WID;
 	data->ray_or = start_angle;
