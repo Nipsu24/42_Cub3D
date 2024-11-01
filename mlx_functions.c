@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 15:47:51 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 09:35:18 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,30 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 	// build_map(data);
 	// if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
 	// {
-		// if (keydata.key == MLX_KEY_W)
-		// 	move_up(data);
-		// if (keydata.key == MLX_KEY_A)
-		// 	move_left(data);
-		// if (keydata.key == MLX_KEY_S)
-		// 	move_down(data);
-		// if (keydata.key == MLX_KEY_D)
-		// 	move_right(data);
-		// if (keydata.key == MLX_KEY_LEFT)
-		// 	rotate_left(data);
-		// if (keydata.key == MLX_KEY_RIGHT)
-		// 	rotate_right(data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
-		move_up(data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
-		move_down(data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
-		move_left(data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
-		move_right(data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-		rotate_left(data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		rotate_right(data);
+		if (keydata.key == MLX_KEY_W)
+			move_up(data);
+		if (keydata.key == MLX_KEY_A)
+			move_left(data);
+		if (keydata.key == MLX_KEY_S)
+			move_down(data);
+		if (keydata.key == MLX_KEY_D)
+			move_right(data);
+		if (keydata.key == MLX_KEY_LEFT)
+			rotate_left(data);
+		if (keydata.key == MLX_KEY_RIGHT)
+			rotate_right(data);
+	// if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+	// 	move_up(data);
+	// if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+	// 	move_down(data);
+	// if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+	// 	move_left(data);
+	// if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+	// 	move_right(data);
+	// if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+	// 	rotate_left(data);
+	// if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+	// 	rotate_right(data);
 	// }
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 		mlx_close_window(data->mlx);
