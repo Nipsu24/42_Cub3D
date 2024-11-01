@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/01 09:35:18 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 14:51:38 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,10 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(data->mlx);
 }
 
-/*Red (shifted to the highest byte), Green (shifted to the second byte)
-  Blue (shifted to the third byte), Alpha channel (fully opaque)
-  Combine the RGB components into a single hex value, with alpha
-  set to 255 (0xFF)*/
-	
+/*Converts RGB colour values into a single hex value, with alpha value
+  (opaque value) set to 255 (0xFF). Performs bitshifting operation:
+  R shifted to highest octet, G to second highest, b to third octet.*/
+  
 static uint32_t convert_rgb_to_hex(long *rgb)
 {
     uint32_t	hex_value;
@@ -90,6 +89,8 @@ static uint32_t convert_rgb_to_hex(long *rgb)
     return (hex_value);
 }
 
+/*Draws background of 3d world, splits screen horizontally into two colours
+  determined by ceiling and floor values retrieved from map data file. */
 static void	fill_main_screen(t_data *data)
 {
 	float y;
@@ -113,6 +114,9 @@ static void	fill_main_screen(t_data *data)
 	mlx_image_to_window(data->mlx, data->img->bg, 0, 0);
 }
 
+/*Calculates dynamic tile size in pixels. MM_SIZE is arbitrary downscale 
+  factor of the minimap in relation to the main screen. If / else statement
+  in order to avoid scale distortion of the equally squared tiles.*/
 void calc_mini_map_scaling(t_data *data)
 {
     int PX_x = 0;

@@ -6,12 +6,15 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:39:00 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/01 12:25:20 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 14:18:35 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
+/*Calculates distance between 2 coordinates of the same axis.
+  Values used in order to determine step_size for minimap ray
+  in calc_step_size function.*/
 static int	calc_tar_dist(float coord, float tar_coord)
 {
 	float	dist;
@@ -20,6 +23,9 @@ static int	calc_tar_dist(float coord, float tar_coord)
 	return (dist);
 }
 
+/*Calculates and returns step size of the ray drawn in minimap. Steps
+  later used in init_draw_ray function in order to determine increment
+  for the x and y coordinates of the ray line.*/
 static int calc_step_size(float dx, float dy)
 {
 	int	steps;
@@ -32,6 +38,12 @@ static int calc_step_size(float dx, float dy)
 	return (steps);
 }
 
+/*Initialises variables and calculates relevant values for drawing
+  ray in minimap. ray_x and ray_y set equal to player position in
+  order to avoid using the player position coordinates directly and 
+  altering the player position later in the while loop of the
+  draw_ray function. Multiplicatio by PX to draw pixel at correct
+  position of the map.*/
 static void	init_draw_ray(t_data *data, t_ray *ray)
 {
 	ray->dx = 0;
@@ -54,6 +66,11 @@ static void	init_draw_ray(t_data *data, t_ray *ray)
 	ray->y *= data->PX;
 }
 
+/*Draws ray in minimap. Index i from raycaster function used in order to
+  determine with help of modulo calculation which ray is drawn (to
+  avoid that each ray used for wall projection is drawn in map). Start and 
+  end values for x and y are used for calculating optimal stepsize of putting pixel
+  on the ray line.*/
 void	draw_ray(t_data *data, int i)
 {
 	init_draw_ray(data, data->ray);
