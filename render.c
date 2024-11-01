@@ -6,12 +6,16 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/01 09:46:50 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 14:37:53 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
+/*Uses hit_dir information (from calc_ray_len function) in order to 
+  determine the colour of the wall to be drawn. Then loops through y
+  values from top to bottom and draws wall slice with put_pixel function
+  (x value is the i-index passed from render_map function).*/
 static void	draw_wall_slice(t_data *data, int x, int start_y, int end_y)
 {
     uint32_t	colour;
@@ -34,6 +38,10 @@ static void	draw_wall_slice(t_data *data, int x, int start_y, int end_y)
 	}
 }
 
+/*Uses calculated ray length from raycaster and distance between player and plane
+  for determining respective wall slice height. Calculates start and end of the
+  wall slice to be drawn, by using slice_height and calculated values related to size
+  of the screen. i index represents position on x axis (incremented in loop by one pixel).*/
 void	render_map(t_data *data)
 {
 	int			i;

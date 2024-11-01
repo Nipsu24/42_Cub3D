@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/01 12:24:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 15:13:55 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define S_HEI 630
 # define MM_SIZE 4 // downscale factor for mini map and player
 # define B_HEI 630
-# define EPSILON 1e-6
+# define EPS 1e-6
 # define BLOCK_SIZE 1
 # define FOV (PI / 3) // 60 degrees
 # define RAYS_MODULO 80

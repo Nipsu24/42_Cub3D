@@ -6,12 +6,14 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/01 11:35:52 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 14:24:26 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
+/*Initialises variables for further raycasting. Function
+  used in 'set_up_intersec_check' function.*/
 static void	init_draw_ray(t_data *data)
 {
 	data->ver_next_y = 0;
@@ -32,6 +34,10 @@ static void	init_draw_ray(t_data *data)
 	data->ray_len = 0;
 }
 
+/*Increments coordinate values of x and y in case
+  there are not any intersections at walls
+  detected yet. Step size determiined by calc_delta
+  functions (see intersects.c)*/
 static void	step_forward(t_data *data)
 {
 	if (!data->hor_hit)
@@ -46,6 +52,8 @@ static void	step_forward(t_data *data)
 	}
 }
 
+/*Calculates relevant values for creating arc
+  of rays*/
 static void	init_raycaster(t_data *data)
 {
 	data->start_angle = data->p_a - FOV / 2;
@@ -54,6 +62,9 @@ static void	init_raycaster(t_data *data)
 	data->ray_or = data->end_angle;
 }
 
+/*Determines relevant values for the intersections' check
+  which is needed later in while loop for incrementing the
+  ray lengths until a wall is hit.*/
 static void set_up_intersec_check(t_data *data)
 {
 	normalize_angle(&data->ray_or, &data->start_angle);
@@ -64,6 +75,15 @@ static void set_up_intersec_check(t_data *data)
 	calc_delta_hor(data);
 }
 
+/*Uses vertical and horizontal intersection check in order to
+  determine if a ray hits a wall. When both, vertical and horizontal
+  intersection checks detect wall hits, breaks out of inner while loop
+  and compares the both ray distances in calc_ray_len function. Then
+  stores shorter distance in array of floats for later utilization in
+  render map function. Cos multiplication for correction of fish-bowl-effect.
+  Also, array of floats for hit direction gets populated. Rays are drawn 
+  in minimap with draw_ray function. Render map function ultimately draws 
+  wall slices based on ray length on the screen.*/
 void	raycaster(t_data *data)
 {
 	int	i;
@@ -81,7 +101,7 @@ void	raycaster(t_data *data)
 				break;
 		}
 		data->img->len[i] = calc_ray_len(data);
-		data->img->len[i] = data->img->len[i] * cos(data->ray_or - data->p_a); // corrects fishbowl effect
+		data->img->len[i] = data->img->len[i] * cos(data->ray_or - data->p_a);
 		data->img->hit_dir[i] = data->hit_dir;
 		draw_ray(data, i);
 		data->ray_or -= data->step_angle;
