@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/31 15:24:05 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 09:28:00 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	raycaster(t_data *data)
 	start_angle = data->p_a - FOV / 2;
 	end_angle = data->p_a + FOV / 2;
 	step_angle = FOV / S_WID;
-	data->ray_or = start_angle;
-	while (data->ray_or <= end_angle)
+	data->ray_or = end_angle;
+	while (data->ray_or >= start_angle)
 	{
-		normalize_angle(&data->ray_or, &end_angle);
+		normalize_angle(&data->ray_or, &start_angle);
 		init_draw_ray(data);
 		check_closest_hor_inter(data);
 		check_closest_ver_inter(data);
@@ -78,7 +78,7 @@ void	raycaster(t_data *data)
 		data->img->hit_dir[i] = data->hit_dir;
 		if (data->cl_y >= 0 && data->cl_y < data->height && data->cl_x >= 0 && data->cl_x < data->width && i % RAYS_MODULO == 0)
 			draw_line_mm(data, data->x_p * data->PX, data->y_p * data->PX, data->cl_x * data->PX, data->cl_y * data->PX);
-		data->ray_or += step_angle;
+		data->ray_or -= step_angle;
 		i++;
 	}
 	render_map(data);

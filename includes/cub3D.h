@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 15:47:58 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 09:34:02 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 # include <math.h>
 
 # define STEPS 0.3f
-# define RO_SPEED 0.2f
+# define RO_SPEED 0.1f
 # define PI 3.1415926535
-# define S_WID 1260
-# define S_HEI 1260  // always determined by screen_width
-# define MM_SIZE 2 // downscale factor for mini map and player
+# define S_WID 630
+# define S_HEI 630
+# define MM_SIZE 4 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPSILON 1e-6
 # define BLOCK_SIZE 1
 # define FOV (PI / 3) // 60 degrees
-# define RAYS_MODULO 40
+# define RAYS_MODULO 80
 
 typedef struct s_data	t_data;
 typedef struct s_img
