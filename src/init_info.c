@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 14:18:52 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 12:15:50 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,33 @@ static void	init_txtr(t_data *data)
 	data->txtr->pl = NULL;
 }
 
+static void	init_ray(t_data *data)
+{
+	data->ray = malloc(sizeof(t_ray));
+	if (!data->ray)
+	{
+		free(data->img);
+		free(data->txtr);
+		data->img = NULL;
+		data->txtr = NULL;
+		exit (1);
+	}
+	data->ray->dx = 0;
+	data->ray->dy = 0;
+	data->ray->steps = 0;
+	data->ray->x_inc = 0;
+	data->ray->y_inc = 0;
+	data->ray->j = 0;
+	data->ray->x = 0;
+	data->ray->y = 0;
+}
+
 /*Initialises variables of the main data struct.*/
 void	init_structs(t_data *data)
 {
 	init_img(data);
 	init_txtr(data);
+	init_ray(data);
 	data->map = NULL;
 	data->clone_map = NULL;
 	data->file_cnt = NULL;

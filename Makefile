@@ -6,7 +6,7 @@
 #    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/10/31 14:02:49 by mmeier           ###   ########.fr        #
+#    Updated: 2024/11/01 11:37:06 by mmeier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ FILES = src/utils.c \
 		hit_check.c \
 		intersects.c \
 		render.c \
-		raycast_utils.c \
+		raycast_utils_1.c \
+		raycast_utils_2.c \
 		
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 

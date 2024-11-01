@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/01 09:28:00 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 11:35:52 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,26 +46,33 @@ static void	step_forward(t_data *data)
 	}
 }
 
+static void	init_raycaster(t_data *data)
+{
+	data->start_angle = data->p_a - FOV / 2;
+	data->end_angle = data->p_a + FOV / 2;
+	data->step_angle = FOV / S_WID;
+	data->ray_or = data->end_angle;
+}
+
+static void set_up_intersec_check(t_data *data)
+{
+	normalize_angle(&data->ray_or, &data->start_angle);
+	init_draw_ray(data);
+	check_closest_hor_inter(data);
+	check_closest_ver_inter(data);
+	calc_delta_ver(data);
+	calc_delta_hor(data);
+}
+
 void	raycaster(t_data *data)
 {
-	float	start_angle;
-	float	end_angle;
-	float	step_angle;
-	int		i;
+	int	i;
 
 	i = 0;
-	start_angle = data->p_a - FOV / 2;
-	end_angle = data->p_a + FOV / 2;
-	step_angle = FOV / S_WID;
-	data->ray_or = end_angle;
-	while (data->ray_or >= start_angle)
+	init_raycaster(data);
+	while (data->ray_or >= data->start_angle)
 	{
-		normalize_angle(&data->ray_or, &start_angle);
-		init_draw_ray(data);
-		check_closest_hor_inter(data);
-		check_closest_ver_inter(data);
-		calc_delta_ver(data);
-		calc_delta_hor(data);
+		set_up_intersec_check(data);
 		while (1)
 		{
 			ft_hit_wall(data);
@@ -76,9 +83,8 @@ void	raycaster(t_data *data)
 		data->img->len[i] = calc_ray_len(data);
 		data->img->len[i] = data->img->len[i] * cos(data->ray_or - data->p_a); // corrects fishbowl effect
 		data->img->hit_dir[i] = data->hit_dir;
-		if (data->cl_y >= 0 && data->cl_y < data->height && data->cl_x >= 0 && data->cl_x < data->width && i % RAYS_MODULO == 0)
-			draw_line_mm(data, data->x_p * data->PX, data->y_p * data->PX, data->cl_x * data->PX, data->cl_y * data->PX);
-		data->ray_or -= step_angle;
+		draw_ray(data, i);
+		data->ray_or -= data->step_angle;
 		i++;
 	}
 	render_map(data);

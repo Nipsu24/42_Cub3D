@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/16 17:05:57 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 12:23:40 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ int	free_all(t_data *data, int return_val)
 	free_dir(data->img);
 	if (!data->parsing_ok)
 	{
-		free(data->img);
-		data->img = NULL;
-		free(data->txtr);
-		data->txtr = NULL;
+		// free(data->img);
+		// data->img = NULL;
+		// free(data->txtr);
+		// data->txtr = NULL;
+		// free(data->ray);
+		// data->ray = NULL;
+		free_structs(data);
 	}
 	if (data->parsing_ok)
 	{
@@ -31,11 +34,32 @@ int	free_all(t_data *data, int return_val)
 		delete_images(data);
 		if (data->mlx)
 			mlx_terminate(data->mlx);
+		free_structs(data);
 	}
 	if (return_val)
 		return (1);
 	else
 		return (0);
+}
+
+/*Frees data structs for which memory was allocated*/
+void	free_structs(t_data *data)
+{
+	if (data->img != NULL)
+	{
+		free(data->img);
+		data->img = NULL;
+	}
+	if (data->txtr != NULL)
+	{
+		free(data->txtr);
+		data->txtr = NULL;
+	}
+	if (data->ray != NULL)
+	{
+		free(data->ray);
+		data->ray = NULL;
+	}
 }
 
 /*Frees related input variables in case map parameters

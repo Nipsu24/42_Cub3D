@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/01 09:34:02 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/01 12:24:23 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <math.h>
 
-# define STEPS 0.3f
+# define STEPS 0.2f
 # define RO_SPEED 0.1f
 # define PI 3.1415926535
 # define S_WID 630
@@ -77,6 +77,18 @@ typedef struct s_txtr
 	mlx_texture_t	*pl;
 }	t_txtr;
 
+typedef struct s_ray
+{
+	float   		dx;
+	float			dy;
+	float			steps;
+	float			x_inc;
+	float			y_inc;
+	float			j;
+	float			x;
+	float			y;
+}	t_ray;
+
 typedef struct s_data
 {
 	mlx_t			*mlx;
@@ -98,7 +110,6 @@ typedef struct s_data
 	float			p_a; // player angle
 	float			len_close_hor;
 	int				up;
-	// float			ray_dist;
 	float			line_height;
 	int				ray_index;
 	float			PX; // size of mini_map tiles
@@ -124,9 +135,13 @@ typedef struct s_data
 	float			ray_len;
 	float			dist_plane;
 	float			hit_dir;
+	float			start_angle;
+	float			end_angle;
+	float			step_angle;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
+	t_ray			*ray;
 }	t_data;
 
 /*						core_functions.c						*/
@@ -169,6 +184,7 @@ int			free_input(t_data *data);
 int			free_dir(t_img *img);
 void		delete_textures(t_data *data);
 void		delete_images(t_data *data);
+void		free_structs(t_data *data);
 
 /*						free_b.c								*/
 
@@ -225,27 +241,29 @@ void		draw_player(t_data *data, float width, float height);
 int			get_textures(t_data *data);
 int			get_images(t_data *data);
 
-void		check_closest_hor_inter(t_data *data);
-void		check_closest_ver_inter(t_data *data);
+/*						raycaster.c								*/
+
 void		raycaster(t_data *data);
-float		calc_dist(float x, float y, float x_tar, float y_tar);
 
 /*						hit_check.c								*/
 
 void		ft_hit_wall(t_data *data);
 
 /*						intersects.c							*/
+
 void		check_closest_hor_inter(t_data *data);
 void		check_closest_ver_inter(t_data *data);
 void		calc_delta_hor(t_data *data);
 void		calc_delta_ver(t_data *data);
 
-/*						raycast_utils.c							*/
-void		draw_wall_slice(t_data *data, int x, int start_y, int end_y, uint32_t colour);
-void		draw_line_mm(t_data *data, float x, float y, float x_tar, float y_tar);
+/*						raycast_utils_1.c						*/
+
 float		calc_dist(float x, float y, float x_tar, float y_tar);
 float		calc_ray_len(t_data *data);
 void		normalize_angle(float *angle_1, float *angle_2);
+void		draw_ray(t_data *data, int i);
+
+/*						raycast_utils2.c						*/
 
 /*						render.c								*/
 void		render_map(t_data *data);
