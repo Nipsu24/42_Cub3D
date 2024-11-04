@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/01 15:13:55 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/04 11:36:12 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <stdio.h>
 # include <math.h>
 
-# define STEPS 0.2f
-# define RO_SPEED 0.1f
+# define STEPS 0.3f
+# define RO_SPEED 0.09f
 # define PI 3.1415926535
-# define S_WID 630
-# define S_HEI 630
+# define S_WID 1260
+# define S_HEI 1260
 # define MM_SIZE 4 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPS 1e-6
