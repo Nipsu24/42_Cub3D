@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:18:59 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/04 13:19:13 by lstorey          ###   ########.fr       */
+/*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
+/*   Updated: 2024/11/04 14:33:22 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static void	draw_wall_slice(t_data *data, int x, int start_y, int end_y)
 	y = start_y;
 	colour = 0;
 	if (data->img->hit_dir[x] == 1)
-			colour = 0xD3D3D3FF;
+			colour = 0xA9A9A9FF;
 		if (data->img->hit_dir[x] == 2)
 			colour = 0xC0C0C0FF;
 		if (data->img->hit_dir[x] == 3)
-			colour = 0xA9A9A9FF;
-		if (data->img->hit_dir[x] == 4)
 			colour = 0xF5F5F5FF;
+		if (data->img->hit_dir[x] == 4)
+			colour = 0xD3D3D3FF;
 	while (y < end_y)
 	{
 		mlx_put_pixel(data->img->fg, x, y, colour);
