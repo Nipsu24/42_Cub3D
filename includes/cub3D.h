@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/04 14:32:55 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/04 14:39:13 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define MM_SIZE 4 // downscale factor for mini map and player
 # define B_HEI 630
 # define EPS 1e-6
-# define BLOCK_SIZE 1
+# define BLOCK_SIZE 5
 # define FOV (PI / 3) // 60 degrees
 # define RAYS_MODULO 200
 
