@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/01 14:51:38 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/04 13:44:20 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 	// create_ray_img(data);
 	// raycaster(data);
 	// build_map(data);
-	// if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
-	// {
+	if (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)
+	{
 		if (keydata.key == MLX_KEY_W)
 			move_up(data);
 		if (keydata.key == MLX_KEY_A)
@@ -60,6 +60,7 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 			rotate_left(data);
 		if (keydata.key == MLX_KEY_RIGHT)
 			rotate_right(data);
+	}
 	// if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 	// 	move_up(data);
 	// if (mlx_is_key_down(data->mlx, MLX_KEY_S))
@@ -72,7 +73,6 @@ static void	my_key_hook(mlx_key_data_t keydata, void *param)
 	// 	rotate_left(data);
 	// if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 	// 	rotate_right(data);
-	// }
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 		mlx_close_window(data->mlx);
 }
