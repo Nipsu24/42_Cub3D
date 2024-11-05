@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/04 14:33:22 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/05 10:46:40 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,28 @@
   (x value is the i-index passed from render_map function).*/
 static void	draw_wall_slice(t_data *data, int x, int start_y, int end_y)
 {
-    uint32_t	colour;
 	int			y;
+	int			slice_height;
+	int			tex_x;
+	int			tex_y;
+	uint32_t	colour;
 
 	y = start_y;
-	colour = 0;
-	if (data->img->hit_dir[x] == 1)
-			colour = 0xA9A9A9FF;
-		if (data->img->hit_dir[x] == 2)
-			colour = 0xC0C0C0FF;
-		if (data->img->hit_dir[x] == 3)
-			colour = 0xF5F5F5FF;
-		if (data->img->hit_dir[x] == 4)
-			colour = 0xD3D3D3FF;
+	slice_height = end_y - start_y;
+
+	// Assuming data->texture is the texture image and has width and height properties
+	// tex_x is calculated based on the x position and hit direction
+	tex_x = (data->img->hit_dir[x] % data->texture->width);
+
 	while (y < end_y)
 	{
+		// Calculate the corresponding y coordinate in the texture
+		tex_y = ((y - start_y) * data->texture->height) / slice_height;
+
+		// Sample the texture color
+		colour = mlx_get_pixel(data->texture, tex_x, tex_y);
+
+		// Draw the pixel with the sampled texture color
 		mlx_put_pixel(data->img->fg, x, y, colour);
 		y++;
 	}
