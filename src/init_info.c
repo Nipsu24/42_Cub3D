@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/01 12:15:50 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/04 16:16:07 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ static void	init_txtr(t_data *data)
 	data->txtr->wl = NULL;
 	data->txtr->fl = NULL;
 	data->txtr->pl = NULL;
+	data->txtr->no = NULL;
+	data->txtr->ea = NULL;
+	data->txtr->so = NULL;
+	data->txtr->we = NULL;
 }
 
 static void	init_ray(t_data *data)

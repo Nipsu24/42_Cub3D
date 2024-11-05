@@ -1,10 +1,10 @@
-NO textures/test/north.png
+NO textures/north.png
 
-SO         textures/test/south.png
+SO         textures/south.png
 
-EA     textures/test/east.png
+EA     textures/robot.png
 
-WE      textures/test/west.png
+WE      textures/west.png
 
 C 135, 206, 235
 
