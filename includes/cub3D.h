@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/04 14:39:13 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/05 10:39:55 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ typedef struct s_txtr
 	mlx_texture_t	*wl;
 	mlx_texture_t	*fl;
 	mlx_texture_t	*pl;
+	mlx_texture_t	*NO;
+	mlx_texture_t	*EA;
+	mlx_texture_t	*SO;
+	mlx_texture_t	*WE;
 }	t_txtr;
 
 typedef struct s_ray
