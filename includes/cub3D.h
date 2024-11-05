@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/04 11:36:12 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/04 16:14:56 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define BLOCK_SIZE 1
 # define FOV (PI / 3) // 60 degrees
 # define RAYS_MODULO 80
+# define BITMAP_PX 64
 
 typedef struct s_data	t_data;
 typedef struct s_img
@@ -75,6 +76,10 @@ typedef struct s_txtr
 	mlx_texture_t	*wl;
 	mlx_texture_t	*fl;
 	mlx_texture_t	*pl;
+	mlx_texture_t	*no;
+	mlx_texture_t	*ea;
+	mlx_texture_t	*so;
+	mlx_texture_t	*we;
 }	t_txtr;
 
 typedef struct s_ray
