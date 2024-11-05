@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/30 16:54:24 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:01:29 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ int	get_textures(t_data *data)
 		return (1);
 	data->txtr->fl = mlx_load_png("./textures/white_floor_mini_map.png");
 	if (!data->txtr->fl)
+		return (1);
+	data->txtr->no = mlx_load_png(data->img->no);
+	if (!data->txtr->no)
+		return (1);
+	data->txtr->ea = mlx_load_png(data->img->ea);
+	if (!data->txtr->ea)
+		return (1);
+	data->txtr->so = mlx_load_png(data->img->so);
+	if (!data->txtr->so)
+		return (1);
+	data->txtr->we = mlx_load_png(data->img->we);
+	if (!data->txtr->we)
 		return (1);
 	return (0);
 }
@@ -90,9 +102,9 @@ void	build_map(t_data *data)
 
 	y = -1;
 	x = -1;
-	del_txtr_only(data);
+	// del_txtr_only(data);
 	del_img_only(data);
-	get_textures(data);
+	// get_textures(data);
 	get_images(data);
 	create_pl_img(data);
 	while (data->map[++y])

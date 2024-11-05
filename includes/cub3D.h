@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/05 10:39:55 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/05 11:02:12 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@
 # define EPS 1e-6
 # define BLOCK_SIZE 5
 # define FOV (PI / 3) // 60 degrees
-# define RAYS_MODULO 200
+# define RAYS_MODULO 80
+# define BITMAP_PX 64
 
 typedef struct s_data	t_data;
 typedef struct s_img
@@ -75,10 +76,10 @@ typedef struct s_txtr
 	mlx_texture_t	*wl;
 	mlx_texture_t	*fl;
 	mlx_texture_t	*pl;
-	mlx_texture_t	*NO;
-	mlx_texture_t	*EA;
-	mlx_texture_t	*SO;
-	mlx_texture_t	*WE;
+	mlx_texture_t	*no;
+	mlx_texture_t	*ea;
+	mlx_texture_t	*so;
+	mlx_texture_t	*we;
 }	t_txtr;
 
 typedef struct s_ray
