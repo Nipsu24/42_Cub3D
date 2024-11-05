@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/05 10:01:29 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/05 16:52:31 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,7 @@ void	build_map(t_data *data)
 
 	y = -1;
 	x = -1;
-	// del_txtr_only(data);
 	del_img_only(data);
-	// get_textures(data);
 	get_images(data);
 	create_pl_img(data);
 	while (data->map[++y])

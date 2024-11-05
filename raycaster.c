@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/01 14:24:26 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/05 16:51:27 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	init_raycaster(t_data *data)
 /*Determines relevant values for the intersections' check
   which is needed later in while loop for incrementing the
   ray lengths until a wall is hit.*/
-static void set_up_intersec_check(t_data *data)
+static void	set_up_intersec_check(t_data *data)
 {
 	normalize_angle(&data->ray_or, &data->start_angle);
 	init_draw_ray(data);
@@ -98,11 +98,13 @@ void	raycaster(t_data *data)
 			ft_hit_wall(data);
 			step_forward(data);
 			if (data->ver_hit && data->hor_hit)
-				break;
+				break ;
 		}
 		data->img->len[i] = calc_ray_len(data);
 		data->img->len[i] = data->img->len[i] * cos(data->ray_or - data->p_a);
 		data->img->hit_dir[i] = data->hit_dir;
+		data->img->cl_x[i] = data->cl_x;
+		data->img->cl_y[i] = data->cl_y;
 		draw_ray(data, i);
 		data->ray_or -= data->step_angle;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/04 16:14:56 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/05 16:18:04 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_img
 	long int		ceiling[3];
 	float			len[S_WID];
 	float			hit_dir[S_WID];
+	float			cl_x[S_WID];
+	float			cl_y[S_WID];
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
 	mlx_image_t		*pl;
@@ -143,6 +145,8 @@ typedef struct s_data
 	float			start_angle;
 	float			end_angle;
 	float			step_angle;
+	float			slice_height;
+	mlx_texture_t	*texture;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
