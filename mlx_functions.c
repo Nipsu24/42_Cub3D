@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/04 11:29:00 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/05 09:34:57 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ int	mlx_functions(t_data *data)
 	calc_mini_map_scaling(data);
 	if (get_textures(data))
 		return (1);
+	printf("TEST\n");
 	if (get_images(data))
 		return (1);
 	if (create_ray_img(data))
