@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/04 14:49:23 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/06 15:22:09 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,20 @@ static void	step_forward(t_data *data)
 }
 
 /*Calculates relevant values for creating arc
-  of rays*/
+  of rays. Field of view (fov) set to 60 degrees*/
 static void	init_raycaster(t_data *data)
 {
-	data->start_angle = data->p_a - FOV / 2;
-	data->end_angle = data->p_a + FOV / 2;
-	data->step_angle = FOV / S_WID;
+	data->fov = PI / 3;
+	data->start_angle = data->p_a - data->fov / 2;
+	data->end_angle = data->p_a + data->fov / 2;
+	data->step_angle = data->fov / S_WID;
 	data->ray_or = data->end_angle;
 }
 
 /*Determines relevant values for the intersections' check
   which is needed later in while loop for incrementing the
   ray lengths until a wall is hit.*/
-static void set_up_intersec_check(t_data *data)
+static void	set_up_intersec_check(t_data *data)
 {
 	normalize_angle(&data->ray_or, &data->start_angle);
 	init_draw_ray(data);
@@ -98,11 +99,13 @@ void	raycaster(t_data *data)
 			ft_hit_wall(data);
 			step_forward(data);
 			if (data->ver_hit && data->hor_hit)
-				break;
+				break ;
 		}
 		data->img->len[i] = calc_ray_len(data);
 		data->img->len[i] = data->img->len[i] * cos(data->ray_or - data->p_a);
 		data->img->hit_dir[i] = data->hit_dir;
+		data->img->cl_x[i] = data->cl_x;
+		data->img->cl_y[i] = data->cl_y;
 		draw_ray(data, i);
 		data->ray_or -= data->step_angle;
 		i++;
