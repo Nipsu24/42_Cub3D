@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:36:39 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/06 11:20:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:38:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ void	calc_mini_map_scaling(t_data *data)
 	px_x = S_WID / data->width / MM_SIZE;
 	px_y = S_HEI / data->height / MM_SIZE;
 	if (px_x < px_y)
-		data->PX = px_x;
+		data->px = px_x;
 	else
-		data->PX = px_y;
+		data->px = px_y;
 }
 
 int	mlx_functions(t_data *data)

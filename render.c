@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/05 16:49:57 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:47:26 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	render_map(t_data *data)
 
 	i = 0;
 	center_y = S_HEI / 2;
-	data->dist_plane = (S_WID / 2) / tan(FOV / 2);
+	data->dist_plane = (S_WID / 2) / tan(data->fov / 2);
 	while (i < S_WID)
 	{
 		data->slice_height
