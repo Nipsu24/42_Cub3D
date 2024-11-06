@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 11:13:31 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:38:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	get_images(t_data *data)
 	data->img->fl = mlx_texture_to_image(data->mlx, data->txtr->fl);
 	if (!data->img->fl)
 		return (1);
-	mlx_resize_image(data->img->wl, data->PX, data->PX);
-	mlx_resize_image(data->img->fl, data->PX, data->PX);
+	mlx_resize_image(data->img->wl, data->px, data->px);
+	mlx_resize_image(data->img->fl, data->px, data->px);
 	return (0);
 }
 
@@ -71,10 +71,10 @@ void	build_map(t_data *data)
 		while (data->map[y][++x])
 		{
 			mlx_image_to_window(data->mlx, data->img->fl,
-				x * data->PX, y * data->PX);
+				x * data->px, y * data->px);
 			if (data->map[y][x] == '1')
 				mlx_image_to_window(data->mlx, data->img->wl,
-					x * data->PX, y * data->PX);
+					x * data->px, y * data->px);
 		}
 	}
 	mlx_image_to_window(data->mlx, data->img->ray, 0, 0);

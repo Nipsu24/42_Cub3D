@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:39:00 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 11:22:20 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:38:34 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ static void	init_draw_ray(t_data *data, t_ray *ray)
 	ray->j = 0;
 	ray->x = 0;
 	ray->y = 0;
-	ray->dx = calc_tar_dist(data->x_p * data->PX, data->cl_x * data->PX);
-	ray->dy = calc_tar_dist(data->y_p * data->PX, data->cl_y * data->PX);
+	ray->dx = calc_tar_dist(data->x_p * data->px, data->cl_x * data->px);
+	ray->dy = calc_tar_dist(data->y_p * data->px, data->cl_y * data->px);
 	ray->steps = calc_step_size(ray->dx, ray->dy);
 	ray->x_inc = ray->dx / (float)ray->steps;
 	ray->y_inc = ray->dy / (float)ray->steps;
 	ray->x = data->x_p;
 	ray->y = data->y_p;
-	ray->x *= data->PX;
-	ray->y *= data->PX;
+	ray->x *= data->px;
+	ray->y *= data->px;
 }
 
 /*Draws ray in minimap. Index i from raycaster function used in order

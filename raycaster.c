@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/05 16:51:27 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:48:40 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ static void	step_forward(t_data *data)
 }
 
 /*Calculates relevant values for creating arc
-  of rays*/
+  of rays. Field of view (fov) set to 60 degrees*/
 static void	init_raycaster(t_data *data)
 {
-	data->start_angle = data->p_a - FOV / 2;
-	data->end_angle = data->p_a + FOV / 2;
-	data->step_angle = FOV / S_WID;
+	data->fov = PI / 3;
+	data->start_angle = data->p_a - data->fov / 2;
+	data->end_angle = data->p_a + data->fov / 2;
+	data->step_angle = data->fov / S_WID;
 	data->ray_or = data->end_angle;
 }
 

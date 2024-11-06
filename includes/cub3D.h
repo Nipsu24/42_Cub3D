@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/06 11:28:17 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:48:11 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define MM_SIZE 4 // downscale factor for mini map
 # define EPS 1e-6
 # define BLOCK_SIZE 1
-# define FOV (PI / 3) // 60 degrees
 # define RAYS_MODULO 80
 # define BITMAP_PX 64
 
@@ -98,7 +97,7 @@ typedef struct s_data
 	int				up;
 	float			line_height;
 	int				ray_index;
-	float			PX;
+	float			px;
 	float			hor_next_y;
 	float			hor_next_x;
 	float			ray_or;
@@ -124,6 +123,7 @@ typedef struct s_data
 	float			end_angle;
 	float			step_angle;
 	float			slice_height;
+	float			fov;
 	mlx_texture_t	*texture;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
