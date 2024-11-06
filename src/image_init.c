@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:06:30 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/30 16:04:25 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 10:46:05 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	create_ray_img(t_data *data)
 }
 
 /*PLAYER IMAGE*/
-int	create_pl_img(t_data *data)
-{
-	data->img->pl = mlx_new_image(data->mlx,
-			S_WID, S_HEI);
-	if (!data->img->pl)
-		return (1);
-	return (0);
-}
+// int	create_pl_img(t_data *data)
+// {
+// 	data->img->pl = mlx_new_image(data->mlx,
+// 			S_WID, S_HEI);
+// 	if (!data->img->pl)
+// 		return (1);
+// 	return (0);
+// }

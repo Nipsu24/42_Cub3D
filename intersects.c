@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 16:08:05 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/01 15:20:02 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:16:25 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,23 @@
   statement and sets "max" value for hor_dis, as ray will never hit a
   horizontal intersection. If ray faces south, rounds next y value up with
   ceilf function, otherwise floorf function used for rounding down
-  (facing north). Uses -tan and tan division for determining related x value. */
+  (facing north). Uses -tan and tan division for determining related x value.*/
 void	check_closest_hor_inter(t_data *data)
 {
-	if (!(fabs(data->ray_or - PI) < EPS) && !(fabs(data->ray_or - 2 * PI) < EPS))
+	if (!(fabs(data->ray_or - PI) < EPS)
+		&& !(fabs(data->ray_or - 2 * PI) < EPS))
 	{
 		if (data->ray_or > PI)
 		{
 			data->hor_next_y = ceilf(data->y_p);
-			data->hor_next_x = data->x_p + (data->hor_next_y - data->y_p) / -tan(data->ray_or);
+			data->hor_next_x = data->x_p
+				+ (data->hor_next_y - data->y_p) / -tan(data->ray_or);
 		}
 		else
 		{
 			data->hor_next_y = floorf(data->y_p);
-			data->hor_next_x = data->x_p + (data->y_p - data->hor_next_y) / tan(data->ray_or);
+			data->hor_next_x = data->x_p
+				+ (data->y_p - data->hor_next_y) / tan(data->ray_or);
 		}
 	}
 	else
@@ -53,17 +56,20 @@ void	check_closest_hor_inter(t_data *data)
   related y value. */
 void	check_closest_ver_inter(t_data *data)
 {
-	if (!(fabs(data->ray_or - PI / 2) < EPS) && !(fabs(data->ray_or - 3 * PI / 2) < EPS))
+	if (!(fabs(data->ray_or - PI / 2) < EPS)
+		&& !(fabs(data->ray_or - 3 * PI / 2) < EPS))
 	{
-		if (data->ray_or < PI/2 || data->ray_or > 3 * PI / 2)
+		if (data->ray_or < PI / 2 || data->ray_or > 3 * PI / 2)
 		{
 			data->ver_next_x = ceilf(data->x_p);
-			data->ver_next_y = data->y_p + (data->ver_next_x - data->x_p) * -tan(data->ray_or);
+			data->ver_next_y = data->y_p
+				+ (data->ver_next_x - data->x_p) * -tan(data->ray_or);
 		}
 		else
 		{
 			data->ver_next_x = floorf(data->x_p);
-			data->ver_next_y = data->y_p + (data->x_p - data->ver_next_x) * tan(data->ray_or);
+			data->ver_next_y = data->y_p
+				+ (data->x_p - data->ver_next_x) * tan(data->ray_or);
 		}
 	}
 	else

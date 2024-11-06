@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/05 16:18:14 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:10:45 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,9 @@ static void	init_img(t_data *data)
 	arr_to_null(&data->img->cl_y[S_WID], S_WID);
 	data->img->wl = NULL;
 	data->img->fl = NULL;
-	data->img->pl = NULL;
 	data->img->bg = NULL;
 	data->img->fg = NULL;
 	data->img->ray = NULL;
-	data->img->bg_ray = NULL;
 	data->img->data = data;
 	data->img->no = NULL;
 	data->img->so = NULL;
@@ -63,7 +61,6 @@ static void	init_txtr(t_data *data)
 	}
 	data->txtr->wl = NULL;
 	data->txtr->fl = NULL;
-	data->txtr->pl = NULL;
 	data->txtr->no = NULL;
 	data->txtr->ea = NULL;
 	data->txtr->so = NULL;
@@ -117,7 +114,6 @@ void	init_structs(t_data *data)
 	data->line_height = 0;
 	data->ray_index = 0;
 	data->PX = 0;
-	data->pl_size = 0;
 	data->dist_plane = 0;
 	data->hit_dir = 0;
 	data->slice_height = 0;
