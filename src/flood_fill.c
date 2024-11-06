@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/31 11:46:19 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/06 11:24:15 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,10 @@ static int	fill_map(char ***map, int x, int y, t_data *data)
 	return (1);
 }
 
-static int check_map(char **map, t_data *data)
+static int	check_map(char **map, t_data *data)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	x = 0;
@@ -134,10 +134,10 @@ static int check_map(char **map, t_data *data)
 	return (1);
 }
 
-static int zero_finder(char **map)
+static int	zero_finder(char **map)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -146,7 +146,7 @@ static int zero_finder(char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] == '0')
-				return(1);
+				return (1);
 			x++;
 		}
 		x = 0;

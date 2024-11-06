@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/04 16:22:40 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:11:16 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,7 @@ int	free_all(t_data *data, int return_val)
 	free_input(data);
 	free_dir(data->img);
 	if (!data->parsing_ok)
-	{
-		// free(data->img);
-		// data->img = NULL;
-		// free(data->txtr);
-		// data->txtr = NULL;
-		// free(data->ray);
-		// data->ray = NULL;
 		free_structs(data);
-	}
 	if (data->parsing_ok)
 	{
 		delete_textures(data);
@@ -89,8 +81,6 @@ void	delete_textures(t_data *data)
 			mlx_delete_texture(data->txtr->wl);
 		if (data->txtr->fl)
 			mlx_delete_texture(data->txtr->fl);
-		// if (data->txtr->pl)
-		// 	mlx_delete_texture(data->txtr->pl);
 		if (data->txtr->no)
 			mlx_delete_texture(data->txtr->no);
 		if (data->txtr->ea)
@@ -112,12 +102,12 @@ void	delete_images(t_data *data)
 			mlx_delete_image(data->mlx, data->img->wl);
 		if (data->img->fl)
 			mlx_delete_image(data->mlx, data->img->fl);
-		if (data->img->pl)
-			mlx_delete_image(data->mlx, data->img->pl);
 		if (data->img->bg)
 			mlx_delete_image(data->mlx, data->img->bg);
 		if (data->img->ray)
 			mlx_delete_image(data->mlx, data->img->ray);
+		if (data->img->fg)
+			mlx_delete_image(data->mlx, data->img->fg);
 		free(data->img);
 		data->img = NULL;
 	}

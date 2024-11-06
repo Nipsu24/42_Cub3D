@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/21 12:36:28 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/06 10:59:36 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void	del_txtr_only(t_data *data)
 			mlx_delete_texture(data->txtr->wl);
 		if (data->txtr->fl)
 			mlx_delete_texture(data->txtr->fl);
-		// if (data->txtr->pl)
-		// 	mlx_delete_texture(data->txtr->pl);
 	}
 }
 
@@ -84,7 +82,5 @@ void	del_img_only(t_data *data)
 			mlx_delete_image(data->mlx, data->img->wl);
 		if (data->img->fl)
 			mlx_delete_image(data->mlx, data->img->fl);
-		if (data->img->pl)
-			mlx_delete_image(data->mlx, data->img->pl);
 	}
 }

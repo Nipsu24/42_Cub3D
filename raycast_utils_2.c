@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:39:00 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/01 14:18:35 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:22:20 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	calc_tar_dist(float coord, float tar_coord)
 /*Calculates and returns step size of the ray drawn in minimap. Steps
   later used in init_draw_ray function in order to determine increment
   for the x and y coordinates of the ray line.*/
-static int calc_step_size(float dx, float dy)
+static int	calc_step_size(float dx, float dy)
 {
 	int	steps;
 
@@ -54,7 +54,6 @@ static void	init_draw_ray(t_data *data, t_ray *ray)
 	ray->j = 0;
 	ray->x = 0;
 	ray->y = 0;
-
 	ray->dx = calc_tar_dist(data->x_p * data->PX, data->cl_x * data->PX);
 	ray->dy = calc_tar_dist(data->y_p * data->PX, data->cl_y * data->PX);
 	ray->steps = calc_step_size(ray->dx, ray->dy);
@@ -66,17 +65,17 @@ static void	init_draw_ray(t_data *data, t_ray *ray)
 	ray->y *= data->PX;
 }
 
-/*Draws ray in minimap. Index i from raycaster function used in order to
-  determine with help of modulo calculation which ray is drawn (to
-  avoid that each ray used for wall projection is drawn in map). Start and 
-  end values for x and y are used for calculating optimal stepsize of putting pixel
-  on the ray line.*/
+/*Draws ray in minimap. Index i from raycaster function used in order
+  to determine with help of modulo calculation which ray is drawn (to
+  avoid that each ray used for wall projection is drawn in map). Start
+  and end values for x and y are used for calculating optimal stepsize
+  of putting pixel on the ray line.*/
 void	draw_ray(t_data *data, int i)
 {
 	init_draw_ray(data, data->ray);
 	if (data->cl_y >= 0 && data->cl_y < data->height
-			&& data->cl_x >= 0 && data->cl_x < data->width
-			&& i % RAYS_MODULO == 0)
+		&& data->cl_x >= 0 && data->cl_x < data->width
+		&& i % RAYS_MODULO == 0)
 	{	
 		while (data->ray->j <= data->ray->steps)
 		{
