@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/05 11:02:12 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/06 15:21:37 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@
 # define PI 3.1415926535
 # define S_WID 1260
 # define S_HEI 1260
-# define MM_SIZE 4 // downscale factor for mini map and player
-# define B_HEI 630
+# define MM_SIZE 4 // downscale factor for mini map
 # define EPS 1e-6
-# define BLOCK_SIZE 5
-# define FOV (PI / 3) // 60 degrees
+# define BLOCK_SIZE 1
 # define RAYS_MODULO 80
 # define BITMAP_PX 64
 
@@ -44,38 +42,20 @@ typedef struct s_img
 	long int		ceiling[3];
 	float			len[S_WID];
 	float			hit_dir[S_WID];
+	float			cl_x[S_WID];
+	float			cl_y[S_WID];
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
-	mlx_image_t		*pl;
 	mlx_image_t		*ray;
 	mlx_image_t		*bg;
 	mlx_image_t		*fg;
-	mlx_image_t		*bg_ray;
 	unsigned int	colour;
 }	t_img;
-
-typedef struct s_pl
-{
-	int				x_strt;
-	int				y_strt;
-	int				pix_x;
-	int				pix_y;
-	float			x_centr;
-	float			y_centr;
-	float			ro_x;
-	float			ro_y;
-	float			transl_x;
-	float			transl_y;
-	int				fnl_x;
-	int				fnl_y;
-	
-} t_pl;
 
 typedef struct s_txtr
 {
 	mlx_texture_t	*wl;
 	mlx_texture_t	*fl;
-	mlx_texture_t	*pl;
 	mlx_texture_t	*no;
 	mlx_texture_t	*ea;
 	mlx_texture_t	*so;
@@ -84,7 +64,7 @@ typedef struct s_txtr
 
 typedef struct s_ray
 {
-	float   		dx;
+	float			dx;
 	float			dy;
 	float			steps;
 	float			x_inc;
@@ -110,15 +90,14 @@ typedef struct s_data
 	int				height;
 	int				width;
 	int				parsing_ok;
-	float			p_dx; // player delta x
-	float			p_dy; // player delta y
-	float			p_a; // player angle
+	float			p_dx;
+	float			p_dy;
+	float			p_a;
 	float			len_close_hor;
 	int				up;
 	float			line_height;
 	int				ray_index;
-	float			PX; // size of mini_map tiles
-	float			pl_size;
+	float			px;
 	float			hor_next_y;
 	float			hor_next_x;
 	float			ray_or;
@@ -126,9 +105,9 @@ typedef struct s_data
 	float			ver_next_y;
 	float			ver_next_x;
 	float			ver_dis;
-	float			cl_dis; //closest distance to initial nearest intersection
-	float			cl_y; // closest y
-	float			cl_x; //closest x
+	float			cl_dis;
+	float			cl_y;
+	float			cl_x;
 	int				ver_hit;
 	int				hor_hit;
 	float			hor_y_step;
@@ -143,6 +122,9 @@ typedef struct s_data
 	float			start_angle;
 	float			end_angle;
 	float			step_angle;
+	float			slice_height;
+	float			fov;
+	mlx_texture_t	*texture;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
 	t_img			*img;
@@ -230,7 +212,6 @@ void		move_right(t_data *data);
 /*						init_images.c							*/
 
 int			create_ray_img(t_data *data);
-int			create_pl_img(t_data *data);
 int			create_bg_img(t_data *data);
 int			create_fg_img(t_data *data);
 
@@ -242,7 +223,6 @@ void		rotate_right(t_data *data);
 /*						build_mini_map.c						*/
 
 void		build_map(t_data *data);
-void		draw_player(t_data *data, float width, float height);
 int			get_textures(t_data *data);
 int			get_images(t_data *data);
 

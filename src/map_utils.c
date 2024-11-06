@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:18:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 12:18:47 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/06 11:25:33 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	get_length(char **arr)
 
 static int	zero_at_start(char **arr)
 {
-	static int y = 0;
+	static int	y = 0;
 
 	while (arr[y])
 	{
