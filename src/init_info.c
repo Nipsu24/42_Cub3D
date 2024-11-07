@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/06 11:45:38 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/07 11:17:09 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,6 @@ void	init_structs(t_data *data)
 	data->slice_height = 0;
 	data->texture = NULL;
 	data->fov = 0;
+	data->txt_y_st = 0;
+	data->txt_y = 0;
 }

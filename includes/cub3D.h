@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/06 11:48:11 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/07 11:17:26 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@
 # define STEPS 0.3f
 # define RO_SPEED 0.09f
 # define PI 3.1415926535
-# define S_WID 1260
-# define S_HEI 1260
+# define S_WID 630
+# define S_HEI 630
 # define MM_SIZE 4 // downscale factor for mini map
 # define EPS 1e-6
 # define BLOCK_SIZE 1
 # define RAYS_MODULO 80
-# define BITMAP_PX 64
 
 typedef struct s_data	t_data;
 typedef struct s_img
@@ -124,6 +123,8 @@ typedef struct s_data
 	float			step_angle;
 	float			slice_height;
 	float			fov;
+	float			txt_y_st;
+	float			txt_y;
 	mlx_texture_t	*texture;
 	mlx_image_t		*main_screen;
 	t_txtr			*txtr;
