@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 11:47:26 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/07 11:36:37 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,30 @@ static float	calc_x_offset(t_data *data, int x)
   in order to retrieve colour of respective pixel from texture with
   help of get_texture_colour function. Then draws the pixel with
   put_pixel function.*/
-static void	draw_wall_slice(t_data *data, int x, int start_y, int end_y)
+static void	draw_wall_slice(t_data *data, int x, float start_y, float end_y)
 {
 	uint32_t	colour;
 	int			y;
 	float		off_x;
 	float		txt_x;
 	float		txt_y;
+	float		txt_y_start;
 
 	colour = 0;
-	y = start_y;
 	off_x = calc_x_offset(data, x);
 	txt_x = off_x * data->texture->width;
+	if (start_y < 0)
+    {
+        txt_y_start = -start_y * (data->texture->height / data->slice_height);
+        start_y = 0;
+    }
+    else
+        txt_y_start = 0;
+    txt_y = txt_y_start;
+    y = start_y;
 	while (y < end_y)
 	{
-		txt_y = (y - start_y) * (data->texture->height / data->slice_height);
+		txt_y = txt_y_start + (y - start_y) * (data->texture->height / data->slice_height);
 		if (txt_x >= data->texture->width)
 			txt_x = data->texture->width - 1;
 		if (txt_y >= data->texture->height)
@@ -102,19 +111,15 @@ void	render_map(t_data *data)
 	int			i;
 	float		start_y;
 	float		end_y;
-	float		center_y;
 
 	i = 0;
-	center_y = S_HEI / 2;
 	data->dist_plane = (S_WID / 2) / tan(data->fov / 2);
 	while (i < S_WID)
 	{
 		data->slice_height
 			= (BLOCK_SIZE / (data->img->len[i])) * data->dist_plane;
-		start_y = center_y - data->slice_height / 2;
-		end_y = center_y + data->slice_height / 2;
-		if (start_y < 0)
-			start_y = 0;
+		start_y = (S_HEI / 2) - (data->slice_height / 2);
+		end_y = (S_HEI / 2) + (data->slice_height / 2);
 		if (end_y >= S_HEI)
 			end_y = S_HEI - 1;
 		draw_wall_slice(data, i, start_y, end_y);
