@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/07 11:36:37 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/07 12:12:27 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,39 +63,52 @@ static float	calc_x_offset(t_data *data, int x)
 	return (off_x);
 }
 
+/*Helper function of draw_wall_slice, calculates y pixel position
+  within the texture, and accounts for cases where those position
+  exceed the texture boundaries. Returns colour of pixel to
+  draw_wall_slice function.*/
+static uint32_t	slice_loop(t_data *data, float start_y, int y, uint32_t colour)
+{
+	data->txt_y = data->txt_y_st + (y - start_y)
+		* (data->texture->height / data->slice_height);
+	if (data->txt_x >= data->texture->width)
+		data->txt_x = data->texture->width - 1;
+	if (data->txt_y >= data->texture->height)
+		data->txt_y = data->texture->height - 1;
+	colour = get_texture_colour(data->texture, (int)data->txt_x, (int)data->txt_y);
+	return (colour);
+}
+
 /*Maps map coordinates with texture coordinates (txt_x and txt_y)
   in order to retrieve colour of respective pixel from texture with
-  help of get_texture_colour function. Then draws the pixel with
-  put_pixel function.*/
+  help of slice_loop/get_texture_colour function. In case wall slice
+  is bigger than screen height, an extra caclulation is conducted for
+  txt_y_st to prevent distortion if the player is close to a wall.
+  Slice_loop function returns colour of the pixel and internally
+  determines y position in the texture. Then the funtion draws the
+  pixel with put_pixel function.*/
 static void	draw_wall_slice(t_data *data, int x, float start_y, float end_y)
 {
 	uint32_t	colour;
 	int			y;
 	float		off_x;
-	float		txt_x;
-	float		txt_y;
-	float		txt_y_start;
 
 	colour = 0;
 	off_x = calc_x_offset(data, x);
-	txt_x = off_x * data->texture->width;
+	data->txt_x = off_x * data->texture->width;
 	if (start_y < 0)
-    {
-        txt_y_start = -start_y * (data->texture->height / data->slice_height);
-        start_y = 0;
-    }
-    else
-        txt_y_start = 0;
-    txt_y = txt_y_start;
-    y = start_y;
+	{
+		data->txt_y_st = -start_y
+			* (data->texture->height / data->slice_height);
+		start_y = 0;
+	}
+	else
+		data->txt_y_st = 0;
+	data->txt_y = data->txt_y_st;
+	y = start_y;
 	while (y < end_y)
 	{
-		txt_y = txt_y_start + (y - start_y) * (data->texture->height / data->slice_height);
-		if (txt_x >= data->texture->width)
-			txt_x = data->texture->width - 1;
-		if (txt_y >= data->texture->height)
-			txt_y = data->texture->height - 1;
-		colour = get_texture_colour(data->texture, (int)txt_x, (int)txt_y);
+		colour = slice_loop(data, start_y, y, colour);
 		mlx_put_pixel(data->img->fg, x, y, colour);
 		y++;
 	}
