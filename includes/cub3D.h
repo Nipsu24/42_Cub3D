@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/08 10:38:59 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/08 13:55:27 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define STEPS 0.3f
 # define RO_SPEED 0.09f
 # define PI 3.1415926535
-# define S_WID 630
-# define S_HEI 630
+# define S_WID 1660
+# define S_HEI 1260
 # define MM_SIZE 4 // downscale factor for mini map
 # define EPS 1e-6
 # define BLOCK_SIZE 1
@@ -153,6 +153,7 @@ char		*ft_read_map(int fd);
 int			number_count(char *str);
 void		check_init_pl_angle(t_data *data);
 void		official_exit(void);
+int			zero_finder(char **map);
 
 /*						mlx_functions.c							*/
 

@@ -6,10 +6,9 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/08 10:41:31 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/08 13:44:00 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "./includes/cub3D.h"
 
@@ -76,7 +75,8 @@ static uint32_t	slice_loop(t_data *data, float start_y, int y, uint32_t colour)
 		data->txt_x = data->texture->width - 1;
 	if (data->txt_y >= data->texture->height)
 		data->txt_y = data->texture->height - 1;
-	colour = get_texture_colour(data->texture, (int)data->txt_x, (int)data->txt_y);
+	colour = get_texture_colour(data->texture,
+			(int)data->txt_x, (int)data->txt_y);
 	return (colour);
 }
 
