@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/07 12:01:18 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/08 13:59:57 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ static void	init_txtr(t_data *data)
 	data->txtr->ea = NULL;
 	data->txtr->so = NULL;
 	data->txtr->we = NULL;
+	data->hit_dir = 0;
+	data->slice_height = 0;
+	data->texture = NULL;
+	data->fov = 0;
+	data->txt_y_st = 0;
+	data->txt_y = 0;
+	data->txt_x = 0;
 }
 
 static void	init_ray(t_data *data)
@@ -115,11 +122,4 @@ void	init_structs(t_data *data)
 	data->ray_index = 0;
 	data->px = 0;
 	data->dist_plane = 0;
-	data->hit_dir = 0;
-	data->slice_height = 0;
-	data->texture = NULL;
-	data->fov = 0;
-	data->txt_y_st = 0;
-	data->txt_y = 0;
-	data->txt_x = 0;
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+         #
+#    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/11/01 11:37:06 by mmeier           ###   ########.fr        #
+#    Updated: 2024/11/08 14:06:48 by lstorey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,18 +36,17 @@ FILES = src/utils.c \
 		src/texture_info_utils.c \
 		src/flood_fill.c \
 		src/map_utils.c \
-		src/utils_to_be_deleted.c \
-		mlx_functions.c \
-		moves.c \
-		rotate.c \
+		src/mlx_functions.c \
+		src/moves.c \
+		src/rotate.c \
 		src/image_init.c \
-		build_mini_map.c \
-		raycaster.c \
-		hit_check.c \
-		intersects.c \
-		render.c \
-		raycast_utils_1.c \
-		raycast_utils_2.c \
+		src/build_mini_map.c \
+		src/raycaster.c \
+		src/hit_check.c \
+		src/intersects.c \
+		src/render.c \
+		src/raycast_utils_1.c \
+		src/raycast_utils_2.c \
 		
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 

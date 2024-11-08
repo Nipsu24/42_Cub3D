@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:55 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/31 14:06:09 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/08 14:09:53 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		init_structs(&data);
 		if (cube_it(argv[1], &data))
 			return (free_all(&data, 1));
-		printf("SUCCESS\n");
+		printf("HAZZAH!!\n");
 		return (free_all(&data, 0));
 	}
 	else
