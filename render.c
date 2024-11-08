@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:38:39 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 15:21:55 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/08 10:41:31 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,52 @@ static float	calc_x_offset(t_data *data, int x)
 	return (off_x);
 }
 
+/*Helper function of draw_wall_slice, calculates y pixel position
+  within the texture, and accounts for cases where those position
+  exceed the texture boundaries. Returns colour of pixel to
+  draw_wall_slice function.*/
+static uint32_t	slice_loop(t_data *data, float start_y, int y, uint32_t colour)
+{
+	data->txt_y = data->txt_y_st + (y - start_y)
+		* (data->texture->height / data->slice_height);
+	if (data->txt_x >= data->texture->width)
+		data->txt_x = data->texture->width - 1;
+	if (data->txt_y >= data->texture->height)
+		data->txt_y = data->texture->height - 1;
+	colour = get_texture_colour(data->texture, (int)data->txt_x, (int)data->txt_y);
+	return (colour);
+}
+
 /*Maps map coordinates with texture coordinates (txt_x and txt_y)
   in order to retrieve colour of respective pixel from texture with
-  help of get_texture_colour function. Then draws the pixel with
-  put_pixel function.*/
-static void	draw_wall_slice(t_data *data, int x, int start_y, int end_y)
+  help of slice_loop/get_texture_colour function. In case wall slice
+  is bigger than screen height, an extra caclulation is conducted for
+  txt_y_st to prevent distortion if the player is close to a wall.
+  Slice_loop function returns colour of the pixel and internally
+  determines y position in the texture. Then the funtion draws the
+  pixel with put_pixel function.*/
+static void	draw_wall_slice(t_data *data, int x, float start_y, float end_y)
 {
 	uint32_t	colour;
 	int			y;
 	float		off_x;
-	float		txt_x;
-	float		txt_y;
 
 	colour = 0;
-	y = start_y;
 	off_x = calc_x_offset(data, x);
-	txt_x = off_x * data->texture->width;
+	data->txt_x = off_x * data->texture->width;
+	if (start_y < 0)
+	{
+		data->txt_y_st = -start_y
+			* (data->texture->height / data->slice_height);
+		start_y = 0;
+	}
+	else
+		data->txt_y_st = 0;
+	data->txt_y = data->txt_y_st;
+	y = start_y;
 	while (y < end_y)
 	{
-		txt_y = (y - start_y) * (data->texture->height / data->slice_height);
-		if (txt_x >= data->texture->width)
-			txt_x = data->texture->width - 1;
-		if (txt_y >= data->texture->height)
-			txt_y = data->texture->height - 1;
-		colour = get_texture_colour(data->texture, (int)txt_x, (int)txt_y);
+		colour = slice_loop(data, start_y, y, colour);
 		mlx_put_pixel(data->img->fg, x, y, colour);
 		y++;
 	}
@@ -103,19 +125,15 @@ void	render_map(t_data *data)
 	int			i;
 	float		start_y;
 	float		end_y;
-	float		center_y;
 
 	i = 0;
-	center_y = S_HEI / 2;
 	data->dist_plane = (S_WID / 2) / tan(data->fov / 2);
 	while (i < S_WID)
 	{
 		data->slice_height
 			= (BLOCK_SIZE / (data->img->len[i])) * data->dist_plane;
-		start_y = center_y - data->slice_height / 2;
-		end_y = center_y + data->slice_height / 2;
-		if (start_y < 0)
-			start_y = 0;
+		start_y = (S_HEI / 2) - (data->slice_height / 2);
+		end_y = (S_HEI / 2) + (data->slice_height / 2);
 		if (end_y >= S_HEI)
 			end_y = S_HEI - 1;
 		draw_wall_slice(data, i, start_y, end_y);
