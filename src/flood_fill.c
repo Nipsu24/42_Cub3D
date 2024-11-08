@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:20:35 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 11:24:15 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/08 13:55:47 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,6 @@ static void	player_pos(char **map, int *x, int *y)
 		}
 		j++;
 	}
-}
-
-/*Counts amount of lines in a 2d array.*/
-int	count_lines_arr(char **arr)
-{
-	int	j;
-
-	j = 0;
-	while (arr[j])
-		j++;
-	return (j);
 }
 
 /*Checks first height of map and current line's width in order
@@ -134,27 +123,6 @@ static int	check_map(char **map, t_data *data)
 	return (1);
 }
 
-static int	zero_finder(char **map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (map[y])
-	{
-		while (map[y][x])
-		{
-			if (map[y][x] == '0')
-				return (1);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	return (0);
-}
-
 /*First determines player's position. Then populates map_clone
   variable with map data. Passes then this data to flood fill
   function in order to check if player is surrounded by walls.
@@ -167,8 +135,8 @@ int	no_closed_walls(t_data *data)
 	p_pos_x = 0;
 	p_pos_y = 0;
 	player_pos(data->map, &p_pos_x, &p_pos_y);
-	data->y_p = p_pos_y;
-	data->x_p = p_pos_x;
+	data->y_p = p_pos_y + 0.5;
+	data->x_p = p_pos_x + 0.5;
 	data->p_dir = data->map[p_pos_y][p_pos_x];
 	data->clone_map = ft_copy_arr(data->map);
 	if (!data->clone_map)
