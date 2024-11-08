@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/07 12:01:36 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/08 10:47:27 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define STEPS 0.3f
 # define RO_SPEED 0.09f
 # define PI 3.1415926535
-# define S_WID 630
-# define S_HEI 630
+# define S_WID 1660
+# define S_HEI 1260
 # define MM_SIZE 4 // downscale factor for mini map
 # define EPS 1e-6
 # define BLOCK_SIZE 1
