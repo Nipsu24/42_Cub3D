@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:28:22 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 11:48:40 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:30:19 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ void	raycaster(t_data *data)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	init_raycaster(data);
-	while (data->ray_or >= data->start_angle)
+	while (++i, data->ray_or >= data->start_angle)
 	{
 		set_up_intersec_check(data);
 		while (1)
@@ -108,7 +108,6 @@ void	raycaster(t_data *data)
 		data->img->cl_y[i] = data->cl_y;
 		draw_ray(data, i);
 		data->ray_or -= data->step_angle;
-		i++;
 	}
 	render_map(data);
 	mlx_image_to_window(data->mlx, data->img->fg, 0, 0);
