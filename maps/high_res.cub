@@ -1,10 +1,10 @@
-NO textures/north.png
+NO textures/high_res/north.png
 
-SO         textures/south.png
+SO         textures/high_res/south.png
 
-EA     textures/east.png
+EA     textures/high_res/east.png
 
-WE      textures/west.png
+WE      textures/high_res/west.png
 
 C 135, 206,          235
 
