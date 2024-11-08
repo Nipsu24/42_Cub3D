@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 14:47:31 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/18 11:42:23 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/08 13:56:50 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,36 @@ void	official_exit(void)
 	sleep(2);
 	printf("you idiot\n");
 	sleep(2);
+}
+
+/*Counts amount of lines in a 2d array.*/
+int	count_lines_arr(char **arr)
+{
+	int	j;
+
+	j = 0;
+	while (arr[j])
+		j++;
+	return (j);
+}
+
+int	zero_finder(char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (map[y][x] == '0')
+				return (1);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return (0);
 }

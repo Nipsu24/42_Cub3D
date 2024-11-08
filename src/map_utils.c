@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:18:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/08 11:38:15 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/08 14:18:34 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ static int	zero_at_start(char **arr)
 
 int	map_extract(t_data *data)
 {
-	static int	x = 0;
-	static int	y = 0;
+	static int	y = -1;
 	static int	z = 0;
 	static int	len = 0;
 
@@ -63,9 +62,9 @@ int	map_extract(t_data *data)
 	data->map = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!data->map)
 		return (1);
-	while (data->file_arr[y])
+	while (data->file_arr[++y])
 	{
-		if ((data->file_arr[y][x] == ' ') || (data->file_arr[y][x] == '1'))
+		if ((data->file_arr[y][0] == ' ') || (data->file_arr[y][0] == '1'))
 		{
 			data->map[z] = ft_strdup(data->file_arr[y]);
 			if (!data->map[z])
@@ -75,7 +74,6 @@ int	map_extract(t_data *data)
 			}
 			z++;
 		}
-		y++;
 	}
 	data->map[z] = NULL;
 	return (0);

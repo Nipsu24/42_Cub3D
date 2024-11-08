@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:50:15 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 11:11:16 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/08 14:04:48 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,24 +91,5 @@ void	delete_textures(t_data *data)
 			mlx_delete_texture(data->txtr->we);
 		free(data->txtr);
 		data->txtr = NULL;
-	}
-}
-
-void	delete_images(t_data *data)
-{
-	if (data->img)
-	{
-		if (data->img->wl)
-			mlx_delete_image(data->mlx, data->img->wl);
-		if (data->img->fl)
-			mlx_delete_image(data->mlx, data->img->fl);
-		if (data->img->bg)
-			mlx_delete_image(data->mlx, data->img->bg);
-		if (data->img->ray)
-			mlx_delete_image(data->mlx, data->img->ray);
-		if (data->img->fg)
-			mlx_delete_image(data->mlx, data->img->fg);
-		free(data->img);
-		data->img = NULL;
 	}
 }

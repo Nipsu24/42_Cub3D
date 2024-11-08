@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/08 10:47:27 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/08 14:18:05 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ char		*ft_read_map(int fd);
 int			number_count(char *str);
 void		check_init_pl_angle(t_data *data);
 void		official_exit(void);
+int			zero_finder(char **map);
 
 /*						mlx_functions.c							*/
 
