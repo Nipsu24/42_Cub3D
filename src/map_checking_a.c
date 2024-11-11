@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:23:52 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/28 11:01:08 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/11 11:38:01 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ static int	map_size(t_data *data)
 		}
 	}
 	data->width = width_1;
-	if (width_1 > S_WID)
+	if (width_1 > 100 || width_1 < 3)
 		return (err_msg(6));
-	if (data->height > S_HEI)
+	if (data->height > 100 || data->height < 3)
 		return (err_msg(7));
 	return (0);
 }
@@ -128,7 +128,7 @@ int	map_checker(t_data *data)
 		return (1);
 	if (!data->map || !data->map[0])
 	{
-		printf("Error. Empty map.\n");
+		printf("Error.\nInvalid map.\n");
 		return (free_input(data));
 	}
 	if (map_size(data))

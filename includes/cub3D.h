@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/08 13:55:27 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/11 12:21:22 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_data
 	char			*file_cnt;
 	char			**file_arr;
 	int				wall_check;
+	int				map_start;
 	char			p_dir;
 	float			x_p;
 	float			y_p;
