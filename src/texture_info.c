@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/11 13:49:54 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/11 14:21:55 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,18 @@ static int	get_c(char *address, t_img *img, int i, int c)
 		return (err_msg(8));
 	tmp_arr = ft_split(address, ',');
 	if (!tmp_arr || !tmp_arr[0] || !tmp_arr[1] || !tmp_arr[2])
+	{
+		free_arr(&tmp_arr);
 		return (err_msg(8));
+	}
 	img->ceiling[0] = ft_atol(tmp_arr[0]);
 	img->ceiling[1] = ft_atol(tmp_arr[1]);
 	img->ceiling[2] = ft_atol(tmp_arr[2]);
 	if (arr_check(img->ceiling))
-		return (1);
+	{
+		free_arr(&tmp_arr);
+		return (err_msg(8));
+	}
 	free_arr(&tmp_arr);
 	return (0);
 }
@@ -52,12 +58,18 @@ static int	get_f(char *address, t_img *img, int i, int c)
 		return (err_msg(8));
 	tmp_arr = ft_split(address, ',');
 	if (!tmp_arr || !tmp_arr[0] || !tmp_arr[1] || !tmp_arr[2])
+	{
+		free_arr(&tmp_arr);
 		return (err_msg(8));
+	}
 	img->floor[0] = ft_atol(tmp_arr[0]);
 	img->floor[1] = ft_atol(tmp_arr[1]);
 	img->floor[2] = ft_atol(tmp_arr[2]);
 	if (arr_check(img->floor))
-		return (1);
+	{
+		free_arr(&tmp_arr);
+		return (err_msg(8));
+	}
 	free_arr(&tmp_arr);
 	return (0);
 }
