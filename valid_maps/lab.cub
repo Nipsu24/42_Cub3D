@@ -1,18 +1,13 @@
-NO textures/test/north.png
+NO textures/north.png
 
+SO     textures/south.png
 
+EA     textures/east.png
 
-SO         textures/test/south.png
+WE      textures/west.png
 
-
-EA     textures/test/east.png
-WE      textures/test/west.png
-
-C 135,          206,235
-
-
-
-F     34    ,   139,             34
+C 135, 206,          235
+F 107,142,35
 
 
 11111111111111111111111111111111111111111111111111
