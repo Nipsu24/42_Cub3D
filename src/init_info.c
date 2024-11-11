@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/08 13:59:57 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/11 12:01:42 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void	init_structs(t_data *data)
 	data->clone_map = NULL;
 	data->file_cnt = NULL;
 	data->file_arr = NULL;
+	data->map_start = 0;
 	data->wall_check = 0;
 	data->p_dir = 'F';
 	data->x_p = 0;

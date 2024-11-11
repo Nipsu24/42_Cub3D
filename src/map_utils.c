@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:18:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/08 14:18:34 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/11 12:27:03 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	zero_at_start(char **arr)
 
 int	map_extract(t_data *data)
 {
-	static int	y = -1;
+	static int	y;
 	static int	z = 0;
 	static int	len = 0;
 
@@ -62,18 +62,16 @@ int	map_extract(t_data *data)
 	data->map = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!data->map)
 		return (1);
+	y = data->map_start -1;
 	while (data->file_arr[++y])
 	{
-		if ((data->file_arr[y][0] == ' ') || (data->file_arr[y][0] == '1'))
+		data->map[z] = ft_strdup(data->file_arr[y]);
+		if (!data->map[z])
 		{
-			data->map[z] = ft_strdup(data->file_arr[y]);
-			if (!data->map[z])
-			{
-				free_arr_rev(&data->map, z);
-				return (1);
-			}
-			z++;
+			free_arr_rev(&data->map, z);
+			return (1);
 		}
+		z++;
 	}
 	data->map[z] = NULL;
 	return (0);

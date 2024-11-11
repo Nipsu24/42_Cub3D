@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:13:57 by lstorey           #+#    #+#             */
-/*   Updated: 2024/10/23 12:33:07 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/11 12:20:42 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ static int	texture_extract_helper_1(t_data *data, int y, int x, t_img *img)
 
 int	texture_extract(t_data *data, t_img *img, int x, int y)
 {
+	static int	count = 0;
+
 	while (data->file_arr[++y])
 	{
 		while (data->file_arr[y][x])
@@ -122,16 +124,16 @@ int	texture_extract(t_data *data, t_img *img, int x, int y)
 			(ft_strncmp("F ", &data->file_arr[y][x], 2) == 0) ||
 			(ft_strncmp("C ", &data->file_arr[y][x], 2) == 0))
 			{
+				count++;
 				if (texture_extract_helper_1(data, y, x, img))
 					return (1);
+				if (count == 6)
+					data->map_start = y + 1;
 			}
 			break ;
 		}
 	}
 	if ((range_check(img->floor)) || (range_check(img->ceiling)))
-	{
-		err_msg(9);
-		return (1);
-	}
+		return (err_msg(9));
 	return (0);
 }

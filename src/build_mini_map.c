@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   build_mini_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:40:41 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 11:38:34 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/11 12:08:02 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
+
+static int	message_helper(int n)
+{
+	if (n == 1)
+		ft_putstr_fd("Error\nFailed to load north texture.\n", 2);
+	else if (n == 2)
+		ft_putstr_fd("Error\nFailed to load east texture.\n", 2);
+	else if (n == 3)
+		ft_putstr_fd("Error\nFailed to load south texture.\n", 2);
+	else if (n == 4)
+		ft_putstr_fd("Error\nFailed to load west texture.\n", 2);
+	return (1);
+}
 
 /*Populates texture variables, texture struct itself is already initialised
   within init_data function.*/
@@ -24,16 +37,16 @@ int	get_textures(t_data *data)
 		return (1);
 	data->txtr->no = mlx_load_png(data->img->no);
 	if (!data->txtr->no)
-		return (1);
+		return (message_helper(1));
 	data->txtr->ea = mlx_load_png(data->img->ea);
 	if (!data->txtr->ea)
-		return (1);
+		return (message_helper(2));
 	data->txtr->so = mlx_load_png(data->img->so);
 	if (!data->txtr->so)
-		return (1);
+		return (message_helper(3));
 	data->txtr->we = mlx_load_png(data->img->we);
 	if (!data->txtr->we)
-		return (1);
+		return (message_helper(4));
 	return (0);
 }
 
