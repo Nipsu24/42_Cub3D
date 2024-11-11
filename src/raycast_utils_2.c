@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:39:00 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/06 11:38:34 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/11 12:47:04 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,16 @@ void	draw_ray(t_data *data, int i)
 			data->ray->j++;
 		}
 	}
+}
+
+int	arr_check(long int *arr)
+{
+	if (arr[0] < 0 || arr[0] > 255)
+		return (1);
+	if (arr[1] < 0 || arr[1] > 255)
+		return (1);
+	if (arr[2] < 0 || arr[2] > 255)
+		return (1);
+	return (0);
+
 }
