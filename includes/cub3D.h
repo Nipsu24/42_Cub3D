@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/11 12:21:22 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/11 12:48:17 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,10 +251,10 @@ float		calc_dist(float x, float y, float x_tar, float y_tar);
 float		calc_ray_len(t_data *data);
 void		normalize_angle(float *angle_1, float *angle_2);
 void		draw_ray(t_data *data, int i);
-
-/*						raycast_utils2.c						*/
+int			arr_check(long int *arr);
 
 /*						render.c								*/
+
 void		render_map(t_data *data);
 
 /*						utils_to_be_deleted.c					*/
