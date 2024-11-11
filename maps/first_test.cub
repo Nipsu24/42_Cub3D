@@ -1,13 +1,12 @@
 NO textures/NORTH_64.png
 
-SO         textures/SOUTH_64.png
+SO     textures/SOUTH_64.png
 
 EA     textures/east.png
 
 WE      textures/WEST_64.png
 
 C 135, 206,          235
-
 F 107,142,35
 
 1111111111111111111111111111111

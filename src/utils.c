@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:40:44 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/06 11:25:02 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/11 12:08:25 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ int	err_msg(int err_flag)
 	if (err_flag == 0)
 		printf("Error.\nEmpty line(s) in map.\n");
 	if (err_flag == 1)
-		printf("Error.\nMultiple similar players in map or no player at all.\n");
+		printf("Error.\nInvalid characters or insufficient player amount.\n");
 	if (err_flag == 2)
 		printf("Error.\nInvalid characters in map.\n");
 	if (err_flag == 3)
-		printf("Error.\nPlayer not surrounded by walls.\n");
+		printf("Error.\nMap not surrounded by walls.\n");
 	if (err_flag == 4)
 		printf("Error.\nFloor or ceiling colour out of range.\n");
 	if (err_flag == 5)
 		printf("Error.\nMalloc error.\n");
 	if (err_flag == 6)
-		printf("Error.\nMap consists of too many colums.\n");
+		printf("Error.\nInvalid column(s).\n");
 	if (err_flag == 7)
-		printf("Error.\nMap consists of too many lines.\n");
+		printf("Error.\nInvalid line count.\n");
 	if (err_flag == 8)
 		printf("Error.\nInvalid '.cub' file.\n");
 	if (err_flag == 9)

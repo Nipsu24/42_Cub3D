@@ -1,1 +1,21 @@
-1111N00011111
+NO textures/NORTH_64.png
+
+SO     textures/SOUTH_64.png
+
+EA     textures/east.png
+
+WE      textures/WEST_64.png
+
+C 135,          206,235
+
+
+
+F     34    ,   139,             34
+
+
+
+
+1111111
+11N1111
+1111111
+111111111
