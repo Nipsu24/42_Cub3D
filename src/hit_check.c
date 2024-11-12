@@ -6,16 +6,19 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 16:02:43 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/01 14:59:23 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/12 15:57:59 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3D.h"
 
-/*Checks for wall or boundary collision and returns for those cases 1.*/
+/*Checks for wall or boundary collision and returns for those cases 1.
+  Strlen calculation for each line of the 2d array needed in order to
+  avoid out of boundary reads as every line can have different length.*/
 static int	hit_check(t_data *data, float x, float y)
 {
-	if (y < 0 || y >= data->height || x < 0 || x >= data->width)
+	if (y < 0 || y >= data->height || x < 0
+		|| x >= ft_strlen(data->map[(int)y]))
 		return (1);
 	if (data->map[(int)((y))][(int)((x))] == '1')
 		return (1);

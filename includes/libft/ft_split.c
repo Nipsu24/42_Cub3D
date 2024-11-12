@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:21:38 by mmeier            #+#    #+#             */
-/*   Updated: 2024/08/05 15:30:07 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/12 11:45:44 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	**ft_writewords(char const *s, char c, char **strings)
 		else
 			i++;
 	}
-	strings[j] = 0;
+	strings[j] = NULL;
 	return (strings);
 }
 
