@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:40:44 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/11 12:08:25 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/12 14:28:43 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	err_msg(int err_flag)
 		printf("Error.\nCeiling or floor value out of scope.\n");
 	if (err_flag == 10)
 		printf("Error.\nMultiple newlines in map.\n");
+	if (err_flag == 11)
+		printf("Error.\nCub file contains texture or colour duplicates.\n");
 	return (1);
 }
 

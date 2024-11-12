@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:39:00 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/11 12:47:04 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/12 15:58:20 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,4 @@ int	arr_check(long int *arr)
 	if (arr[2] < 0 || arr[2] > 255)
 		return (1);
 	return (0);
-
 }

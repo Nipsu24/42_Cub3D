@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/11 13:53:06 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:09:44 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef struct s_img
 	float			hit_dir[S_WID];
 	float			cl_x[S_WID];
 	float			cl_y[S_WID];
+	int				n_flag;
+	int				e_flag;
+	int				s_flag;
+	int				w_flag;
+	int				c_flag;
+	int				f_flag;
 	mlx_image_t		*wl;
 	mlx_image_t		*fl;
 	mlx_image_t		*ray;

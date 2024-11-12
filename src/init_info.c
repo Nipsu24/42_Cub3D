@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:48:13 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/11 12:01:42 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:09:18 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ static void	init_img(t_data *data)
 	data->img->floor[0] = -1;
 	data->img->floor[1] = -1;
 	data->img->floor[2] = -1;
+	data->img->n_flag = 0;
+	data->img->e_flag = 0;
+	data->img->w_flag = 0;
+	data->img->s_flag = 0;
+	data->img->c_flag = 0;
+	data->img->f_flag = 0;
 }
 
 static void	init_txtr(t_data *data)
