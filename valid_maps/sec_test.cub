@@ -7,7 +7,7 @@ EA     textures/east.png
 WE      textures/west.png
 
 C 135, 206,          235
-F 107,142,
+F 107,142, 200
 
 111111111111111
 10E000000000001

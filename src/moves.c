@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/05 16:52:00 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/13 13:26:51 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	move_up(t_data *data)
 
 	new_x = data->x_p + data->p_dx * STEPS;
 	new_y = data->y_p - data->p_dy * STEPS;
-	if (data->map[(int)new_y][(int)new_x] != '1')
+	if (data->map[(int)(new_y - WALL_BUF)][(int)(new_x - WALL_BUF)] != '1' &&
+		data->map[(int)(new_y + WALL_BUF)][(int)(new_x - WALL_BUF)] != '1' &&
+		data->map[(int)(new_y - WALL_BUF)][(int)(new_x + WALL_BUF)] != '1' &&
+		data->map[(int)(new_y + WALL_BUF)][(int)(new_x + WALL_BUF)] != '1')
 	{
 		data->x_p = new_x;
 		data->y_p = new_y;
@@ -41,7 +44,10 @@ void	move_down(t_data *data)
 
 	new_x = data->x_p - data->p_dx * STEPS;
 	new_y = data->y_p + data->p_dy * STEPS;
-	if (data->map[(int)new_y][(int)new_x] != '1')
+	if (data->map[(int)(new_y - WALL_BUF)][(int)(new_x - WALL_BUF)] != '1' &&
+		data->map[(int)(new_y + WALL_BUF)][(int)(new_x - WALL_BUF)] != '1' &&
+		data->map[(int)(new_y - WALL_BUF)][(int)(new_x + WALL_BUF)] != '1' &&
+		data->map[(int)(new_y + WALL_BUF)][(int)(new_x + WALL_BUF)] != '1')
 	{
 		data->x_p = new_x;
 		data->y_p = new_y;
@@ -60,7 +66,10 @@ void	move_left(t_data *data)
 	strafe_angle = data->p_a + PI / 2;
 	new_x = data->x_p + cos(strafe_angle) * STEPS;
 	new_y = data->y_p - sin(strafe_angle) * STEPS;
-	if (data->map[(int)new_y][(int)new_x] != '1')
+	if (data->map[(int)(new_y - WALL_BUF)][(int)(new_x - WALL_BUF)] != '1' &&
+		data->map[(int)(new_y + WALL_BUF)][(int)(new_x - WALL_BUF)] != '1' &&
+		data->map[(int)(new_y - WALL_BUF)][(int)(new_x + WALL_BUF)] != '1' &&
+		data->map[(int)(new_y + WALL_BUF)][(int)(new_x + WALL_BUF)] != '1')
 	{
 		data->x_p = new_x;
 		data->y_p = new_y;
@@ -79,7 +88,10 @@ void	move_right(t_data *data)
 	strafe_angle = data->p_a - PI / 2;
 	new_x = data->x_p + cos(strafe_angle) * STEPS;
 	new_y = data->y_p - sin(strafe_angle) * STEPS;
-	if (data->map[(int)new_y][(int)new_x] != '1')
+	if (data->map[(int)(new_y - WALL_BUF)][(int)(new_x - WALL_BUF)] != '1' &&
+		data->map[(int)(new_y + WALL_BUF)][(int)(new_x - WALL_BUF)] != '1' &&
+		data->map[(int)(new_y - WALL_BUF)][(int)(new_x + WALL_BUF)] != '1' &&
+		data->map[(int)(new_y + WALL_BUF)][(int)(new_x + WALL_BUF)] != '1')
 	{
 		data->x_p = new_x;
 		data->y_p = new_y;

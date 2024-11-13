@@ -6,7 +6,7 @@
 /*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:05:28 by mmeier            #+#    #+#             */
-/*   Updated: 2024/11/12 14:23:54 by mmeier           ###   ########.fr       */
+/*   Updated: 2024/11/13 13:35:40 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static int	store_file_content(char *av, t_data *data)
 	if (!data->file_cnt)
 	{
 		close(fd);
+		perror("Error.\nFile could not be opened.\n");
 		return (1);
 	}
 	close(fd);
