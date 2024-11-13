@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:56:58 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/13 11:51:42 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/13 13:26:57 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define EPS 1e-6
 # define BLOCK_SIZE 1
 # define RAYS_MODULO 80
+# define WALL_BUF 0.2f
 
 typedef struct s_data	t_data;
 typedef struct s_img
