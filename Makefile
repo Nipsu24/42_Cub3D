@@ -6,7 +6,7 @@
 #    By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:57:20 by lstorey           #+#    #+#              #
-#    Updated: 2024/11/08 14:06:48 by lstorey          ###   ########.fr        #
+#    Updated: 2024/11/13 11:18:00 by lstorey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ LIBS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 FILES = src/utils.c \
 		src/utils_2.c \
+		src/utils_3.c \
 		src/core_functions.c \
 		src/main.c\
 		src/init_info.c\
