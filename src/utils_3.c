@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:13:44 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/13 11:53:13 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/11/15 14:39:39 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ int	get_f(char *address, t_img *img, int i, int c)
 	if (arr_check(img->floor))
 		return (error_n_free(tmp_arr));
 	free_arr(&tmp_arr);
-	img->c_flag = 1;
+	img->f_flag = 1;
 	return (0);
 }
