@@ -15,10 +15,11 @@
 ## About
 The repository contains a pseudo-3D game inspired by the early FPS games, specifically Wolfenstein 3D. 
 The project involves parsing map data and building a 3D world using raycasting techniques and texture mapping from a first-person perspective.
+The project was done in collaboration with Leo Storey (https://github.com/Ginger-Leo/Cub3D).
 
 ## Program
 The game is launched by passing a `.ber file`, containing a valid map to the executable. A flood fill algorithm is utilised in order to determine
-whether the passed map and player are surrounded by walls. A DDA algorithm with a vertical and horizontal intersection check determines the height of the walls and distance to the player. Textures of the walls are projected to the different cubesides by a texture mapping algorithm. The program among others utilises the MLX42 graphics library and the C math.h. library. The entire game is rendered in realtime and every frame is drawn pixel by pixel.
+whether the passed map and player are surrounded by walls. A DDA algorithm with a vertical and horizontal intersection check determines the height of the walls and distance to the player. A minimap, displaying a fraction of the actual rays casted (amount of rays equal amount of pixels of screen width) is displayed in the top left corner of the game window. Textures of the walls are projected onto the different cubesides by a texture mapping algorithm. The program among others utilises the MLX42 graphics library and the C math.h. library. The entire game is rendered in realtime and every frame is drawn pixel by pixel.
 
 ## Requirements
 - `gcc` compiler
@@ -50,3 +51,6 @@ $ ./cub3D valid_maps/high_res.cub
 ```
 Arrow Keys: Rotate the camera (left or right).
 ```
+### 4. Alteration of map
+The map can the altered e.g. walls, player positions can be changed and different textures can be placed into the respective map file.
+Changing the colours of floor and ceiling can be done by altering the respective RBG values of `F` and `C`. For the changes to be accepted, the game needs to be relaunched again.
