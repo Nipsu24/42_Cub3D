@@ -1,67 +1,52 @@
-cub3D Project
+<h1 align="center">Cub3D</h1>
 
-Team Members
-- Leo (lstorey)
-- Marius (mmeiers)
+> Hive Helsinki (School 42) 11th project (Rank04/06) of core curriculum.
 
-Introduction
+<h2 align="center">
+	<a href="#about">About</a>
+	<span> · </span>
+	<a href="#program">Program</a>
+	<span> · </span>
+	<a href="#requirements">Requirements</a>
+	<span> · </span>
+	<a href="#instructions">Instructions</a>
+</h2>
 
-cub3D is a project from the 42 School that challenges students to create a basic 3D game
-engine inspired by the early FPS games, specifically Wolfenstein 3D. 
-The project involves building a 3D world using raycasting techniques, rendering graphics 
-from a first-person perspective. Our goal is to complete the core requirements along with 
-the collision detection and mouse movement bonuses.
+## About
+The repository contains a pseudo-3D game inspired by the early FPS games, specifically Wolfenstein 3D. 
+The project involves parsing map data and building a 3D world using raycasting techniques and texture mapping from a first-person perspective.
 
-Features Implemented
+## Program
+The game is launched by passing a `.ber file`, containing a valid map to the executable. A flood fill algorithm is utilised in order to determine
+whether the passed map and player are surrounded by walls. A DDA algorithm with a vertical and horizontal intersection check determines the height of the walls and distance to the player. Textures of the walls are projected to the different cubesides by a texture mapping algorithm. The program among others utilises the MLX42 graphics library and the C math.h. library. The entire game is rendered in realtime and every frame is drawn pixel by pixel.
 
-Mandatory Features
-- Raycasting Engine: Displaying walls, floor, and ceiling in a 3D perspective using 
-raycasting techniques.
-- Basic Movement: Ability to move the player forward, backward, and sideways.
-- Textures: Walls and floor textures are displayed based on the game's map.
-- Simple Map Parsing: The game reads a .cub map file to generate the environment.
+## Requirements
+- `gcc` compiler
 
-Bonuses we are aiming to complete
-- Collision Detection: Our implementation includes proper collision detection, ensuring 
-that the player cannot move through walls or other obstacles.
-- Mouse Movement: We implemented mouse control for player camera rotation, allowing for 
-smooth and intuitive looking around the environment.
+## Instructions
 
-Controls
+### 1. Compiling the program
 
-- W / A / S / D: Move the player forward, left, backward, and right.
-- Arrow Keys: Rotate the camera (left or right).
-- Mouse: Move the mouse to rotate the camera (enabled for bonus).
-- ESC: Exit the game.
+To compile the files run the following command in the repository:
 
-Map Format
+```
+$ make 
+```
 
-The map file should be a .cub file, which defines the layout of the walls and the spawn 
-point of the player. Example map format:
-111111
-100001
-100001
-1000N1
-111111
+### 2. Launch the game
 
-In this example:
-- 1 represents walls
-- 0 represents empty space
-- N represents the player spawn point (facing north)
-
-Known Issues
-
-- The project does not yet include advanced bonus features like sprite rendering or floor 
-casting.
-- Some edge cases in map parsing might not be fully handled.
-
-Future Improvements
-
-- Implementing more bonuses such as minimap display and dynamic lighting.
-- Adding more advanced collision mechanics, such as sliding along walls when hitting them 
-at an angle.
-
-Conclusion
-
-to be written.......
-
+The game can be launched by passing a valid map (included in valid_maps directory) as an argument to the executable.
+```
+$ ./cub3D valid_maps/first_test.cub
+```
+For higher resolution:
+```
+$ ./cub3D valid_maps/high_res.cub
+```
+### 3. Navigation within the game map
+```
+ W / A / S / D: Move the player forward, left, backward, and right.
+```
+```
+Arrow Keys: Rotate the camera (left or right).
+```
