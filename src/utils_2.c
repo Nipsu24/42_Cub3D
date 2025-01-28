@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmeier <mmeier@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 14:47:31 by lstorey           #+#    #+#             */
-/*   Updated: 2024/11/08 13:56:50 by lstorey          ###   ########.fr       */
+/*   Updated: 2025/01/28 11:26:09 by mmeier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,8 @@ void	check_init_pl_angle(t_data *data)
 
 void	official_exit(void)
 {
-	printf("Error.\nincorrect argument\n");
-	sleep(1);
-	printf(".....\n");
-	sleep(2);
-	printf("you idiot\n");
-	sleep(2);
+	printf("Error.\nIncorrect argument\n");
+	printf("Pass a valid map e.g. 'valid_maps/high_res.cub' as argument to the program.\n");
 }
 
 /*Counts amount of lines in a 2d array.*/
