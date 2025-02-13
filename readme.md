@@ -15,7 +15,14 @@
 ## About
 The repository contains a pseudo-3D game inspired by the early FPS games, specifically Wolfenstein 3D. 
 The project involves parsing map data and building a 3D world using raycasting techniques and texture mapping from a first-person perspective.
-The project was done in collaboration with Leo Storey (https://github.com/Ginger-Leo/Cub3D).
+The project was done in collaboration with Leo Storey (https://github.com/Ginger-Leo/Cub3D).  
+Worksplit:
+- File parameters parsing (Leo)
+- Map parsing (Marius)
+- Flood fill algorithm (both)
+- Raycaster (Marius)
+- Texture mapping (both)
+- Testing and bugfixing (both)
 
 ## Program
 The game is launched by passing a `.ber file`, containing a valid map to the executable. A flood fill algorithm is utilised in order to determine
