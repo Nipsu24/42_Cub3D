@@ -28,6 +28,13 @@ Worksplit:
 The game is launched by passing a `.ber file`, containing a valid map to the executable. A flood fill algorithm is utilised in order to determine
 whether the passed map and player are surrounded by walls. A DDA algorithm with a vertical and horizontal intersection check determines the height of the walls and distance to the player. A minimap, displaying a fraction of the actual rays casted (amount of rays equal amount of pixels of screen width) is displayed in the top left corner of the game window. Textures of the walls are projected onto the different cubesides by a texture mapping algorithm. The program among others utilises the MLX42 graphics library and the C math.h. library. The entire game is rendered in realtime and every frame is drawn pixel by pixel.
 
+![Bildschirmfoto 2024-11-08 um 21 34 45](https://github.com/user-attachments/assets/f8b4657e-6ffa-4c04-ac9e-f9005dbad141)
+Final implementation with high resolution texture mapping
+
+<img width="627" alt="Bildschirmfoto 2024-11-07 um 09 49 56" src="https://github.com/user-attachments/assets/02f38c36-6179-4a69-b170-95483f2882f3" /> 
+
+Prototype, implementation without texture mapping
+
 ## Requirements
 - `gcc` compiler
 
